@@ -9,7 +9,9 @@ using namespace std;
 void OnConnect(const socketHandle& socketHandle){
     cout << "Connection accepted from " << socketHandle.ip << endl;
 }
-
+void OnDisconnect(const socketHandle& socketHandle){
+    cout << "Disconnection detected from " << socketHandle.ip << endl;
+}
 int main(int argc, char *argv[]) {
     vector<string> args(argv, argv + argc);
 
@@ -35,16 +37,15 @@ int main(int argc, char *argv[]) {
     }
 
     try{
+        socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
+        socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});
         if(listen){
             listener listener;
-            socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
-
             listener.start(ip, port);
 
         }
         if(connect){
             socketHandle handle;
-            socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle);});
             handle.connect(ip, port);
         }
     }

@@ -65,6 +65,15 @@ void listener::listenInstance(string localAddress, string localPort){
         //Connected;
         socketHandle.ip = std::string(inet_ntoa(socketHandle.handleAddr.sin_addr)) + ":" + std::to_string(socketHandle.handleAddr.sin_port);
         socketEvents::getInstance().onConnected(&socketHandle);
+
+        FD_ZERO(&socketHandle.descriptor);
+        FD_SET(socketHandle.mSocket, &socketHandle.descriptor);
+
+        if(FD_ISSET(socketHandle.mSocket, &socketHandle.descriptor)){
+            thread receiveThread(&socketHandle::receive, socketHandle);
+            receiveThread.join();
+        }
+
     }
 }
 

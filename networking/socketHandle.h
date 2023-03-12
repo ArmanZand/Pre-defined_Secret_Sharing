@@ -21,15 +21,16 @@ public:
     SOCKET mSocket;
     sockaddr_in handleAddr;
     string ip;
+    fd_set descriptor;
 
     void connect(string remoteAddress, string remotePort);
     void send(string message);
     bool isConnected();
-
+    void receive();
 private:
     void connectInstance(string remoteAddress, string remotePort);
 
-    void receive();
+
 
 
 

@@ -11,21 +11,19 @@ static const volatile int m_bufferSize = 8192;
 char * m_buffer = new char [m_bufferSize];
 bool keepTrying = true;
 int waitRetry = 1000;
-fd_set descriptor;
+
 
 bool socketHandle::isConnected(){
-    fd_set fd;
-    FD_ZERO(&fd);
-    FD_SET(mSocket, &fd);
-
+    fd_set fdCheck;
+    FD_ZERO(&fdCheck);
+    FD_SET(mSocket, &fdCheck);
     timeval timeout = { 0, 0 };
-    int result = select(0, &fd, nullptr, nullptr, &timeout);
+    int result = select(0, &fdCheck, nullptr, nullptr, &timeout);
     if (result == SOCKET_ERROR)
     {
         return false;
     }
-
-    return (result > 0);
+    return (result >= 0);
 }
 void socketHandle::send(string message){
     try {
@@ -76,6 +74,7 @@ void socketHandle::receive(){
                     else {
                         throw runtime_error("Error on data receive.");
                     }
+
                 } else if (result == 0){
                     socketEvents::getInstance().onDisconnected(this);
                     break;
@@ -88,7 +87,8 @@ void socketHandle::receive(){
         }
         catch (exception &ex){
             cerr << ex.what() << endl;
-            cerr << "WSACode: " << WSAGetLastError() << endl;
+            //cerr << "WSACode: " << WSAGetLastError() << endl;
+            socketEvents::getInstance().onDisconnected(this);
             break;
         }
     }
@@ -127,10 +127,21 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
 
         if(iResult == SOCKET_ERROR){
             int error = WSAGetLastError() ;
-            if(error != WSAEWOULDBLOCK){
-                throw runtime_error("Error initiating connection.");
+            if(error == WSAEWOULDBLOCK){
+                FD_ZERO(&descriptor);
+                FD_SET(mSocket, &descriptor);
+                timeval timeout = {10, 0};
+                iResult = select(0, nullptr, &descriptor, nullptr, &timeout);
+                if(iResult == SOCKET_ERROR){
+                    throw runtime_error("Error while waiting for connection to finalise.");
+                }
+                else if(iResult == 0){
+                    throw runtime_error("Error connection attempt took too long.");
+                }
+
             }
             else if (error == WSAECONNREFUSED){
+
                 //WSAECONNREFUSED if peer is not listening
                 //try to connect again after some time
             }
@@ -159,19 +170,20 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
     catch(const exception &ex){
         closesocket(mSocket);
         cerr << "Exception: " << ex.what() << endl;
-        cerr << "WSACode: " << WSAGetLastError() << endl;
-        if(keepTrying){
-            closesocket(mSocket);
-            WSACleanup();
-            delete[] m_buffer;
-            m_buffer = nullptr;
-            m_buffer = new char[m_bufferSize];
-            Sleep(waitRetry);
-            cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", retrying..." << endl;
-            connectInstance(remoteAddress, remotePort);
-        } else {
-            cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", terminating connection attempt." << endl;
-        }
+        //cerr << "WSACode: " << WSAGetLastError() << endl;
+
+    }
+    if(keepTrying){
+        closesocket(mSocket);
+        WSACleanup();
+        delete[] m_buffer;
+        m_buffer = nullptr;
+        m_buffer = new char[m_bufferSize];
+        Sleep(waitRetry);
+        cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", retrying..." << endl;
+        connectInstance(remoteAddress, remotePort);
+    } else {
+        cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", terminating connection attempt." << endl;
     }
 }
 
