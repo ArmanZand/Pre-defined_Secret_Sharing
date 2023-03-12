@@ -5,7 +5,7 @@
 using namespace std;
 
 
-void OnConnect(socketHandle socketHandle){
+void OnConnect(const socketHandle& socketHandle){
     cout << "Client connected from " << socketHandle.ip << endl;
 }
 
@@ -37,14 +37,15 @@ int main(int argc, char *argv[]) {
     try{
         if(listen){
             listener listener;
+            listener.setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
 
             listener.start(ip, port);
-            listener.onConnected = [](socketHandle handle) {
-                OnConnect(handle);
-            };
+
         }
         if(connect){
-
+            socketHandle handle;
+            handle.setOnConnected([](socketHandle * handle) { OnConnect(*handle);});
+            handle.connect(ip, port);
         }
     }
     catch(const exception &ex){

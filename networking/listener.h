@@ -7,13 +7,12 @@
 
 #include "socketHandle.h"
 #include <string>
-#include <functional>
+#include "socketEvents.h"
 using namespace std;
 
-class listener {
+
+class listener : public socketEvents {
 public:
-    using connected = function<void(socketHandle)>;
-    connected onConnected;
     void start(string localAddress, string localPort);
 private:
     void listenInstance(string localAddress, string localPort);
