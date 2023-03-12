@@ -164,6 +164,7 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
         socketEvents::getInstance().onConnected(this);
 
         if(FD_ISSET(mSocket, &descriptor)){
+            socketEvents::getInstance().onReady(this, true);
             receive();
         }
     }

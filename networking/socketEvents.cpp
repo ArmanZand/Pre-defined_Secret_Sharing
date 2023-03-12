@@ -3,10 +3,12 @@
 //
 #include "socketEvents.h"
 #include "socketHandle.h"
-
-void socketEvents::setOnConnected(socketEvents::handleConnectedEvent handler) {
-    onConnectedHandlers.push_back(handler);
+#include <algorithm>
+socketEvents &socketEvents::getInstance() {
+    static socketEvents instance;
+    return instance;
 }
+/*
 template<typename T>
 void socketEvents::removeEvent(vector<T> & handlers, const T& handler){
     for(size_t i = 0; i < handlers.size(); i++){
@@ -16,7 +18,28 @@ void socketEvents::removeEvent(vector<T> & handlers, const T& handler){
             return;
         }
     }
+}*/
+template<typename T>
+void socketEvents::removeEvent(std::vector<T>& handlers, const T& handler) {
+    auto it = find_if(handlers.begin(), handlers.end(), [&](const T& h) {
+        return h.target_type() == handler.target_type() &&
+               h.template target<void(T)>() == handler.template target<void(T)>();
+    });
+    if (it != handlers.end()) {
+        handlers.erase(it);
+    }
 }
+
+void socketEvents::setOnConnected(socketEvents::handleConnectedEvent handler) {
+    onConnectedHandlers.push_back(handler);
+}
+
+void socketEvents::onConnected(socketHandle *handle) {
+    for(handleConnectedEvent & onConnectEvent : onConnectedHandlers){
+        onConnectEvent(handle);
+    }
+}
+
 void socketEvents::removeOnConnected(socketEvents::handleConnectedEvent handler){
     removeEvent(onConnectedHandlers, handler);
     /*
@@ -37,23 +60,25 @@ void socketEvents::removeOnDisconnected(socketEvents::handleDisconnectedEvent ha
     removeEvent(onDisconnectedHandlers, handler);
 }
 
-
-
-void socketEvents::onConnected(socketHandle *handle) {
-    for(handleConnectedEvent & onConnectEvent : onConnectedHandlers){
-        onConnectEvent(handle);
-    }
-}
-
 void socketEvents::onDisconnected(socketHandle *handle) {
     for(handleDisconnectedEvent & onDisconnectEvent : onDisconnectedHandlers){
         onDisconnectEvent(handle);
     }
 }
 
-socketEvents &socketEvents::getInstance() {
-    static socketEvents instance;
-    return instance;
+
+void socketEvents::setOnReady(socketEvents::handleReadyEvent handler) {
+    onReadyHandlers.push_back(handler);
+}
+
+void socketEvents::removeOnReady(socketEvents::handleReadyEvent handler) {
+    removeEvent(onReadyHandlers, handler);
+}
+
+void socketEvents::onReady(socketHandle *handle, bool initiator) {
+    for(handleReadyEvent & onReadyEvent : onReadyHandlers){
+        onReadyEvent(handle);
+    }
 }
 
 
