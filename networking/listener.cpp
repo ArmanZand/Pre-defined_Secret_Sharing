@@ -12,7 +12,7 @@
 #pragma comment(lib, "Ws2_32.lib")
 
 void listener::listenInstance(string localAddress, string localPort){
-
+    cout << "Listen thread started on (" << localAddress << ":" << localPort << ")" << endl;
 }
 
 void listener::start(string localAddress, string localPort){
