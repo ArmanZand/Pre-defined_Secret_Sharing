@@ -12,6 +12,11 @@ void OnConnect(const socketHandle& socketHandle){
 void OnDisconnect(const socketHandle& socketHandle){
     cout << "Disconnection detected from " << socketHandle.ip << endl;
 }
+void OnReady(socketHandle & socketHandle, bool initiator){
+    if (initiator){
+        socketHandle.send("on ready proc");
+    }
+}
 int main(int argc, char *argv[]) {
     vector<string> args(argv, argv + argc);
 
@@ -39,6 +44,7 @@ int main(int argc, char *argv[]) {
     try{
         socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
         socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});
+        socketEvents::getInstance().setOnReady([](socketHandle * handle, bool initiator) { OnReady(*handle, initiator);});
         if(listen){
             listener listener;
             listener.start(ip, port);

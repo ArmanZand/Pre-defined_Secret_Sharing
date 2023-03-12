@@ -20,7 +20,7 @@ public:
 
     using handleConnectedEvent = function<void(socketHandle *)>;
     using handleDisconnectedEvent = function<void(socketHandle *)>;
-    using handleReadyEvent = function<void(socketHandle *)>;
+    using handleReadyEvent = function<void(socketHandle *, bool)>;
 
     void setOnConnected(handleConnectedEvent handler);
     void removeOnConnected(handleConnectedEvent handler);

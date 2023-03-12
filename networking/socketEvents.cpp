@@ -77,7 +77,7 @@ void socketEvents::removeOnReady(socketEvents::handleReadyEvent handler) {
 
 void socketEvents::onReady(socketHandle *handle, bool initiator) {
     for(handleReadyEvent & onReadyEvent : onReadyHandlers){
-        onReadyEvent(handle);
+        onReadyEvent(handle, initiator);
     }
 }
 
