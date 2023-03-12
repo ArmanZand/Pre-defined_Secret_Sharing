@@ -6,8 +6,93 @@
 #include <iostream>
 #include <Ws2tcpip.h>
 
+
+static const volatile int m_bufferSize = 8192;
+char * m_buffer = new char [m_bufferSize];
 bool keepTrying = true;
 int waitRetry = 1000;
+fd_set descriptor;
+
+bool socketHandle::isConnected(){
+    fd_set fd;
+    FD_ZERO(&fd);
+    FD_SET(mSocket, &fd);
+
+    timeval timeout = { 0, 0 };
+    int result = select(0, &fd, nullptr, nullptr, &timeout);
+    if (result == SOCKET_ERROR)
+    {
+        return false;
+    }
+
+    return (result > 0);
+}
+void socketHandle::send(string message){
+    try {
+        if(!isConnected()){
+            socketEvents::getInstance().onDisconnected(this);
+            return;
+        }
+        const char* data = message.c_str();
+        int dataLen = strlen(data);
+        memcpy(m_buffer, data, dataLen);
+        int result = ::send(mSocket, data, strlen(data), 0);
+        if(result == SOCKET_ERROR){
+            throw runtime_error("Error sending data.");
+        } else {
+            //Data sent.
+        }
+    }
+    catch (exception &ex){
+        cerr << ex.what() << endl;
+        cerr << "WSACode: " << WSAGetLastError() << endl;
+    }
+}
+
+void socketHandle::receive(){
+    while(true) {
+        try {
+            if(!isConnected()){
+                socketEvents::getInstance().onDisconnected(this);
+                return;
+            }
+            int isReady = select(0, &descriptor, NULL, NULL, NULL);
+            if(isReady == SOCKET_ERROR){
+                throw runtime_error("Error waiting for data.");
+            }
+            else {
+                int result = recv(mSocket, m_buffer, m_bufferSize, 0);
+                if(result == SOCKET_ERROR){
+                    int error = WSAGetLastError() ;
+                    if(error == WSAEWOULDBLOCK){
+                        Sleep(10);
+                    }
+                    else if (error == WSAECONNRESET){
+                        throw runtime_error("Error on data receive, connection reset.");
+                    }
+                    else if (error == WSAECONNABORTED){
+                        throw runtime_error("Error on data receive, connection aborted.");
+                    }
+                    else {
+                        throw runtime_error("Error on data receive.");
+                    }
+                } else if (result == 0){
+                    socketEvents::getInstance().onDisconnected(this);
+                    break;
+                } else {
+                    m_buffer[result] = '\0';
+                    std::string msg(m_buffer, result);
+                    std::cout << "Received data: " << msg << std::endl;
+                }
+            }
+        }
+        catch (exception &ex){
+            cerr << ex.what() << endl;
+            cerr << "WSACode: " << WSAGetLastError() << endl;
+            break;
+        }
+    }
+}
 void socketHandle::connectInstance(string remoteAddress, string remotePort) {
     try {
         WSAData wsaData;
@@ -16,13 +101,13 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
             throw runtime_error("WSAStartup failed.");
         }
 
-        this->mSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-        if(this->mSocket == INVALID_SOCKET){
+        mSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        if(mSocket == INVALID_SOCKET){
             throw runtime_error("Error creating socket.");
         }
 
         u_long mode = 1;
-        iResult = ioctlsocket(this->mSocket, FIONBIO, &mode);
+        iResult = ioctlsocket(mSocket, FIONBIO, &mode);
         if(iResult == SOCKET_ERROR){
             throw runtime_error("Error setting socket to non-blocking mode.");
         }
@@ -35,32 +120,26 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
 
         iResult = getaddrinfo(remoteAddress.c_str(),remotePort.c_str(), &hints, &result);
         if(iResult == SOCKET_ERROR) {
-            std::cerr << "Error initiating connection: " << WSAGetLastError() << std::endl;
-            closesocket(this->mSocket);
-            WSACleanup();
+            throw runtime_error("Error getting address info.");
         }
 
-        iResult = ::connect(this->mSocket, result->ai_addr, (int)result->ai_addrlen);
+        iResult = ::connect(mSocket, result->ai_addr, (int)result->ai_addrlen);
 
         if(iResult == SOCKET_ERROR){
             int error = WSAGetLastError() ;
             if(error != WSAEWOULDBLOCK){
-                std::cerr << "Error initiating connection: " << error << std::endl;
-                closesocket(this->mSocket);
-                WSACleanup();
+                throw runtime_error("Error initiating connection.");
             }
             else if (error == WSAECONNREFUSED){
                 //WSAECONNREFUSED if peer is not listening
                 //try to connect again after some time
-
             }
         }
 
-        fd_set writeSet;
-        FD_ZERO(&writeSet);
-        FD_SET(mSocket, &writeSet);
+        FD_ZERO(&descriptor);
+        FD_SET(mSocket, &descriptor);
         timeval timeout = {10, 0};
-        iResult = select(0, nullptr, &writeSet, nullptr, &timeout);
+        iResult = select(0, nullptr, &descriptor, nullptr, &timeout);
         if(iResult == SOCKET_ERROR){
             throw runtime_error("Error waiting for connection.");
         }
@@ -72,6 +151,10 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
         getpeername(mSocket, (sockaddr*)&handleAddr, &handleAddrLen);
         ip = string(inet_ntoa(handleAddr.sin_addr)) + ":" + std::to_string(handleAddr.sin_port);
         socketEvents::getInstance().onConnected(this);
+
+        if(FD_ISSET(mSocket, &descriptor)){
+            receive();
+        }
     }
     catch(const exception &ex){
         closesocket(mSocket);
@@ -80,6 +163,9 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
         if(keepTrying){
             closesocket(mSocket);
             WSACleanup();
+            delete[] m_buffer;
+            m_buffer = nullptr;
+            m_buffer = new char[m_bufferSize];
             Sleep(waitRetry);
             cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", retrying..." << endl;
             connectInstance(remoteAddress, remotePort);
@@ -87,14 +173,6 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
             cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", terminating connection attempt." << endl;
         }
     }
-
-
-
-
-
-
-
-
 }
 
 void socketHandle::connect(string remoteAddress, string remotePort){

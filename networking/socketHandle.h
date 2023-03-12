@@ -16,14 +16,23 @@
 using namespace std;
 class socketHandle {
 public:
+
     socketHandle();
     SOCKET mSocket;
     sockaddr_in handleAddr;
     string ip;
 
     void connect(string remoteAddress, string remotePort);
+    void send(string message);
+    bool isConnected();
+
 private:
     void connectInstance(string remoteAddress, string remotePort);
+
+    void receive();
+
+
+
 };
 
 
