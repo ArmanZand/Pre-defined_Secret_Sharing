@@ -10,45 +10,58 @@ bool keepTrying = true;
 int waitRetry = 1000;
 void socketHandle::connectInstance(string remoteAddress, string remotePort) {
     try {
-        WSAData wsaData {};
-        int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
-        if(result != 0){
+        WSAData wsaData;
+        int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
+        if(iResult != 0){
             throw runtime_error("WSAStartup failed.");
         }
 
         this->mSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-        if (this->mSocket == INVALID_SOCKET) {
-            throw runtime_error("Error creating socket");
+        if(this->mSocket == INVALID_SOCKET){
+            throw runtime_error("Error creating socket.");
         }
 
         u_long mode = 1;
-        result = ioctlsocket(mSocket, FIONBIO, &mode);
-        if (result == SOCKET_ERROR) {
+        iResult = ioctlsocket(this->mSocket, FIONBIO, &mode);
+        if(iResult == SOCKET_ERROR){
             throw runtime_error("Error setting socket to non-blocking mode.");
         }
 
-        struct addrinfo *addrResult = nullptr;
-        struct addrinfo hints{};
+        struct addrinfo* result = nullptr;
+        struct addrinfo hints {};
         hints.ai_family = AF_INET;
         hints.ai_socktype = SOCK_STREAM;
         hints.ai_protocol = IPPROTO_TCP;
 
-        result = getaddrinfo(remoteAddress.c_str(), remotePort.c_str(), &hints, &addrResult);
-        if (result == SOCKET_ERROR) {
-            throw runtime_error("Error getting address info.");
+        iResult = getaddrinfo(remoteAddress.c_str(),remotePort.c_str(), &hints, &result);
+        if(iResult == SOCKET_ERROR) {
+            std::cerr << "Error initiating connection: " << WSAGetLastError() << std::endl;
+            closesocket(this->mSocket);
+            WSACleanup();
         }
 
-        result = ::connect(this->mSocket, addrResult->ai_addr, (int) addrResult->ai_addrlen);
-        if (result == SOCKET_ERROR) {
-            throw runtime_error("Error initiating connection.");
+        iResult = ::connect(this->mSocket, result->ai_addr, (int)result->ai_addrlen);
+
+        if(iResult == SOCKET_ERROR){
+            int error = WSAGetLastError() ;
+            if(error != WSAEWOULDBLOCK){
+                std::cerr << "Error initiating connection: " << error << std::endl;
+                closesocket(this->mSocket);
+                WSACleanup();
+            }
+            else if (error == WSAECONNREFUSED){
+                //WSAECONNREFUSED if peer is not listening
+                //try to connect again after some time
+
+            }
         }
 
         fd_set writeSet;
         FD_ZERO(&writeSet);
         FD_SET(mSocket, &writeSet);
         timeval timeout = {10, 0};
-        result = select(0, nullptr, &writeSet, nullptr, &timeout);
-        if(result == SOCKET_ERROR){
+        iResult = select(0, nullptr, &writeSet, nullptr, &timeout);
+        if(iResult == SOCKET_ERROR){
             throw runtime_error("Error waiting for connection.");
         }
         else if(result == 0){

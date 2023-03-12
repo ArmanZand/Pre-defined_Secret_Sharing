@@ -7,7 +7,7 @@ using namespace std;
 
 
 void OnConnect(const socketHandle& socketHandle){
-    cout << "Client connected from " << socketHandle.ip << endl;
+    cout << "Connection accepted from " << socketHandle.ip << endl;
 }
 
 int main(int argc, char *argv[]) {
