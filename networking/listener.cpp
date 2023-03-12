@@ -7,15 +7,16 @@
 #include <WinSock2.h>
 #include <Ws2tcpip.h>
 #include <iostream>
-
 #include <thread>
 
 
 
-
-
-
 void listener::listenInstance(string localAddress, string localPort){
+    WSAData wsaData;
+    int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if(result != 0){
+        cerr << "WSAStartup failed with error: " << result << endl;
+    }
     SOCKET listenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if(listenSocket == INVALID_SOCKET){
         cerr << "Socket failed with error: " << WSAGetLastError() << endl;
@@ -28,7 +29,7 @@ void listener::listenInstance(string localAddress, string localPort){
     hints.ai_protocol = IPPROTO_TCP;
     hints.ai_flags = AI_PASSIVE;
 
-    int result = getaddrinfo(localAddress.c_str(), localPort.c_str(), &hints, &pAddrinfo);
+    result = getaddrinfo(localAddress.c_str(), localPort.c_str(), &hints, &pAddrinfo);
     if(result != 0){
         cerr << "getaddrinfo failed with error: " << result << endl;
         closesocket(listenSocket);
@@ -63,7 +64,7 @@ void listener::listenInstance(string localAddress, string localPort){
         }
         //Connected;
         socketHandle.ip = std::string(inet_ntoa(socketHandle.handleAddr.sin_addr)) + ":" + std::to_string(socketHandle.handleAddr.sin_port);
-        onConnected(&socketHandle);
+        socketEvents::getInstance().onConnected(&socketHandle);
     }
 }
 

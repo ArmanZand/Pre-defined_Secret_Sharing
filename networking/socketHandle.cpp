@@ -2,6 +2,7 @@
 // Created by arman on 12/03/2023.
 //
 #include "socketHandle.h"
+#include "socketEvents.h"
 #include <iostream>
 #include <Ws2tcpip.h>
 
@@ -9,13 +10,19 @@ bool keepTrying = true;
 int waitRetry = 1000;
 void socketHandle::connectInstance(string remoteAddress, string remotePort) {
     try {
-        mSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        WSAData wsaData {};
+        int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+        if(result != 0){
+            throw runtime_error("WSAStartup failed.");
+        }
+
+        this->mSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         if (this->mSocket == INVALID_SOCKET) {
             throw runtime_error("Error creating socket");
         }
 
         u_long mode = 1;
-        int result = ioctlsocket(mSocket, FIONBIO, &mode);
+        result = ioctlsocket(mSocket, FIONBIO, &mode);
         if (result == SOCKET_ERROR) {
             throw runtime_error("Error setting socket to non-blocking mode.");
         }
@@ -31,7 +38,7 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
             throw runtime_error("Error getting address info.");
         }
 
-        result = ::connect(mSocket, addrResult->ai_addr, (int) addrResult->ai_addrlen);
+        result = ::connect(this->mSocket, addrResult->ai_addr, (int) addrResult->ai_addrlen);
         if (result == SOCKET_ERROR) {
             throw runtime_error("Error initiating connection.");
         }
@@ -51,14 +58,15 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
         int handleAddrLen = sizeof(handleAddr);
         getpeername(mSocket, (sockaddr*)&handleAddr, &handleAddrLen);
         ip = string(inet_ntoa(handleAddr.sin_addr)) + ":" + std::to_string(handleAddr.sin_port);
-        onConnected(this);
-
+        socketEvents::getInstance().onConnected(this);
     }
     catch(const exception &ex){
         closesocket(mSocket);
         cerr << "Exception: " << ex.what() << endl;
+        cerr << "WSACode: " << WSAGetLastError() << endl;
         if(keepTrying){
             closesocket(mSocket);
+            WSACleanup();
             Sleep(waitRetry);
             cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", retrying..." << endl;
             connectInstance(remoteAddress, remotePort);
@@ -79,5 +87,9 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
 void socketHandle::connect(string remoteAddress, string remotePort){
     thread connectThread([&remoteAddress, &remotePort, this]() {this->connectInstance(remoteAddress, remotePort);});
     connectThread.join();
+}
+
+socketHandle::socketHandle() {
+
 }
 

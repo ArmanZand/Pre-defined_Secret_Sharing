@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "networking/socketEvents.h"
 #include "networking/listener.h"
 #include "networking/socketHandle.h"
 using namespace std;
@@ -16,7 +17,6 @@ int main(int argc, char *argv[]) {
     string port;
     bool listen = false;
     bool connect = false;
-    int c;
     for (int i = 0; i < argc; i++) {
         if (args[i] == "-c") {
             connect = true;
@@ -37,14 +37,14 @@ int main(int argc, char *argv[]) {
     try{
         if(listen){
             listener listener;
-            listener.setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
+            socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
 
             listener.start(ip, port);
 
         }
         if(connect){
             socketHandle handle;
-            handle.setOnConnected([](socketHandle * handle) { OnConnect(*handle);});
+            socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle);});
             handle.connect(ip, port);
         }
     }

@@ -6,14 +6,16 @@
 #define CLEAN_SOCKETS_LISTENER_H
 
 #include "socketHandle.h"
-#include <string>
 #include "socketEvents.h"
+#include <string>
+
 using namespace std;
 
 
-class listener : public socketEvents {
+class listener {
 public:
     void start(string localAddress, string localPort);
+    socketEvents events;
 private:
     void listenInstance(string localAddress, string localPort);
 

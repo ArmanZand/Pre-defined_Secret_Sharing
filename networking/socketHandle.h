@@ -9,11 +9,14 @@
 #include <WinSock2.h>
 #include <thread>
 #include "socketEvents.h"
+
+
 #pragma comment(lib, "ws2_32")
 
 using namespace std;
-class socketHandle : public socketEvents {
+class socketHandle {
 public:
+    socketHandle();
     SOCKET mSocket;
     sockaddr_in handleAddr;
     string ip;
