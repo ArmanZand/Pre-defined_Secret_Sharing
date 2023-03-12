@@ -80,8 +80,8 @@ void socketHandle::receive(){
                     break;
                 } else {
                     m_buffer[result] = '\0';
-                    std::string msg(m_buffer, result);
-                    std::cout << "Received data: " << msg << std::endl;
+                    string msg(m_buffer, result);
+                    socketEvents::getInstance().onReceive(this, msg);
                 }
             }
         }

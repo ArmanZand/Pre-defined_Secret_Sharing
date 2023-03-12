@@ -81,4 +81,18 @@ void socketEvents::onReady(socketHandle *handle, bool initiator) {
     }
 }
 
+void socketEvents::setOnReceive(socketEvents::handleReceiveEvent handler) {
+    onReceiveHandlers.push_back(handler);
+}
+
+void socketEvents::removeOnReceive(socketEvents::handleReceiveEvent handler) {
+    removeEvent(onReceiveHandlers, handler);
+}
+
+void socketEvents::onReceive(socketHandle *handle, string message) {
+    for(handleReceiveEvent & onReceiveEvent : onReceiveHandlers){
+        onReceiveEvent(handle, message);
+    }
+}
+
 

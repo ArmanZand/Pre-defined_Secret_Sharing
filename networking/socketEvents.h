@@ -21,6 +21,7 @@ public:
     using handleConnectedEvent = function<void(socketHandle *)>;
     using handleDisconnectedEvent = function<void(socketHandle *)>;
     using handleReadyEvent = function<void(socketHandle *, bool)>;
+    using handleReceiveEvent = function<void(socketHandle *, string)>;
 
     void setOnConnected(handleConnectedEvent handler);
     void removeOnConnected(handleConnectedEvent handler);
@@ -31,13 +32,18 @@ public:
     void setOnReady(handleReadyEvent handler);
     void removeOnReady(handleReadyEvent handler);
 
+    void setOnReceive(handleReceiveEvent handler);
+    void removeOnReceive(handleReceiveEvent handler);
+
     void onConnected(socketHandle * handle);
     void onDisconnected(socketHandle * handle);
     void onReady(socketHandle * handle, bool initiator);
+    void onReceive(socketHandle * handle, string message);
 private:
     vector<handleConnectedEvent> onConnectedHandlers;
     vector<handleDisconnectedEvent> onDisconnectedHandlers;
     vector<handleReadyEvent> onReadyHandlers;
+    vector<handleReceiveEvent> onReceiveHandlers;
     template<typename T>
     void removeEvent(vector<T> &handlers, const T &handler);
 };
