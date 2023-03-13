@@ -44,6 +44,9 @@ struct TableStruct_networkMessage_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_networkMessage_2eproto;
+class ExampleMessage;
+struct ExampleMessageDefaultTypeInternal;
+extern ExampleMessageDefaultTypeInternal _ExampleMessage_default_instance_;
 class NodeInfo;
 struct NodeInfoDefaultTypeInternal;
 extern NodeInfoDefaultTypeInternal _NodeInfo_default_instance_;
@@ -53,30 +56,11 @@ extern NodeInfoReplyDefaultTypeInternal _NodeInfoReply_default_instance_;
 class ProtobufMessage;
 struct ProtobufMessageDefaultTypeInternal;
 extern ProtobufMessageDefaultTypeInternal _ProtobufMessage_default_instance_;
-class RequestShare;
-struct RequestShareDefaultTypeInternal;
-extern RequestShareDefaultTypeInternal _RequestShare_default_instance_;
-class Scalar;
-struct ScalarDefaultTypeInternal;
-extern ScalarDefaultTypeInternal _Scalar_default_instance_;
-class SecretShare;
-struct SecretShareDefaultTypeInternal;
-extern SecretShareDefaultTypeInternal _SecretShare_default_instance_;
-class StreamEnd;
-struct StreamEndDefaultTypeInternal;
-extern StreamEndDefaultTypeInternal _StreamEnd_default_instance_;
-class UnivariatePolynomial;
-struct UnivariatePolynomialDefaultTypeInternal;
-extern UnivariatePolynomialDefaultTypeInternal _UnivariatePolynomial_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
+template<> ::ExampleMessage* Arena::CreateMaybeMessage<::ExampleMessage>(Arena*);
 template<> ::NodeInfo* Arena::CreateMaybeMessage<::NodeInfo>(Arena*);
 template<> ::NodeInfoReply* Arena::CreateMaybeMessage<::NodeInfoReply>(Arena*);
 template<> ::ProtobufMessage* Arena::CreateMaybeMessage<::ProtobufMessage>(Arena*);
-template<> ::RequestShare* Arena::CreateMaybeMessage<::RequestShare>(Arena*);
-template<> ::Scalar* Arena::CreateMaybeMessage<::Scalar>(Arena*);
-template<> ::SecretShare* Arena::CreateMaybeMessage<::SecretShare>(Arena*);
-template<> ::StreamEnd* Arena::CreateMaybeMessage<::StreamEnd>(Arena*);
-template<> ::UnivariatePolynomial* Arena::CreateMaybeMessage<::UnivariatePolynomial>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
 // ===================================================================
@@ -125,13 +109,9 @@ class ProtobufMessage final :
     return *internal_default_instance();
   }
   enum CommandCase {
+    kExampleMessage = 100,
     kNodeInfo = 1,
     kNodeInfoReply = 2,
-    kUnivariatePolynomial = 101,
-    kScalar = 102,
-    kRequestShare = 103,
-    kSecretShare = 104,
-    kStreamEnd = 201,
     COMMAND_NOT_SET = 0,
   };
 
@@ -213,14 +193,28 @@ class ProtobufMessage final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kExampleMessageFieldNumber = 100,
     kNodeInfoFieldNumber = 1,
     kNodeInfoReplyFieldNumber = 2,
-    kUnivariatePolynomialFieldNumber = 101,
-    kScalarFieldNumber = 102,
-    kRequestShareFieldNumber = 103,
-    kSecretShareFieldNumber = 104,
-    kStreamEndFieldNumber = 201,
   };
+  // .ExampleMessage ExampleMessage = 100;
+  bool has_examplemessage() const;
+  private:
+  bool _internal_has_examplemessage() const;
+  public:
+  void clear_examplemessage();
+  const ::ExampleMessage& examplemessage() const;
+  PROTOBUF_NODISCARD ::ExampleMessage* release_examplemessage();
+  ::ExampleMessage* mutable_examplemessage();
+  void set_allocated_examplemessage(::ExampleMessage* examplemessage);
+  private:
+  const ::ExampleMessage& _internal_examplemessage() const;
+  ::ExampleMessage* _internal_mutable_examplemessage();
+  public:
+  void unsafe_arena_set_allocated_examplemessage(
+      ::ExampleMessage* examplemessage);
+  ::ExampleMessage* unsafe_arena_release_examplemessage();
+
   // .NodeInfo NodeInfo = 1;
   bool has_nodeinfo() const;
   private:
@@ -257,108 +251,14 @@ class ProtobufMessage final :
       ::NodeInfoReply* nodeinforeply);
   ::NodeInfoReply* unsafe_arena_release_nodeinforeply();
 
-  // .UnivariatePolynomial UnivariatePolynomial = 101;
-  bool has_univariatepolynomial() const;
-  private:
-  bool _internal_has_univariatepolynomial() const;
-  public:
-  void clear_univariatepolynomial();
-  const ::UnivariatePolynomial& univariatepolynomial() const;
-  PROTOBUF_NODISCARD ::UnivariatePolynomial* release_univariatepolynomial();
-  ::UnivariatePolynomial* mutable_univariatepolynomial();
-  void set_allocated_univariatepolynomial(::UnivariatePolynomial* univariatepolynomial);
-  private:
-  const ::UnivariatePolynomial& _internal_univariatepolynomial() const;
-  ::UnivariatePolynomial* _internal_mutable_univariatepolynomial();
-  public:
-  void unsafe_arena_set_allocated_univariatepolynomial(
-      ::UnivariatePolynomial* univariatepolynomial);
-  ::UnivariatePolynomial* unsafe_arena_release_univariatepolynomial();
-
-  // .Scalar Scalar = 102;
-  bool has_scalar() const;
-  private:
-  bool _internal_has_scalar() const;
-  public:
-  void clear_scalar();
-  const ::Scalar& scalar() const;
-  PROTOBUF_NODISCARD ::Scalar* release_scalar();
-  ::Scalar* mutable_scalar();
-  void set_allocated_scalar(::Scalar* scalar);
-  private:
-  const ::Scalar& _internal_scalar() const;
-  ::Scalar* _internal_mutable_scalar();
-  public:
-  void unsafe_arena_set_allocated_scalar(
-      ::Scalar* scalar);
-  ::Scalar* unsafe_arena_release_scalar();
-
-  // .RequestShare RequestShare = 103;
-  bool has_requestshare() const;
-  private:
-  bool _internal_has_requestshare() const;
-  public:
-  void clear_requestshare();
-  const ::RequestShare& requestshare() const;
-  PROTOBUF_NODISCARD ::RequestShare* release_requestshare();
-  ::RequestShare* mutable_requestshare();
-  void set_allocated_requestshare(::RequestShare* requestshare);
-  private:
-  const ::RequestShare& _internal_requestshare() const;
-  ::RequestShare* _internal_mutable_requestshare();
-  public:
-  void unsafe_arena_set_allocated_requestshare(
-      ::RequestShare* requestshare);
-  ::RequestShare* unsafe_arena_release_requestshare();
-
-  // .SecretShare SecretShare = 104;
-  bool has_secretshare() const;
-  private:
-  bool _internal_has_secretshare() const;
-  public:
-  void clear_secretshare();
-  const ::SecretShare& secretshare() const;
-  PROTOBUF_NODISCARD ::SecretShare* release_secretshare();
-  ::SecretShare* mutable_secretshare();
-  void set_allocated_secretshare(::SecretShare* secretshare);
-  private:
-  const ::SecretShare& _internal_secretshare() const;
-  ::SecretShare* _internal_mutable_secretshare();
-  public:
-  void unsafe_arena_set_allocated_secretshare(
-      ::SecretShare* secretshare);
-  ::SecretShare* unsafe_arena_release_secretshare();
-
-  // .StreamEnd StreamEnd = 201;
-  bool has_streamend() const;
-  private:
-  bool _internal_has_streamend() const;
-  public:
-  void clear_streamend();
-  const ::StreamEnd& streamend() const;
-  PROTOBUF_NODISCARD ::StreamEnd* release_streamend();
-  ::StreamEnd* mutable_streamend();
-  void set_allocated_streamend(::StreamEnd* streamend);
-  private:
-  const ::StreamEnd& _internal_streamend() const;
-  ::StreamEnd* _internal_mutable_streamend();
-  public:
-  void unsafe_arena_set_allocated_streamend(
-      ::StreamEnd* streamend);
-  ::StreamEnd* unsafe_arena_release_streamend();
-
   void clear_command();
   CommandCase command_case() const;
   // @@protoc_insertion_point(class_scope:ProtobufMessage)
  private:
   class _Internal;
+  void set_has_examplemessage();
   void set_has_nodeinfo();
   void set_has_nodeinforeply();
-  void set_has_univariatepolynomial();
-  void set_has_scalar();
-  void set_has_requestshare();
-  void set_has_secretshare();
-  void set_has_streamend();
 
   inline bool has_command() const;
   inline void clear_has_command();
@@ -370,13 +270,9 @@ class ProtobufMessage final :
     union CommandUnion {
       constexpr CommandUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::ExampleMessage* examplemessage_;
       ::NodeInfo* nodeinfo_;
       ::NodeInfoReply* nodeinforeply_;
-      ::UnivariatePolynomial* univariatepolynomial_;
-      ::Scalar* scalar_;
-      ::RequestShare* requestshare_;
-      ::SecretShare* secretshare_;
-      ::StreamEnd* streamend_;
     } command_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -683,24 +579,24 @@ class NodeInfoReply final :
 };
 // -------------------------------------------------------------------
 
-class UnivariatePolynomial final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UnivariatePolynomial) */ {
+class ExampleMessage final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ExampleMessage) */ {
  public:
-  inline UnivariatePolynomial() : UnivariatePolynomial(nullptr) {}
-  ~UnivariatePolynomial() override;
-  explicit PROTOBUF_CONSTEXPR UnivariatePolynomial(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ExampleMessage() : ExampleMessage(nullptr) {}
+  ~ExampleMessage() override;
+  explicit PROTOBUF_CONSTEXPR ExampleMessage(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  UnivariatePolynomial(const UnivariatePolynomial& from);
-  UnivariatePolynomial(UnivariatePolynomial&& from) noexcept
-    : UnivariatePolynomial() {
+  ExampleMessage(const ExampleMessage& from);
+  ExampleMessage(ExampleMessage&& from) noexcept
+    : ExampleMessage() {
     *this = ::std::move(from);
   }
 
-  inline UnivariatePolynomial& operator=(const UnivariatePolynomial& from) {
+  inline ExampleMessage& operator=(const ExampleMessage& from) {
     CopyFrom(from);
     return *this;
   }
-  inline UnivariatePolynomial& operator=(UnivariatePolynomial&& from) noexcept {
+  inline ExampleMessage& operator=(ExampleMessage&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -723,20 +619,20 @@ class UnivariatePolynomial final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const UnivariatePolynomial& default_instance() {
+  static const ExampleMessage& default_instance() {
     return *internal_default_instance();
   }
-  static inline const UnivariatePolynomial* internal_default_instance() {
-    return reinterpret_cast<const UnivariatePolynomial*>(
-               &_UnivariatePolynomial_default_instance_);
+  static inline const ExampleMessage* internal_default_instance() {
+    return reinterpret_cast<const ExampleMessage*>(
+               &_ExampleMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  friend void swap(UnivariatePolynomial& a, UnivariatePolynomial& b) {
+  friend void swap(ExampleMessage& a, ExampleMessage& b) {
     a.Swap(&b);
   }
-  inline void Swap(UnivariatePolynomial* other) {
+  inline void Swap(ExampleMessage* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -749,7 +645,7 @@ class UnivariatePolynomial final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(UnivariatePolynomial* other) {
+  void UnsafeArenaSwap(ExampleMessage* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -757,14 +653,14 @@ class UnivariatePolynomial final :
 
   // implements Message ----------------------------------------------
 
-  UnivariatePolynomial* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<UnivariatePolynomial>(arena);
+  ExampleMessage* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ExampleMessage>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const UnivariatePolynomial& from);
+  void CopyFrom(const ExampleMessage& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const UnivariatePolynomial& from) {
-    UnivariatePolynomial::MergeImpl(*this, from);
+  void MergeFrom( const ExampleMessage& from) {
+    ExampleMessage::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -782,15 +678,15 @@ class UnivariatePolynomial final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(UnivariatePolynomial* other);
+  void InternalSwap(ExampleMessage* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UnivariatePolynomial";
+    return "ExampleMessage";
   }
   protected:
-  explicit UnivariatePolynomial(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ExampleMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -804,477 +700,23 @@ class UnivariatePolynomial final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kCoefficientsFieldNumber = 12,
-    kOwnerNodeIdFieldNumber = 1,
-    kIndexFieldNumber = 11,
-    kSecretIdFieldNumber = 13,
+    kMessageFieldNumber = 1,
   };
-  // repeated string Coefficients = 12;
-  int coefficients_size() const;
-  private:
-  int _internal_coefficients_size() const;
-  public:
-  void clear_coefficients();
-  const std::string& coefficients(int index) const;
-  std::string* mutable_coefficients(int index);
-  void set_coefficients(int index, const std::string& value);
-  void set_coefficients(int index, std::string&& value);
-  void set_coefficients(int index, const char* value);
-  void set_coefficients(int index, const char* value, size_t size);
-  std::string* add_coefficients();
-  void add_coefficients(const std::string& value);
-  void add_coefficients(std::string&& value);
-  void add_coefficients(const char* value);
-  void add_coefficients(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& coefficients() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_coefficients();
-  private:
-  const std::string& _internal_coefficients(int index) const;
-  std::string* _internal_add_coefficients();
-  public:
-
-  // int32 OwnerNodeId = 1;
-  void clear_ownernodeid();
-  int32_t ownernodeid() const;
-  void set_ownernodeid(int32_t value);
-  private:
-  int32_t _internal_ownernodeid() const;
-  void _internal_set_ownernodeid(int32_t value);
-  public:
-
-  // int32 Index = 11;
-  void clear_index();
-  int32_t index() const;
-  void set_index(int32_t value);
-  private:
-  int32_t _internal_index() const;
-  void _internal_set_index(int32_t value);
-  public:
-
-  // int32 SecretId = 13;
-  void clear_secretid();
-  int32_t secretid() const;
-  void set_secretid(int32_t value);
-  private:
-  int32_t _internal_secretid() const;
-  void _internal_set_secretid(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:UnivariatePolynomial)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> coefficients_;
-    int32_t ownernodeid_;
-    int32_t index_;
-    int32_t secretid_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_networkMessage_2eproto;
-};
-// -------------------------------------------------------------------
-
-class StreamEnd final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:StreamEnd) */ {
- public:
-  inline StreamEnd() : StreamEnd(nullptr) {}
-  ~StreamEnd() override;
-  explicit PROTOBUF_CONSTEXPR StreamEnd(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  StreamEnd(const StreamEnd& from);
-  StreamEnd(StreamEnd&& from) noexcept
-    : StreamEnd() {
-    *this = ::std::move(from);
-  }
-
-  inline StreamEnd& operator=(const StreamEnd& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline StreamEnd& operator=(StreamEnd&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const StreamEnd& default_instance() {
-    return *internal_default_instance();
-  }
-  enum MessageTypeCase {
-    kUnivariatePolynomial = 1,
-    kScalar = 2,
-    kSecretShare = 3,
-    MESSAGETYPE_NOT_SET = 0,
-  };
-
-  static inline const StreamEnd* internal_default_instance() {
-    return reinterpret_cast<const StreamEnd*>(
-               &_StreamEnd_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    4;
-
-  friend void swap(StreamEnd& a, StreamEnd& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(StreamEnd* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(StreamEnd* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  StreamEnd* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<StreamEnd>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const StreamEnd& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const StreamEnd& from) {
-    StreamEnd::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(StreamEnd* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "StreamEnd";
-  }
-  protected:
-  explicit StreamEnd(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kUnivariatePolynomialFieldNumber = 1,
-    kScalarFieldNumber = 2,
-    kSecretShareFieldNumber = 3,
-  };
-  // .UnivariatePolynomial UnivariatePolynomial = 1;
-  bool has_univariatepolynomial() const;
-  private:
-  bool _internal_has_univariatepolynomial() const;
-  public:
-  void clear_univariatepolynomial();
-  const ::UnivariatePolynomial& univariatepolynomial() const;
-  PROTOBUF_NODISCARD ::UnivariatePolynomial* release_univariatepolynomial();
-  ::UnivariatePolynomial* mutable_univariatepolynomial();
-  void set_allocated_univariatepolynomial(::UnivariatePolynomial* univariatepolynomial);
-  private:
-  const ::UnivariatePolynomial& _internal_univariatepolynomial() const;
-  ::UnivariatePolynomial* _internal_mutable_univariatepolynomial();
-  public:
-  void unsafe_arena_set_allocated_univariatepolynomial(
-      ::UnivariatePolynomial* univariatepolynomial);
-  ::UnivariatePolynomial* unsafe_arena_release_univariatepolynomial();
-
-  // .Scalar Scalar = 2;
-  bool has_scalar() const;
-  private:
-  bool _internal_has_scalar() const;
-  public:
-  void clear_scalar();
-  const ::Scalar& scalar() const;
-  PROTOBUF_NODISCARD ::Scalar* release_scalar();
-  ::Scalar* mutable_scalar();
-  void set_allocated_scalar(::Scalar* scalar);
-  private:
-  const ::Scalar& _internal_scalar() const;
-  ::Scalar* _internal_mutable_scalar();
-  public:
-  void unsafe_arena_set_allocated_scalar(
-      ::Scalar* scalar);
-  ::Scalar* unsafe_arena_release_scalar();
-
-  // .SecretShare SecretShare = 3;
-  bool has_secretshare() const;
-  private:
-  bool _internal_has_secretshare() const;
-  public:
-  void clear_secretshare();
-  const ::SecretShare& secretshare() const;
-  PROTOBUF_NODISCARD ::SecretShare* release_secretshare();
-  ::SecretShare* mutable_secretshare();
-  void set_allocated_secretshare(::SecretShare* secretshare);
-  private:
-  const ::SecretShare& _internal_secretshare() const;
-  ::SecretShare* _internal_mutable_secretshare();
-  public:
-  void unsafe_arena_set_allocated_secretshare(
-      ::SecretShare* secretshare);
-  ::SecretShare* unsafe_arena_release_secretshare();
-
-  void clear_messageType();
-  MessageTypeCase messageType_case() const;
-  // @@protoc_insertion_point(class_scope:StreamEnd)
- private:
-  class _Internal;
-  void set_has_univariatepolynomial();
-  void set_has_scalar();
-  void set_has_secretshare();
-
-  inline bool has_messageType() const;
-  inline void clear_has_messageType();
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    union MessageTypeUnion {
-      constexpr MessageTypeUnion() : _constinit_{} {}
-        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
-      ::UnivariatePolynomial* univariatepolynomial_;
-      ::Scalar* scalar_;
-      ::SecretShare* secretshare_;
-    } messageType_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    uint32_t _oneof_case_[1];
-
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_networkMessage_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Scalar final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Scalar) */ {
- public:
-  inline Scalar() : Scalar(nullptr) {}
-  ~Scalar() override;
-  explicit PROTOBUF_CONSTEXPR Scalar(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  Scalar(const Scalar& from);
-  Scalar(Scalar&& from) noexcept
-    : Scalar() {
-    *this = ::std::move(from);
-  }
-
-  inline Scalar& operator=(const Scalar& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Scalar& operator=(Scalar&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Scalar& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Scalar* internal_default_instance() {
-    return reinterpret_cast<const Scalar*>(
-               &_Scalar_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    5;
-
-  friend void swap(Scalar& a, Scalar& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Scalar* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Scalar* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Scalar* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Scalar>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Scalar& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const Scalar& from) {
-    Scalar::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Scalar* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Scalar";
-  }
-  protected:
-  explicit Scalar(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kValueFieldNumber = 12,
-    kFromNodeIdFieldNumber = 1,
-    kToNodeIdFieldNumber = 2,
-    kIndexFieldNumber = 11,
-    kSecretIdFieldNumber = 13,
-  };
-  // string Value = 12;
-  void clear_value();
-  const std::string& value() const;
+  // string message = 1;
+  void clear_message();
+  const std::string& message() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_value(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_value();
-  PROTOBUF_NODISCARD std::string* release_value();
-  void set_allocated_value(std::string* value);
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
   private:
-  const std::string& _internal_value() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_value(const std::string& value);
-  std::string* _internal_mutable_value();
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
   public:
 
-  // int32 FromNodeId = 1;
-  void clear_fromnodeid();
-  int32_t fromnodeid() const;
-  void set_fromnodeid(int32_t value);
-  private:
-  int32_t _internal_fromnodeid() const;
-  void _internal_set_fromnodeid(int32_t value);
-  public:
-
-  // int32 ToNodeId = 2;
-  void clear_tonodeid();
-  int32_t tonodeid() const;
-  void set_tonodeid(int32_t value);
-  private:
-  int32_t _internal_tonodeid() const;
-  void _internal_set_tonodeid(int32_t value);
-  public:
-
-  // int32 Index = 11;
-  void clear_index();
-  int32_t index() const;
-  void set_index(int32_t value);
-  private:
-  int32_t _internal_index() const;
-  void _internal_set_index(int32_t value);
-  public:
-
-  // int32 SecretId = 13;
-  void clear_secretid();
-  int32_t secretid() const;
-  void set_secretid(int32_t value);
-  private:
-  int32_t _internal_secretid() const;
-  void _internal_set_secretid(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:Scalar)
+  // @@protoc_insertion_point(class_scope:ExampleMessage)
  private:
   class _Internal;
 
@@ -1282,356 +724,7 @@ class Scalar final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
-    int32_t fromnodeid_;
-    int32_t tonodeid_;
-    int32_t index_;
-    int32_t secretid_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_networkMessage_2eproto;
-};
-// -------------------------------------------------------------------
-
-class RequestShare final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RequestShare) */ {
- public:
-  inline RequestShare() : RequestShare(nullptr) {}
-  ~RequestShare() override;
-  explicit PROTOBUF_CONSTEXPR RequestShare(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  RequestShare(const RequestShare& from);
-  RequestShare(RequestShare&& from) noexcept
-    : RequestShare() {
-    *this = ::std::move(from);
-  }
-
-  inline RequestShare& operator=(const RequestShare& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline RequestShare& operator=(RequestShare&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const RequestShare& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const RequestShare* internal_default_instance() {
-    return reinterpret_cast<const RequestShare*>(
-               &_RequestShare_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    6;
-
-  friend void swap(RequestShare& a, RequestShare& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(RequestShare* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(RequestShare* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  RequestShare* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<RequestShare>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const RequestShare& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const RequestShare& from) {
-    RequestShare::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(RequestShare* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RequestShare";
-  }
-  protected:
-  explicit RequestShare(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kSecretIdFieldNumber = 11,
-  };
-  // int32 SecretId = 11;
-  void clear_secretid();
-  int32_t secretid() const;
-  void set_secretid(int32_t value);
-  private:
-  int32_t _internal_secretid() const;
-  void _internal_set_secretid(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:RequestShare)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    int32_t secretid_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_networkMessage_2eproto;
-};
-// -------------------------------------------------------------------
-
-class SecretShare final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SecretShare) */ {
- public:
-  inline SecretShare() : SecretShare(nullptr) {}
-  ~SecretShare() override;
-  explicit PROTOBUF_CONSTEXPR SecretShare(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  SecretShare(const SecretShare& from);
-  SecretShare(SecretShare&& from) noexcept
-    : SecretShare() {
-    *this = ::std::move(from);
-  }
-
-  inline SecretShare& operator=(const SecretShare& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline SecretShare& operator=(SecretShare&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const SecretShare& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const SecretShare* internal_default_instance() {
-    return reinterpret_cast<const SecretShare*>(
-               &_SecretShare_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    7;
-
-  friend void swap(SecretShare& a, SecretShare& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(SecretShare* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(SecretShare* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  SecretShare* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<SecretShare>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const SecretShare& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const SecretShare& from) {
-    SecretShare::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(SecretShare* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SecretShare";
-  }
-  protected:
-  explicit SecretShare(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kValueFieldNumber = 12,
-    kFromNodeIdFieldNumber = 1,
-    kToNodeIdFieldNumber = 2,
-    kIndexFieldNumber = 11,
-    kSecretIdFieldNumber = 13,
-  };
-  // string Value = 12;
-  void clear_value();
-  const std::string& value() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_value(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_value();
-  PROTOBUF_NODISCARD std::string* release_value();
-  void set_allocated_value(std::string* value);
-  private:
-  const std::string& _internal_value() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_value(const std::string& value);
-  std::string* _internal_mutable_value();
-  public:
-
-  // int32 FromNodeId = 1;
-  void clear_fromnodeid();
-  int32_t fromnodeid() const;
-  void set_fromnodeid(int32_t value);
-  private:
-  int32_t _internal_fromnodeid() const;
-  void _internal_set_fromnodeid(int32_t value);
-  public:
-
-  // int32 ToNodeId = 2;
-  void clear_tonodeid();
-  int32_t tonodeid() const;
-  void set_tonodeid(int32_t value);
-  private:
-  int32_t _internal_tonodeid() const;
-  void _internal_set_tonodeid(int32_t value);
-  public:
-
-  // int32 Index = 11;
-  void clear_index();
-  int32_t index() const;
-  void set_index(int32_t value);
-  private:
-  int32_t _internal_index() const;
-  void _internal_set_index(int32_t value);
-  public:
-
-  // int32 SecretId = 13;
-  void clear_secretid();
-  int32_t secretid() const;
-  void set_secretid(int32_t value);
-  private:
-  int32_t _internal_secretid() const;
-  void _internal_set_secretid(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:SecretShare)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
-    int32_t fromnodeid_;
-    int32_t tonodeid_;
-    int32_t index_;
-    int32_t secretid_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1647,6 +740,80 @@ class SecretShare final :
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
 // ProtobufMessage
+
+// .ExampleMessage ExampleMessage = 100;
+inline bool ProtobufMessage::_internal_has_examplemessage() const {
+  return command_case() == kExampleMessage;
+}
+inline bool ProtobufMessage::has_examplemessage() const {
+  return _internal_has_examplemessage();
+}
+inline void ProtobufMessage::set_has_examplemessage() {
+  _impl_._oneof_case_[0] = kExampleMessage;
+}
+inline void ProtobufMessage::clear_examplemessage() {
+  if (_internal_has_examplemessage()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.command_.examplemessage_;
+    }
+    clear_has_command();
+  }
+}
+inline ::ExampleMessage* ProtobufMessage::release_examplemessage() {
+  // @@protoc_insertion_point(field_release:ProtobufMessage.ExampleMessage)
+  if (_internal_has_examplemessage()) {
+    clear_has_command();
+    ::ExampleMessage* temp = _impl_.command_.examplemessage_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.command_.examplemessage_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::ExampleMessage& ProtobufMessage::_internal_examplemessage() const {
+  return _internal_has_examplemessage()
+      ? *_impl_.command_.examplemessage_
+      : reinterpret_cast< ::ExampleMessage&>(::_ExampleMessage_default_instance_);
+}
+inline const ::ExampleMessage& ProtobufMessage::examplemessage() const {
+  // @@protoc_insertion_point(field_get:ProtobufMessage.ExampleMessage)
+  return _internal_examplemessage();
+}
+inline ::ExampleMessage* ProtobufMessage::unsafe_arena_release_examplemessage() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:ProtobufMessage.ExampleMessage)
+  if (_internal_has_examplemessage()) {
+    clear_has_command();
+    ::ExampleMessage* temp = _impl_.command_.examplemessage_;
+    _impl_.command_.examplemessage_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void ProtobufMessage::unsafe_arena_set_allocated_examplemessage(::ExampleMessage* examplemessage) {
+  clear_command();
+  if (examplemessage) {
+    set_has_examplemessage();
+    _impl_.command_.examplemessage_ = examplemessage;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ProtobufMessage.ExampleMessage)
+}
+inline ::ExampleMessage* ProtobufMessage::_internal_mutable_examplemessage() {
+  if (!_internal_has_examplemessage()) {
+    clear_command();
+    set_has_examplemessage();
+    _impl_.command_.examplemessage_ = CreateMaybeMessage< ::ExampleMessage >(GetArenaForAllocation());
+  }
+  return _impl_.command_.examplemessage_;
+}
+inline ::ExampleMessage* ProtobufMessage::mutable_examplemessage() {
+  ::ExampleMessage* _msg = _internal_mutable_examplemessage();
+  // @@protoc_insertion_point(field_mutable:ProtobufMessage.ExampleMessage)
+  return _msg;
+}
 
 // .NodeInfo NodeInfo = 1;
 inline bool ProtobufMessage::_internal_has_nodeinfo() const {
@@ -1796,376 +963,6 @@ inline ::NodeInfoReply* ProtobufMessage::mutable_nodeinforeply() {
   return _msg;
 }
 
-// .UnivariatePolynomial UnivariatePolynomial = 101;
-inline bool ProtobufMessage::_internal_has_univariatepolynomial() const {
-  return command_case() == kUnivariatePolynomial;
-}
-inline bool ProtobufMessage::has_univariatepolynomial() const {
-  return _internal_has_univariatepolynomial();
-}
-inline void ProtobufMessage::set_has_univariatepolynomial() {
-  _impl_._oneof_case_[0] = kUnivariatePolynomial;
-}
-inline void ProtobufMessage::clear_univariatepolynomial() {
-  if (_internal_has_univariatepolynomial()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.command_.univariatepolynomial_;
-    }
-    clear_has_command();
-  }
-}
-inline ::UnivariatePolynomial* ProtobufMessage::release_univariatepolynomial() {
-  // @@protoc_insertion_point(field_release:ProtobufMessage.UnivariatePolynomial)
-  if (_internal_has_univariatepolynomial()) {
-    clear_has_command();
-    ::UnivariatePolynomial* temp = _impl_.command_.univariatepolynomial_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.command_.univariatepolynomial_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::UnivariatePolynomial& ProtobufMessage::_internal_univariatepolynomial() const {
-  return _internal_has_univariatepolynomial()
-      ? *_impl_.command_.univariatepolynomial_
-      : reinterpret_cast< ::UnivariatePolynomial&>(::_UnivariatePolynomial_default_instance_);
-}
-inline const ::UnivariatePolynomial& ProtobufMessage::univariatepolynomial() const {
-  // @@protoc_insertion_point(field_get:ProtobufMessage.UnivariatePolynomial)
-  return _internal_univariatepolynomial();
-}
-inline ::UnivariatePolynomial* ProtobufMessage::unsafe_arena_release_univariatepolynomial() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ProtobufMessage.UnivariatePolynomial)
-  if (_internal_has_univariatepolynomial()) {
-    clear_has_command();
-    ::UnivariatePolynomial* temp = _impl_.command_.univariatepolynomial_;
-    _impl_.command_.univariatepolynomial_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ProtobufMessage::unsafe_arena_set_allocated_univariatepolynomial(::UnivariatePolynomial* univariatepolynomial) {
-  clear_command();
-  if (univariatepolynomial) {
-    set_has_univariatepolynomial();
-    _impl_.command_.univariatepolynomial_ = univariatepolynomial;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ProtobufMessage.UnivariatePolynomial)
-}
-inline ::UnivariatePolynomial* ProtobufMessage::_internal_mutable_univariatepolynomial() {
-  if (!_internal_has_univariatepolynomial()) {
-    clear_command();
-    set_has_univariatepolynomial();
-    _impl_.command_.univariatepolynomial_ = CreateMaybeMessage< ::UnivariatePolynomial >(GetArenaForAllocation());
-  }
-  return _impl_.command_.univariatepolynomial_;
-}
-inline ::UnivariatePolynomial* ProtobufMessage::mutable_univariatepolynomial() {
-  ::UnivariatePolynomial* _msg = _internal_mutable_univariatepolynomial();
-  // @@protoc_insertion_point(field_mutable:ProtobufMessage.UnivariatePolynomial)
-  return _msg;
-}
-
-// .Scalar Scalar = 102;
-inline bool ProtobufMessage::_internal_has_scalar() const {
-  return command_case() == kScalar;
-}
-inline bool ProtobufMessage::has_scalar() const {
-  return _internal_has_scalar();
-}
-inline void ProtobufMessage::set_has_scalar() {
-  _impl_._oneof_case_[0] = kScalar;
-}
-inline void ProtobufMessage::clear_scalar() {
-  if (_internal_has_scalar()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.command_.scalar_;
-    }
-    clear_has_command();
-  }
-}
-inline ::Scalar* ProtobufMessage::release_scalar() {
-  // @@protoc_insertion_point(field_release:ProtobufMessage.Scalar)
-  if (_internal_has_scalar()) {
-    clear_has_command();
-    ::Scalar* temp = _impl_.command_.scalar_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.command_.scalar_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::Scalar& ProtobufMessage::_internal_scalar() const {
-  return _internal_has_scalar()
-      ? *_impl_.command_.scalar_
-      : reinterpret_cast< ::Scalar&>(::_Scalar_default_instance_);
-}
-inline const ::Scalar& ProtobufMessage::scalar() const {
-  // @@protoc_insertion_point(field_get:ProtobufMessage.Scalar)
-  return _internal_scalar();
-}
-inline ::Scalar* ProtobufMessage::unsafe_arena_release_scalar() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ProtobufMessage.Scalar)
-  if (_internal_has_scalar()) {
-    clear_has_command();
-    ::Scalar* temp = _impl_.command_.scalar_;
-    _impl_.command_.scalar_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ProtobufMessage::unsafe_arena_set_allocated_scalar(::Scalar* scalar) {
-  clear_command();
-  if (scalar) {
-    set_has_scalar();
-    _impl_.command_.scalar_ = scalar;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ProtobufMessage.Scalar)
-}
-inline ::Scalar* ProtobufMessage::_internal_mutable_scalar() {
-  if (!_internal_has_scalar()) {
-    clear_command();
-    set_has_scalar();
-    _impl_.command_.scalar_ = CreateMaybeMessage< ::Scalar >(GetArenaForAllocation());
-  }
-  return _impl_.command_.scalar_;
-}
-inline ::Scalar* ProtobufMessage::mutable_scalar() {
-  ::Scalar* _msg = _internal_mutable_scalar();
-  // @@protoc_insertion_point(field_mutable:ProtobufMessage.Scalar)
-  return _msg;
-}
-
-// .RequestShare RequestShare = 103;
-inline bool ProtobufMessage::_internal_has_requestshare() const {
-  return command_case() == kRequestShare;
-}
-inline bool ProtobufMessage::has_requestshare() const {
-  return _internal_has_requestshare();
-}
-inline void ProtobufMessage::set_has_requestshare() {
-  _impl_._oneof_case_[0] = kRequestShare;
-}
-inline void ProtobufMessage::clear_requestshare() {
-  if (_internal_has_requestshare()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.command_.requestshare_;
-    }
-    clear_has_command();
-  }
-}
-inline ::RequestShare* ProtobufMessage::release_requestshare() {
-  // @@protoc_insertion_point(field_release:ProtobufMessage.RequestShare)
-  if (_internal_has_requestshare()) {
-    clear_has_command();
-    ::RequestShare* temp = _impl_.command_.requestshare_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.command_.requestshare_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::RequestShare& ProtobufMessage::_internal_requestshare() const {
-  return _internal_has_requestshare()
-      ? *_impl_.command_.requestshare_
-      : reinterpret_cast< ::RequestShare&>(::_RequestShare_default_instance_);
-}
-inline const ::RequestShare& ProtobufMessage::requestshare() const {
-  // @@protoc_insertion_point(field_get:ProtobufMessage.RequestShare)
-  return _internal_requestshare();
-}
-inline ::RequestShare* ProtobufMessage::unsafe_arena_release_requestshare() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ProtobufMessage.RequestShare)
-  if (_internal_has_requestshare()) {
-    clear_has_command();
-    ::RequestShare* temp = _impl_.command_.requestshare_;
-    _impl_.command_.requestshare_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ProtobufMessage::unsafe_arena_set_allocated_requestshare(::RequestShare* requestshare) {
-  clear_command();
-  if (requestshare) {
-    set_has_requestshare();
-    _impl_.command_.requestshare_ = requestshare;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ProtobufMessage.RequestShare)
-}
-inline ::RequestShare* ProtobufMessage::_internal_mutable_requestshare() {
-  if (!_internal_has_requestshare()) {
-    clear_command();
-    set_has_requestshare();
-    _impl_.command_.requestshare_ = CreateMaybeMessage< ::RequestShare >(GetArenaForAllocation());
-  }
-  return _impl_.command_.requestshare_;
-}
-inline ::RequestShare* ProtobufMessage::mutable_requestshare() {
-  ::RequestShare* _msg = _internal_mutable_requestshare();
-  // @@protoc_insertion_point(field_mutable:ProtobufMessage.RequestShare)
-  return _msg;
-}
-
-// .SecretShare SecretShare = 104;
-inline bool ProtobufMessage::_internal_has_secretshare() const {
-  return command_case() == kSecretShare;
-}
-inline bool ProtobufMessage::has_secretshare() const {
-  return _internal_has_secretshare();
-}
-inline void ProtobufMessage::set_has_secretshare() {
-  _impl_._oneof_case_[0] = kSecretShare;
-}
-inline void ProtobufMessage::clear_secretshare() {
-  if (_internal_has_secretshare()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.command_.secretshare_;
-    }
-    clear_has_command();
-  }
-}
-inline ::SecretShare* ProtobufMessage::release_secretshare() {
-  // @@protoc_insertion_point(field_release:ProtobufMessage.SecretShare)
-  if (_internal_has_secretshare()) {
-    clear_has_command();
-    ::SecretShare* temp = _impl_.command_.secretshare_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.command_.secretshare_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::SecretShare& ProtobufMessage::_internal_secretshare() const {
-  return _internal_has_secretshare()
-      ? *_impl_.command_.secretshare_
-      : reinterpret_cast< ::SecretShare&>(::_SecretShare_default_instance_);
-}
-inline const ::SecretShare& ProtobufMessage::secretshare() const {
-  // @@protoc_insertion_point(field_get:ProtobufMessage.SecretShare)
-  return _internal_secretshare();
-}
-inline ::SecretShare* ProtobufMessage::unsafe_arena_release_secretshare() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ProtobufMessage.SecretShare)
-  if (_internal_has_secretshare()) {
-    clear_has_command();
-    ::SecretShare* temp = _impl_.command_.secretshare_;
-    _impl_.command_.secretshare_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ProtobufMessage::unsafe_arena_set_allocated_secretshare(::SecretShare* secretshare) {
-  clear_command();
-  if (secretshare) {
-    set_has_secretshare();
-    _impl_.command_.secretshare_ = secretshare;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ProtobufMessage.SecretShare)
-}
-inline ::SecretShare* ProtobufMessage::_internal_mutable_secretshare() {
-  if (!_internal_has_secretshare()) {
-    clear_command();
-    set_has_secretshare();
-    _impl_.command_.secretshare_ = CreateMaybeMessage< ::SecretShare >(GetArenaForAllocation());
-  }
-  return _impl_.command_.secretshare_;
-}
-inline ::SecretShare* ProtobufMessage::mutable_secretshare() {
-  ::SecretShare* _msg = _internal_mutable_secretshare();
-  // @@protoc_insertion_point(field_mutable:ProtobufMessage.SecretShare)
-  return _msg;
-}
-
-// .StreamEnd StreamEnd = 201;
-inline bool ProtobufMessage::_internal_has_streamend() const {
-  return command_case() == kStreamEnd;
-}
-inline bool ProtobufMessage::has_streamend() const {
-  return _internal_has_streamend();
-}
-inline void ProtobufMessage::set_has_streamend() {
-  _impl_._oneof_case_[0] = kStreamEnd;
-}
-inline void ProtobufMessage::clear_streamend() {
-  if (_internal_has_streamend()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.command_.streamend_;
-    }
-    clear_has_command();
-  }
-}
-inline ::StreamEnd* ProtobufMessage::release_streamend() {
-  // @@protoc_insertion_point(field_release:ProtobufMessage.StreamEnd)
-  if (_internal_has_streamend()) {
-    clear_has_command();
-    ::StreamEnd* temp = _impl_.command_.streamend_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.command_.streamend_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::StreamEnd& ProtobufMessage::_internal_streamend() const {
-  return _internal_has_streamend()
-      ? *_impl_.command_.streamend_
-      : reinterpret_cast< ::StreamEnd&>(::_StreamEnd_default_instance_);
-}
-inline const ::StreamEnd& ProtobufMessage::streamend() const {
-  // @@protoc_insertion_point(field_get:ProtobufMessage.StreamEnd)
-  return _internal_streamend();
-}
-inline ::StreamEnd* ProtobufMessage::unsafe_arena_release_streamend() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ProtobufMessage.StreamEnd)
-  if (_internal_has_streamend()) {
-    clear_has_command();
-    ::StreamEnd* temp = _impl_.command_.streamend_;
-    _impl_.command_.streamend_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ProtobufMessage::unsafe_arena_set_allocated_streamend(::StreamEnd* streamend) {
-  clear_command();
-  if (streamend) {
-    set_has_streamend();
-    _impl_.command_.streamend_ = streamend;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ProtobufMessage.StreamEnd)
-}
-inline ::StreamEnd* ProtobufMessage::_internal_mutable_streamend() {
-  if (!_internal_has_streamend()) {
-    clear_command();
-    set_has_streamend();
-    _impl_.command_.streamend_ = CreateMaybeMessage< ::StreamEnd >(GetArenaForAllocation());
-  }
-  return _impl_.command_.streamend_;
-}
-inline ::StreamEnd* ProtobufMessage::mutable_streamend() {
-  ::StreamEnd* _msg = _internal_mutable_streamend();
-  // @@protoc_insertion_point(field_mutable:ProtobufMessage.StreamEnd)
-  return _msg;
-}
-
 inline bool ProtobufMessage::has_command() const {
   return command_case() != COMMAND_NOT_SET;
 }
@@ -2225,681 +1022,61 @@ inline void NodeInfoReply::set_id(int32_t value) {
 
 // -------------------------------------------------------------------
 
-// UnivariatePolynomial
+// ExampleMessage
 
-// int32 OwnerNodeId = 1;
-inline void UnivariatePolynomial::clear_ownernodeid() {
-  _impl_.ownernodeid_ = 0;
-}
-inline int32_t UnivariatePolynomial::_internal_ownernodeid() const {
-  return _impl_.ownernodeid_;
-}
-inline int32_t UnivariatePolynomial::ownernodeid() const {
-  // @@protoc_insertion_point(field_get:UnivariatePolynomial.OwnerNodeId)
-  return _internal_ownernodeid();
-}
-inline void UnivariatePolynomial::_internal_set_ownernodeid(int32_t value) {
-  
-  _impl_.ownernodeid_ = value;
-}
-inline void UnivariatePolynomial::set_ownernodeid(int32_t value) {
-  _internal_set_ownernodeid(value);
-  // @@protoc_insertion_point(field_set:UnivariatePolynomial.OwnerNodeId)
-}
-
-// int32 Index = 11;
-inline void UnivariatePolynomial::clear_index() {
-  _impl_.index_ = 0;
-}
-inline int32_t UnivariatePolynomial::_internal_index() const {
-  return _impl_.index_;
-}
-inline int32_t UnivariatePolynomial::index() const {
-  // @@protoc_insertion_point(field_get:UnivariatePolynomial.Index)
-  return _internal_index();
-}
-inline void UnivariatePolynomial::_internal_set_index(int32_t value) {
-  
-  _impl_.index_ = value;
-}
-inline void UnivariatePolynomial::set_index(int32_t value) {
-  _internal_set_index(value);
-  // @@protoc_insertion_point(field_set:UnivariatePolynomial.Index)
-}
-
-// repeated string Coefficients = 12;
-inline int UnivariatePolynomial::_internal_coefficients_size() const {
-  return _impl_.coefficients_.size();
-}
-inline int UnivariatePolynomial::coefficients_size() const {
-  return _internal_coefficients_size();
-}
-inline void UnivariatePolynomial::clear_coefficients() {
-  _impl_.coefficients_.Clear();
-}
-inline std::string* UnivariatePolynomial::add_coefficients() {
-  std::string* _s = _internal_add_coefficients();
-  // @@protoc_insertion_point(field_add_mutable:UnivariatePolynomial.Coefficients)
-  return _s;
-}
-inline const std::string& UnivariatePolynomial::_internal_coefficients(int index) const {
-  return _impl_.coefficients_.Get(index);
-}
-inline const std::string& UnivariatePolynomial::coefficients(int index) const {
-  // @@protoc_insertion_point(field_get:UnivariatePolynomial.Coefficients)
-  return _internal_coefficients(index);
-}
-inline std::string* UnivariatePolynomial::mutable_coefficients(int index) {
-  // @@protoc_insertion_point(field_mutable:UnivariatePolynomial.Coefficients)
-  return _impl_.coefficients_.Mutable(index);
-}
-inline void UnivariatePolynomial::set_coefficients(int index, const std::string& value) {
-  _impl_.coefficients_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:UnivariatePolynomial.Coefficients)
-}
-inline void UnivariatePolynomial::set_coefficients(int index, std::string&& value) {
-  _impl_.coefficients_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:UnivariatePolynomial.Coefficients)
-}
-inline void UnivariatePolynomial::set_coefficients(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _impl_.coefficients_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:UnivariatePolynomial.Coefficients)
-}
-inline void UnivariatePolynomial::set_coefficients(int index, const char* value, size_t size) {
-  _impl_.coefficients_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:UnivariatePolynomial.Coefficients)
-}
-inline std::string* UnivariatePolynomial::_internal_add_coefficients() {
-  return _impl_.coefficients_.Add();
-}
-inline void UnivariatePolynomial::add_coefficients(const std::string& value) {
-  _impl_.coefficients_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:UnivariatePolynomial.Coefficients)
-}
-inline void UnivariatePolynomial::add_coefficients(std::string&& value) {
-  _impl_.coefficients_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:UnivariatePolynomial.Coefficients)
-}
-inline void UnivariatePolynomial::add_coefficients(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _impl_.coefficients_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:UnivariatePolynomial.Coefficients)
-}
-inline void UnivariatePolynomial::add_coefficients(const char* value, size_t size) {
-  _impl_.coefficients_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:UnivariatePolynomial.Coefficients)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-UnivariatePolynomial::coefficients() const {
-  // @@protoc_insertion_point(field_list:UnivariatePolynomial.Coefficients)
-  return _impl_.coefficients_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-UnivariatePolynomial::mutable_coefficients() {
-  // @@protoc_insertion_point(field_mutable_list:UnivariatePolynomial.Coefficients)
-  return &_impl_.coefficients_;
-}
-
-// int32 SecretId = 13;
-inline void UnivariatePolynomial::clear_secretid() {
-  _impl_.secretid_ = 0;
-}
-inline int32_t UnivariatePolynomial::_internal_secretid() const {
-  return _impl_.secretid_;
-}
-inline int32_t UnivariatePolynomial::secretid() const {
-  // @@protoc_insertion_point(field_get:UnivariatePolynomial.SecretId)
-  return _internal_secretid();
-}
-inline void UnivariatePolynomial::_internal_set_secretid(int32_t value) {
-  
-  _impl_.secretid_ = value;
-}
-inline void UnivariatePolynomial::set_secretid(int32_t value) {
-  _internal_set_secretid(value);
-  // @@protoc_insertion_point(field_set:UnivariatePolynomial.SecretId)
-}
-
-// -------------------------------------------------------------------
-
-// StreamEnd
-
-// .UnivariatePolynomial UnivariatePolynomial = 1;
-inline bool StreamEnd::_internal_has_univariatepolynomial() const {
-  return messageType_case() == kUnivariatePolynomial;
-}
-inline bool StreamEnd::has_univariatepolynomial() const {
-  return _internal_has_univariatepolynomial();
-}
-inline void StreamEnd::set_has_univariatepolynomial() {
-  _impl_._oneof_case_[0] = kUnivariatePolynomial;
-}
-inline void StreamEnd::clear_univariatepolynomial() {
-  if (_internal_has_univariatepolynomial()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.messageType_.univariatepolynomial_;
-    }
-    clear_has_messageType();
-  }
-}
-inline ::UnivariatePolynomial* StreamEnd::release_univariatepolynomial() {
-  // @@protoc_insertion_point(field_release:StreamEnd.UnivariatePolynomial)
-  if (_internal_has_univariatepolynomial()) {
-    clear_has_messageType();
-    ::UnivariatePolynomial* temp = _impl_.messageType_.univariatepolynomial_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.messageType_.univariatepolynomial_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::UnivariatePolynomial& StreamEnd::_internal_univariatepolynomial() const {
-  return _internal_has_univariatepolynomial()
-      ? *_impl_.messageType_.univariatepolynomial_
-      : reinterpret_cast< ::UnivariatePolynomial&>(::_UnivariatePolynomial_default_instance_);
-}
-inline const ::UnivariatePolynomial& StreamEnd::univariatepolynomial() const {
-  // @@protoc_insertion_point(field_get:StreamEnd.UnivariatePolynomial)
-  return _internal_univariatepolynomial();
-}
-inline ::UnivariatePolynomial* StreamEnd::unsafe_arena_release_univariatepolynomial() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:StreamEnd.UnivariatePolynomial)
-  if (_internal_has_univariatepolynomial()) {
-    clear_has_messageType();
-    ::UnivariatePolynomial* temp = _impl_.messageType_.univariatepolynomial_;
-    _impl_.messageType_.univariatepolynomial_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void StreamEnd::unsafe_arena_set_allocated_univariatepolynomial(::UnivariatePolynomial* univariatepolynomial) {
-  clear_messageType();
-  if (univariatepolynomial) {
-    set_has_univariatepolynomial();
-    _impl_.messageType_.univariatepolynomial_ = univariatepolynomial;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:StreamEnd.UnivariatePolynomial)
-}
-inline ::UnivariatePolynomial* StreamEnd::_internal_mutable_univariatepolynomial() {
-  if (!_internal_has_univariatepolynomial()) {
-    clear_messageType();
-    set_has_univariatepolynomial();
-    _impl_.messageType_.univariatepolynomial_ = CreateMaybeMessage< ::UnivariatePolynomial >(GetArenaForAllocation());
-  }
-  return _impl_.messageType_.univariatepolynomial_;
-}
-inline ::UnivariatePolynomial* StreamEnd::mutable_univariatepolynomial() {
-  ::UnivariatePolynomial* _msg = _internal_mutable_univariatepolynomial();
-  // @@protoc_insertion_point(field_mutable:StreamEnd.UnivariatePolynomial)
-  return _msg;
-}
-
-// .Scalar Scalar = 2;
-inline bool StreamEnd::_internal_has_scalar() const {
-  return messageType_case() == kScalar;
-}
-inline bool StreamEnd::has_scalar() const {
-  return _internal_has_scalar();
-}
-inline void StreamEnd::set_has_scalar() {
-  _impl_._oneof_case_[0] = kScalar;
-}
-inline void StreamEnd::clear_scalar() {
-  if (_internal_has_scalar()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.messageType_.scalar_;
-    }
-    clear_has_messageType();
-  }
-}
-inline ::Scalar* StreamEnd::release_scalar() {
-  // @@protoc_insertion_point(field_release:StreamEnd.Scalar)
-  if (_internal_has_scalar()) {
-    clear_has_messageType();
-    ::Scalar* temp = _impl_.messageType_.scalar_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.messageType_.scalar_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::Scalar& StreamEnd::_internal_scalar() const {
-  return _internal_has_scalar()
-      ? *_impl_.messageType_.scalar_
-      : reinterpret_cast< ::Scalar&>(::_Scalar_default_instance_);
-}
-inline const ::Scalar& StreamEnd::scalar() const {
-  // @@protoc_insertion_point(field_get:StreamEnd.Scalar)
-  return _internal_scalar();
-}
-inline ::Scalar* StreamEnd::unsafe_arena_release_scalar() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:StreamEnd.Scalar)
-  if (_internal_has_scalar()) {
-    clear_has_messageType();
-    ::Scalar* temp = _impl_.messageType_.scalar_;
-    _impl_.messageType_.scalar_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void StreamEnd::unsafe_arena_set_allocated_scalar(::Scalar* scalar) {
-  clear_messageType();
-  if (scalar) {
-    set_has_scalar();
-    _impl_.messageType_.scalar_ = scalar;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:StreamEnd.Scalar)
-}
-inline ::Scalar* StreamEnd::_internal_mutable_scalar() {
-  if (!_internal_has_scalar()) {
-    clear_messageType();
-    set_has_scalar();
-    _impl_.messageType_.scalar_ = CreateMaybeMessage< ::Scalar >(GetArenaForAllocation());
-  }
-  return _impl_.messageType_.scalar_;
-}
-inline ::Scalar* StreamEnd::mutable_scalar() {
-  ::Scalar* _msg = _internal_mutable_scalar();
-  // @@protoc_insertion_point(field_mutable:StreamEnd.Scalar)
-  return _msg;
-}
-
-// .SecretShare SecretShare = 3;
-inline bool StreamEnd::_internal_has_secretshare() const {
-  return messageType_case() == kSecretShare;
-}
-inline bool StreamEnd::has_secretshare() const {
-  return _internal_has_secretshare();
-}
-inline void StreamEnd::set_has_secretshare() {
-  _impl_._oneof_case_[0] = kSecretShare;
-}
-inline void StreamEnd::clear_secretshare() {
-  if (_internal_has_secretshare()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.messageType_.secretshare_;
-    }
-    clear_has_messageType();
-  }
-}
-inline ::SecretShare* StreamEnd::release_secretshare() {
-  // @@protoc_insertion_point(field_release:StreamEnd.SecretShare)
-  if (_internal_has_secretshare()) {
-    clear_has_messageType();
-    ::SecretShare* temp = _impl_.messageType_.secretshare_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.messageType_.secretshare_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::SecretShare& StreamEnd::_internal_secretshare() const {
-  return _internal_has_secretshare()
-      ? *_impl_.messageType_.secretshare_
-      : reinterpret_cast< ::SecretShare&>(::_SecretShare_default_instance_);
-}
-inline const ::SecretShare& StreamEnd::secretshare() const {
-  // @@protoc_insertion_point(field_get:StreamEnd.SecretShare)
-  return _internal_secretshare();
-}
-inline ::SecretShare* StreamEnd::unsafe_arena_release_secretshare() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:StreamEnd.SecretShare)
-  if (_internal_has_secretshare()) {
-    clear_has_messageType();
-    ::SecretShare* temp = _impl_.messageType_.secretshare_;
-    _impl_.messageType_.secretshare_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void StreamEnd::unsafe_arena_set_allocated_secretshare(::SecretShare* secretshare) {
-  clear_messageType();
-  if (secretshare) {
-    set_has_secretshare();
-    _impl_.messageType_.secretshare_ = secretshare;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:StreamEnd.SecretShare)
-}
-inline ::SecretShare* StreamEnd::_internal_mutable_secretshare() {
-  if (!_internal_has_secretshare()) {
-    clear_messageType();
-    set_has_secretshare();
-    _impl_.messageType_.secretshare_ = CreateMaybeMessage< ::SecretShare >(GetArenaForAllocation());
-  }
-  return _impl_.messageType_.secretshare_;
-}
-inline ::SecretShare* StreamEnd::mutable_secretshare() {
-  ::SecretShare* _msg = _internal_mutable_secretshare();
-  // @@protoc_insertion_point(field_mutable:StreamEnd.SecretShare)
-  return _msg;
-}
-
-inline bool StreamEnd::has_messageType() const {
-  return messageType_case() != MESSAGETYPE_NOT_SET;
-}
-inline void StreamEnd::clear_has_messageType() {
-  _impl_._oneof_case_[0] = MESSAGETYPE_NOT_SET;
-}
-inline StreamEnd::MessageTypeCase StreamEnd::messageType_case() const {
-  return StreamEnd::MessageTypeCase(_impl_._oneof_case_[0]);
-}
-// -------------------------------------------------------------------
-
-// Scalar
-
-// int32 FromNodeId = 1;
-inline void Scalar::clear_fromnodeid() {
-  _impl_.fromnodeid_ = 0;
-}
-inline int32_t Scalar::_internal_fromnodeid() const {
-  return _impl_.fromnodeid_;
-}
-inline int32_t Scalar::fromnodeid() const {
-  // @@protoc_insertion_point(field_get:Scalar.FromNodeId)
-  return _internal_fromnodeid();
-}
-inline void Scalar::_internal_set_fromnodeid(int32_t value) {
-  
-  _impl_.fromnodeid_ = value;
-}
-inline void Scalar::set_fromnodeid(int32_t value) {
-  _internal_set_fromnodeid(value);
-  // @@protoc_insertion_point(field_set:Scalar.FromNodeId)
-}
-
-// int32 ToNodeId = 2;
-inline void Scalar::clear_tonodeid() {
-  _impl_.tonodeid_ = 0;
-}
-inline int32_t Scalar::_internal_tonodeid() const {
-  return _impl_.tonodeid_;
-}
-inline int32_t Scalar::tonodeid() const {
-  // @@protoc_insertion_point(field_get:Scalar.ToNodeId)
-  return _internal_tonodeid();
-}
-inline void Scalar::_internal_set_tonodeid(int32_t value) {
-  
-  _impl_.tonodeid_ = value;
-}
-inline void Scalar::set_tonodeid(int32_t value) {
-  _internal_set_tonodeid(value);
-  // @@protoc_insertion_point(field_set:Scalar.ToNodeId)
-}
-
-// int32 Index = 11;
-inline void Scalar::clear_index() {
-  _impl_.index_ = 0;
-}
-inline int32_t Scalar::_internal_index() const {
-  return _impl_.index_;
-}
-inline int32_t Scalar::index() const {
-  // @@protoc_insertion_point(field_get:Scalar.Index)
-  return _internal_index();
-}
-inline void Scalar::_internal_set_index(int32_t value) {
-  
-  _impl_.index_ = value;
-}
-inline void Scalar::set_index(int32_t value) {
-  _internal_set_index(value);
-  // @@protoc_insertion_point(field_set:Scalar.Index)
-}
-
-// string Value = 12;
-inline void Scalar::clear_value() {
-  _impl_.value_.ClearToEmpty();
-}
-inline const std::string& Scalar::value() const {
-  // @@protoc_insertion_point(field_get:Scalar.Value)
-  return _internal_value();
+// string message = 1;
+inline void ExampleMessage::clear_message() {
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& ExampleMessage::message() const {
+  // @@protoc_insertion_point(field_get:ExampleMessage.message)
+  return _internal_message();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Scalar::set_value(ArgT0&& arg0, ArgT... args) {
+void ExampleMessage::set_message(ArgT0&& arg0, ArgT... args) {
  
- _impl_.value_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Scalar.Value)
+ _impl_.message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ExampleMessage.message)
 }
-inline std::string* Scalar::mutable_value() {
-  std::string* _s = _internal_mutable_value();
-  // @@protoc_insertion_point(field_mutable:Scalar.Value)
+inline std::string* ExampleMessage::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:ExampleMessage.message)
   return _s;
 }
-inline const std::string& Scalar::_internal_value() const {
-  return _impl_.value_.Get();
+inline const std::string& ExampleMessage::_internal_message() const {
+  return _impl_.message_.Get();
 }
-inline void Scalar::_internal_set_value(const std::string& value) {
+inline void ExampleMessage::_internal_set_message(const std::string& value) {
   
-  _impl_.value_.Set(value, GetArenaForAllocation());
+  _impl_.message_.Set(value, GetArenaForAllocation());
 }
-inline std::string* Scalar::_internal_mutable_value() {
+inline std::string* ExampleMessage::_internal_mutable_message() {
   
-  return _impl_.value_.Mutable(GetArenaForAllocation());
+  return _impl_.message_.Mutable(GetArenaForAllocation());
 }
-inline std::string* Scalar::release_value() {
-  // @@protoc_insertion_point(field_release:Scalar.Value)
-  return _impl_.value_.Release();
+inline std::string* ExampleMessage::release_message() {
+  // @@protoc_insertion_point(field_release:ExampleMessage.message)
+  return _impl_.message_.Release();
 }
-inline void Scalar::set_allocated_value(std::string* value) {
-  if (value != nullptr) {
+inline void ExampleMessage::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
     
   } else {
     
   }
-  _impl_.value_.SetAllocated(value, GetArenaForAllocation());
+  _impl_.message_.SetAllocated(message, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.value_.IsDefault()) {
-    _impl_.value_.Set("", GetArenaForAllocation());
+  if (_impl_.message_.IsDefault()) {
+    _impl_.message_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Scalar.Value)
-}
-
-// int32 SecretId = 13;
-inline void Scalar::clear_secretid() {
-  _impl_.secretid_ = 0;
-}
-inline int32_t Scalar::_internal_secretid() const {
-  return _impl_.secretid_;
-}
-inline int32_t Scalar::secretid() const {
-  // @@protoc_insertion_point(field_get:Scalar.SecretId)
-  return _internal_secretid();
-}
-inline void Scalar::_internal_set_secretid(int32_t value) {
-  
-  _impl_.secretid_ = value;
-}
-inline void Scalar::set_secretid(int32_t value) {
-  _internal_set_secretid(value);
-  // @@protoc_insertion_point(field_set:Scalar.SecretId)
-}
-
-// -------------------------------------------------------------------
-
-// RequestShare
-
-// int32 SecretId = 11;
-inline void RequestShare::clear_secretid() {
-  _impl_.secretid_ = 0;
-}
-inline int32_t RequestShare::_internal_secretid() const {
-  return _impl_.secretid_;
-}
-inline int32_t RequestShare::secretid() const {
-  // @@protoc_insertion_point(field_get:RequestShare.SecretId)
-  return _internal_secretid();
-}
-inline void RequestShare::_internal_set_secretid(int32_t value) {
-  
-  _impl_.secretid_ = value;
-}
-inline void RequestShare::set_secretid(int32_t value) {
-  _internal_set_secretid(value);
-  // @@protoc_insertion_point(field_set:RequestShare.SecretId)
-}
-
-// -------------------------------------------------------------------
-
-// SecretShare
-
-// int32 FromNodeId = 1;
-inline void SecretShare::clear_fromnodeid() {
-  _impl_.fromnodeid_ = 0;
-}
-inline int32_t SecretShare::_internal_fromnodeid() const {
-  return _impl_.fromnodeid_;
-}
-inline int32_t SecretShare::fromnodeid() const {
-  // @@protoc_insertion_point(field_get:SecretShare.FromNodeId)
-  return _internal_fromnodeid();
-}
-inline void SecretShare::_internal_set_fromnodeid(int32_t value) {
-  
-  _impl_.fromnodeid_ = value;
-}
-inline void SecretShare::set_fromnodeid(int32_t value) {
-  _internal_set_fromnodeid(value);
-  // @@protoc_insertion_point(field_set:SecretShare.FromNodeId)
-}
-
-// int32 ToNodeId = 2;
-inline void SecretShare::clear_tonodeid() {
-  _impl_.tonodeid_ = 0;
-}
-inline int32_t SecretShare::_internal_tonodeid() const {
-  return _impl_.tonodeid_;
-}
-inline int32_t SecretShare::tonodeid() const {
-  // @@protoc_insertion_point(field_get:SecretShare.ToNodeId)
-  return _internal_tonodeid();
-}
-inline void SecretShare::_internal_set_tonodeid(int32_t value) {
-  
-  _impl_.tonodeid_ = value;
-}
-inline void SecretShare::set_tonodeid(int32_t value) {
-  _internal_set_tonodeid(value);
-  // @@protoc_insertion_point(field_set:SecretShare.ToNodeId)
-}
-
-// int32 Index = 11;
-inline void SecretShare::clear_index() {
-  _impl_.index_ = 0;
-}
-inline int32_t SecretShare::_internal_index() const {
-  return _impl_.index_;
-}
-inline int32_t SecretShare::index() const {
-  // @@protoc_insertion_point(field_get:SecretShare.Index)
-  return _internal_index();
-}
-inline void SecretShare::_internal_set_index(int32_t value) {
-  
-  _impl_.index_ = value;
-}
-inline void SecretShare::set_index(int32_t value) {
-  _internal_set_index(value);
-  // @@protoc_insertion_point(field_set:SecretShare.Index)
-}
-
-// string Value = 12;
-inline void SecretShare::clear_value() {
-  _impl_.value_.ClearToEmpty();
-}
-inline const std::string& SecretShare::value() const {
-  // @@protoc_insertion_point(field_get:SecretShare.Value)
-  return _internal_value();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void SecretShare::set_value(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.value_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:SecretShare.Value)
-}
-inline std::string* SecretShare::mutable_value() {
-  std::string* _s = _internal_mutable_value();
-  // @@protoc_insertion_point(field_mutable:SecretShare.Value)
-  return _s;
-}
-inline const std::string& SecretShare::_internal_value() const {
-  return _impl_.value_.Get();
-}
-inline void SecretShare::_internal_set_value(const std::string& value) {
-  
-  _impl_.value_.Set(value, GetArenaForAllocation());
-}
-inline std::string* SecretShare::_internal_mutable_value() {
-  
-  return _impl_.value_.Mutable(GetArenaForAllocation());
-}
-inline std::string* SecretShare::release_value() {
-  // @@protoc_insertion_point(field_release:SecretShare.Value)
-  return _impl_.value_.Release();
-}
-inline void SecretShare::set_allocated_value(std::string* value) {
-  if (value != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.value_.SetAllocated(value, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.value_.IsDefault()) {
-    _impl_.value_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:SecretShare.Value)
-}
-
-// int32 SecretId = 13;
-inline void SecretShare::clear_secretid() {
-  _impl_.secretid_ = 0;
-}
-inline int32_t SecretShare::_internal_secretid() const {
-  return _impl_.secretid_;
-}
-inline int32_t SecretShare::secretid() const {
-  // @@protoc_insertion_point(field_get:SecretShare.SecretId)
-  return _internal_secretid();
-}
-inline void SecretShare::_internal_set_secretid(int32_t value) {
-  
-  _impl_.secretid_ = value;
-}
-inline void SecretShare::set_secretid(int32_t value) {
-  _internal_set_secretid(value);
-  // @@protoc_insertion_point(field_set:SecretShare.SecretId)
+  // @@protoc_insertion_point(field_set_allocated:ExampleMessage.message)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
