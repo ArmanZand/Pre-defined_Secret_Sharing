@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option csharp_namespace = "Networking.Messages";
+
+
+message ProtobufMessage {
+  oneof command {
+    
+    //ExampleMessage ExampleMessage = 100;
+    NodeInfo NodeInfo = 1;
+    NodeInfoReply NodeInfoReply = 2;
+
+    UnivariatePolynomial UnivariatePolynomial = 101;
+    Scalar Scalar = 102;
+    
+    RequestShare RequestShare = 103;
+    SecretShare SecretShare = 104;
+
+    StreamEnd StreamEnd = 201;
+  }
+}
+message NodeInfo {
+    int32 Id = 1;
+}
+message NodeInfoReply {
+    int32 Id = 1;
+}
+
+message UnivariatePolynomial {
+    int32 OwnerNodeId = 1;
+    int32 Index = 11;
+    repeated string Coefficients = 12;
+    int32 SecretId = 13;
+}
+message StreamEnd {
+    oneof messageType {
+        UnivariatePolynomial UnivariatePolynomial = 1;
+        Scalar Scalar = 2;
+        SecretShare SecretShare = 3;
+    }
+}
+
+message Scalar {
+    int32 FromNodeId = 1;
+    int32 ToNodeId = 2;
+    int32 Index = 11;
+    string Value = 12;
+    int32 SecretId = 13;
+}
+
+message RequestShare {
+    int32 SecretId = 11;
+}
+
+message SecretShare {
+    int32 FromNodeId = 1;
+    int32 ToNodeId = 2;
+    int32 Index = 11;
+    string Value = 12;
+    int32 SecretId = 13;
+}
