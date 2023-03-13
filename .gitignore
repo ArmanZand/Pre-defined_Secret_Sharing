@@ -1,3 +1,6 @@
 /cmake-build-debug/
 /.idea/
 **/TODO.*
+/protoc/NetworkMessage.pb.cc
+/protoc/NetworkMessage.pb.h
+/protobuf/
