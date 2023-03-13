@@ -12,8 +12,10 @@ int waitRetry = 1000;
 const int prefixSize = sizeof(int);
 
 //TODO:
-//1. listener status events
-//2. correct destruction
-//3. protobuf
+//1. correct destruction
+//2. config file
+//3. listener status events
+//4. protobuf
+//5. scripting
 
 #endif //CLEAN_SOCKETS_PARAMETERS_H

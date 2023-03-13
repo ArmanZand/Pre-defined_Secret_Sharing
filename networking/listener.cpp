@@ -12,68 +12,67 @@
 
 
 void listener::listenInstance(string localAddress, string localPort){
-    WSAData wsaData;
-    int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if(result != 0){
-        cerr << "WSAStartup failed with error: " << result << endl;
-    }
-    SOCKET listenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if(listenSocket == INVALID_SOCKET){
-        cerr << "Socket failed with error: " << WSAGetLastError() << endl;
-        WSACleanup();
-    }
-    struct addrinfo* pAddrinfo = nullptr, * ptr = nullptr, hints;
-    SecureZeroMemory(&hints, sizeof(hints));
-    hints.ai_family = AF_INET;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_protocol = IPPROTO_TCP;
-    hints.ai_flags = AI_PASSIVE;
+    SOCKET listenSocket;
+    try {
+        WSAData wsaData;
+        int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+        if(result != 0){
+            throw runtime_error("WSAStartup failed.");
+        }
+        listenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        if(listenSocket == INVALID_SOCKET){
+            throw runtime_error("Error invalid socket.");
+        }
+        struct addrinfo* pAddrinfo = nullptr, * ptr = nullptr, hints;
+        SecureZeroMemory(&hints, sizeof(hints));
+        hints.ai_family = AF_INET;
+        hints.ai_socktype = SOCK_STREAM;
+        hints.ai_protocol = IPPROTO_TCP;
+        hints.ai_flags = AI_PASSIVE;
 
-    result = getaddrinfo(localAddress.c_str(), localPort.c_str(), &hints, &pAddrinfo);
-    if(result != 0){
-        cerr << "getaddrinfo failed with error: " << result << endl;
-        closesocket(listenSocket);
-        WSACleanup();
-    }
+        result = getaddrinfo(localAddress.c_str(), localPort.c_str(), &hints, &pAddrinfo);
+        if(result != 0){
+            throw runtime_error("Error getting address info.");
+        }
 
-    result = bind(listenSocket, pAddrinfo->ai_addr, (int)pAddrinfo-> ai_addrlen);
-    if(result == SOCKET_ERROR){
-        cerr << "bind failed with error: " << WSAGetLastError() << endl;
+        result = bind(listenSocket, pAddrinfo->ai_addr, (int)pAddrinfo-> ai_addrlen);
+        if(result == SOCKET_ERROR){
+            freeaddrinfo(pAddrinfo);
+            throw runtime_error("Error binding socket.");
+        }
         freeaddrinfo(pAddrinfo);
+        result = listen(listenSocket, 20);
+        if (result == SOCKET_ERROR) {
+            throw runtime_error("Error on socket listen.");
+        }
+        cout << "Listen thread started on (" << localAddress << ":" << localPort << ")" << endl;
+
+        socketHandle socketHandle;
+        int handleAddrSize = sizeof(socketHandle.handleAddr);
+
+        while(true){
+            socketHandle.mSocket = accept(listenSocket, (sockaddr * ) &socketHandle.handleAddr, &handleAddrSize);
+            if (socketHandle.mSocket == INVALID_SOCKET) {
+                throw runtime_error("Error on socket accept.");
+            }
+
+            socketHandle.ip = std::string(inet_ntoa(socketHandle.handleAddr.sin_addr)) + ":" + std::to_string(socketHandle.handleAddr.sin_port);
+            socketEvents::getInstance().onConnected(&socketHandle);
+
+            FD_ZERO(&socketHandle.descriptor);
+            FD_SET(socketHandle.mSocket, &socketHandle.descriptor);
+
+            if(FD_ISSET(socketHandle.mSocket, &socketHandle.descriptor)){
+                thread receiveThread(&socketHandle::receive, socketHandle);
+                receiveThread.join();
+            }
+        }
+    }
+    catch(const exception &ex){
         closesocket(listenSocket);
         WSACleanup();
-    }
-    freeaddrinfo(pAddrinfo);
-    result = listen(listenSocket, 20);
-    if (result == SOCKET_ERROR) {
-        cerr << "listen failed with error: " << WSAGetLastError() << endl;
-        closesocket(listenSocket);
-        WSACleanup();
-    }
-    cout << "Listen thread started on (" << localAddress << ":" << localPort << ")" << endl;
-
-    socketHandle socketHandle;
-    int handleAddrSize = sizeof(socketHandle.handleAddr);
-
-    while(true){
-        socketHandle.mSocket = accept(listenSocket, (sockaddr * ) &socketHandle.handleAddr, &handleAddrSize);
-        if (socketHandle.mSocket == INVALID_SOCKET) {
-            cerr << "accept failed with error: " << WSAGetLastError() << endl;
-            closesocket(listenSocket);
-            WSACleanup();
-        }
-        //Connected;
-        socketHandle.ip = std::string(inet_ntoa(socketHandle.handleAddr.sin_addr)) + ":" + std::to_string(socketHandle.handleAddr.sin_port);
-        socketEvents::getInstance().onConnected(&socketHandle);
-
-        FD_ZERO(&socketHandle.descriptor);
-        FD_SET(socketHandle.mSocket, &socketHandle.descriptor);
-
-        if(FD_ISSET(socketHandle.mSocket, &socketHandle.descriptor)){
-            thread receiveThread(&socketHandle::receive, socketHandle);
-            receiveThread.join();
-        }
-
+        cerr << "Exception: " << ex.what() << endl;
+        //cerr << "WSACode: " << WSAGetLastError() << endl;
     }
 }
 

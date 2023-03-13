@@ -215,6 +215,7 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
     }
     catch(const exception &ex){
         closesocket(mSocket);
+        WSACleanup();
         cerr << "Exception: " << ex.what() << endl;
         //cerr << "WSACode: " << WSAGetLastError() << endl;
 
