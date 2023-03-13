@@ -12,7 +12,7 @@ char * m_buffer = new char [m_bufferSize];
 char * message;
 bool keepTrying = true;
 int waitRetry = 1000;
-
+const int prefixSize = sizeof(int);
 using namespace std;
 bool socketHandle::isConnected(){
     fd_set fdCheck;
@@ -38,7 +38,7 @@ void socketHandle::send(string message){
         //memcpy(m_buffer, data, dataLen);
 
         const char * data = message.c_str();
-        int prefixSize = sizeof(int);
+
         int dataSize = message.size();
         int totalSize = dataSize +prefixSize;
         char buffer[m_bufferSize];
@@ -55,10 +55,12 @@ void socketHandle::send(string message){
             throw runtime_error("Error sending data.");
         } else {
             int remainingSize = totalSize - bytesSent;
-            int totalSent = bytesSent;
+            int totalSent = bytesSent - prefixSize;
             while(remainingSize > 0){
                 int bytesToSend = min(remainingSize, (int)m_bufferSize);
-                int bytesSent = ::send(mSocket,  buffer + totalSent, bytesToSend, 0);
+
+                memcpy(buffer, data +  totalSent, bytesToSend);
+                int bytesSent = ::send(mSocket,  data + totalSent, bytesToSend, 0);
                 if(bytesSent == SOCKET_ERROR){
                     int err = WSAGetLastError();
                     throw runtime_error("Error during the sending of multiple packets.");
@@ -66,6 +68,7 @@ void socketHandle::send(string message){
                 }
                 remainingSize -= bytesSent;
                 totalSent += bytesSent;
+
             }
         }
     }
@@ -87,8 +90,8 @@ void socketHandle::receive(){
                 throw runtime_error("Error waiting for data.");
             }
             else {
-                int result = recv(mSocket, m_buffer, m_bufferSize, 0);
-                if(result == SOCKET_ERROR){
+                int bytesReceived = recv(mSocket, m_buffer, m_bufferSize, 0);
+                if(bytesReceived == SOCKET_ERROR){
                     int error = WSAGetLastError() ;
                     if(error == WSAEWOULDBLOCK){
                         Sleep(10);
@@ -103,13 +106,37 @@ void socketHandle::receive(){
                         throw runtime_error("Error on data receive.");
                     }
 
-                } else if (result == 0){
+                } else if (bytesReceived == 0){
                     socketEvents::getInstance().onDisconnected(this);
                     break;
                 } else {
-                    m_buffer[result] = '\0';
-                    string msg(m_buffer, result);
-                    socketEvents::getInstance().onReceive(this, msg);
+                    delete[] message;
+                    message = nullptr;
+
+                    ::uint32_t networkDataSize;
+                    memcpy(&networkDataSize, m_buffer, prefixSize);
+                    int dataSize = ntohl(networkDataSize);
+                    message = new char[dataSize];
+
+                    memcpy(message, m_buffer + prefixSize, min(bytesReceived - prefixSize, dataSize));
+
+                    int remainingSize = dataSize - bytesReceived + prefixSize;
+                    int totalReceived = bytesReceived - prefixSize;
+                    while(remainingSize > 0){
+                        bytesReceived = ::recv(mSocket, m_buffer, min((int)m_bufferSize, remainingSize),0);
+                        if(bytesReceived == SOCKET_ERROR){
+                            delete[] message;
+                            throw runtime_error("Error occurred during receiving of multiple packets.");
+                        }
+                        memcpy(message + totalReceived, m_buffer, bytesReceived);
+                        remainingSize -= bytesReceived;
+                        totalReceived += bytesReceived;
+                    }
+                    //m_buffer[bytesReceived] = '\0';
+                    //string msg(m_buffer, bytesReceived);
+                    string result(message, dataSize);
+                    delete[] message;
+                    socketEvents::getInstance().onReceive(this, result);
                 }
             }
         }
