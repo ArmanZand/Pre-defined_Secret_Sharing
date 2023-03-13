@@ -56,7 +56,6 @@ int main(int argc, char *argv[]) {
         if(listen){
             listener listener;
             listener.start(ip, port);
-
         }
         if(connect){
             socketHandle handle;
@@ -66,6 +65,8 @@ int main(int argc, char *argv[]) {
     catch(const exception &ex){
         cerr << "Exception: " << ex.what() << endl;
     }
+    cout << "End of main thread, press enter to continue...";
+    cin.ignore();
 
     return 0;
 }

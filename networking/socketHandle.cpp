@@ -116,7 +116,7 @@ void socketHandle::receive(){
                         if(bytesReceived == SOCKET_ERROR){
                             int wsa_error = WSAGetLastError();
                             if(wsa_error == WSAEWOULDBLOCK){
-                                Sleep(5);
+                                Sleep(10);
                                 continue;
                             }
                             else {
