@@ -54,7 +54,7 @@ void socketHandle::send(string message){
                 int bytesToSend = min(remainingSize, (int)m_bufferSize);
 
                 memcpy(buffer, data +  totalSent, bytesToSend);
-                int bytesSent = ::send(mSocket,  data + totalSent, bytesToSend, 0);
+                bytesSent = ::send(mSocket,  data + totalSent, bytesToSend, 0);
                 if(bytesSent == SOCKET_ERROR){
                     int err = WSAGetLastError();
                     throw runtime_error("Error during the sending of multiple packets.");
@@ -103,7 +103,6 @@ void socketHandle::receive(){
                     break;
                 } else {
                     delete[] message;
-                    message = nullptr;
 
                     ::uint32_t networkDataSize;
                     memcpy(&networkDataSize, m_buffer, prefixSize);
@@ -115,10 +114,16 @@ void socketHandle::receive(){
                     int remainingSize = dataSize - bytesReceived + prefixSize;
                     int totalReceived = bytesReceived - prefixSize;
                     while(remainingSize > 0){
-                        bytesReceived = ::recv(mSocket, m_buffer, min((int)m_bufferSize, remainingSize),0);
+                        int bytesReceived = ::recv(mSocket, m_buffer, min((int)m_bufferSize, remainingSize),0);
                         if(bytesReceived == SOCKET_ERROR){
-                            delete[] message;
-                            throw runtime_error("Error occurred during receiving of multiple packets.");
+                            int wsa_error = WSAGetLastError();
+                            if(wsa_error == WSAEWOULDBLOCK){
+                                Sleep(10);
+                                continue;
+                            }
+                            else {
+                                throw runtime_error("Error occurred during receiving of multiple packets.");
+                            }
                         }
                         memcpy(message + totalReceived, m_buffer, bytesReceived);
                         remainingSize -= bytesReceived;
@@ -133,7 +138,10 @@ void socketHandle::receive(){
         catch (exception &ex){
             cerr << ex.what() << endl;
             //cerr << "WSACode: " << WSAGetLastError() << endl;
+            delete[] message;
             socketEvents::getInstance().onDisconnected(this);
+            closesocket(mSocket);
+            WSACleanup();
             break;
         }
     }

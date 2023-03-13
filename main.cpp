@@ -17,7 +17,7 @@ void OnReady(socketHandle & socketHandle, bool initiator){
         socketHandle.send("On ready event proc and on receive event proc test.");
     }
     else {
-        socketHandle.send("listener has sent this");
+        socketHandle.send("listener has sent this.");
     }
 }
 void OnReceive(socketHandle & socketHandle, string message){
