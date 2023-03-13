@@ -14,7 +14,7 @@ void OnDisconnect(const socketHandle& socketHandle){
 }
 void OnReady(socketHandle & socketHandle, bool initiator){
     if (initiator){
-        socketHandle.send("on ready proc");
+        socketHandle.send("on ready proc test9999999");
     }
 }
 void OnReceive(socketHandle & socketHandle, string message){

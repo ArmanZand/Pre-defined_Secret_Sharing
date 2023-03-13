@@ -5,14 +5,15 @@
 #include "socketEvents.h"
 #include <iostream>
 #include <Ws2tcpip.h>
+#include <algorithm>
 
-
-static const volatile int m_bufferSize = 8192;
+static const volatile int m_bufferSize = 10;
 char * m_buffer = new char [m_bufferSize];
+char * message;
 bool keepTrying = true;
 int waitRetry = 1000;
 
-
+using namespace std;
 bool socketHandle::isConnected(){
     fd_set fdCheck;
     FD_ZERO(&fdCheck);
@@ -31,14 +32,41 @@ void socketHandle::send(string message){
             socketEvents::getInstance().onDisconnected(this);
             return;
         }
-        const char* data = message.c_str();
-        int dataLen = strlen(data);
-        memcpy(m_buffer, data, dataLen);
-        int result = ::send(mSocket, data, strlen(data), 0);
-        if(result == SOCKET_ERROR){
+
+        //const char* data = message.c_str();
+        //int dataLen = strlen(data);
+        //memcpy(m_buffer, data, dataLen);
+
+        const char * data = message.c_str();
+        int prefixSize = sizeof(int);
+        int dataSize = message.size();
+        int totalSize = dataSize +prefixSize;
+        char buffer[m_bufferSize];
+        memset(buffer, 0, m_bufferSize);
+
+        ::uint32_t networkDataSize = htonl(dataSize);
+        memcpy(buffer, &networkDataSize, prefixSize);
+
+        int minToSend = min(dataSize, (int)m_bufferSize - prefixSize);
+        memcpy(buffer + prefixSize, data, minToSend);
+
+        int bytesSent = ::send(mSocket, buffer, min((int)m_bufferSize, dataSize + prefixSize), 0);
+        if(bytesSent == SOCKET_ERROR){
             throw runtime_error("Error sending data.");
         } else {
-            //Data sent.
+            int remainingSize = totalSize - bytesSent;
+            int totalSent = bytesSent;
+            while(remainingSize > 0){
+                int bytesToSend = min(remainingSize, (int)m_bufferSize);
+                int bytesSent = ::send(mSocket,  buffer + totalSent, bytesToSend, 0);
+                if(bytesSent == SOCKET_ERROR){
+                    int err = WSAGetLastError();
+                    throw runtime_error("Error during the sending of multiple packets.");
+
+                }
+                remainingSize -= bytesSent;
+                totalSent += bytesSent;
+            }
         }
     }
     catch (exception &ex){
