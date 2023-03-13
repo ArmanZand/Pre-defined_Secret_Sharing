@@ -7,12 +7,11 @@
 #include <Ws2tcpip.h>
 #include <algorithm>
 
-static const volatile int m_bufferSize = 10;
+#include "parameters.h"
+
 char * m_buffer = new char [m_bufferSize];
 char * message;
-bool keepTrying = true;
-int waitRetry = 1000;
-const int prefixSize = sizeof(int);
+
 using namespace std;
 bool socketHandle::isConnected(){
     fd_set fdCheck;
@@ -32,11 +31,6 @@ void socketHandle::send(string message){
             socketEvents::getInstance().onDisconnected(this);
             return;
         }
-
-        //const char* data = message.c_str();
-        //int dataLen = strlen(data);
-        //memcpy(m_buffer, data, dataLen);
-
         const char * data = message.c_str();
 
         int dataSize = message.size();
@@ -64,11 +58,9 @@ void socketHandle::send(string message){
                 if(bytesSent == SOCKET_ERROR){
                     int err = WSAGetLastError();
                     throw runtime_error("Error during the sending of multiple packets.");
-
                 }
                 remainingSize -= bytesSent;
                 totalSent += bytesSent;
-
             }
         }
     }
@@ -132,8 +124,6 @@ void socketHandle::receive(){
                         remainingSize -= bytesReceived;
                         totalReceived += bytesReceived;
                     }
-                    //m_buffer[bytesReceived] = '\0';
-                    //string msg(m_buffer, bytesReceived);
                     string result(message, dataSize);
                     delete[] message;
                     socketEvents::getInstance().onReceive(this, result);
