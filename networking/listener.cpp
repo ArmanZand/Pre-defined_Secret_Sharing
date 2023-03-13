@@ -9,7 +9,18 @@
 #include <iostream>
 #include <thread>
 
+void listener::connectionReady(socketHandle handle){
+    handle.ip = std::string(inet_ntoa(handle.handleAddr.sin_addr)) + ":" + std::to_string(handle.handleAddr.sin_port);
+    socketEvents::getInstance().onConnected(&handle);
 
+    FD_ZERO(&handle.descriptor);
+    FD_SET(handle.mSocket, &handle.descriptor);
+
+    if(FD_ISSET(handle.mSocket, &handle.descriptor)){
+        socketEvents::getInstance().onReady(&handle, false);
+        handle.receive();
+    }
+}
 
 void listener::listenInstance(string localAddress, string localPort){
     SOCKET listenSocket;
@@ -55,17 +66,8 @@ void listener::listenInstance(string localAddress, string localPort){
             if (socketHandle.mSocket == INVALID_SOCKET) {
                 throw runtime_error("Error on socket accept.");
             }
-
-            socketHandle.ip = std::string(inet_ntoa(socketHandle.handleAddr.sin_addr)) + ":" + std::to_string(socketHandle.handleAddr.sin_port);
-            socketEvents::getInstance().onConnected(&socketHandle);
-
-            FD_ZERO(&socketHandle.descriptor);
-            FD_SET(socketHandle.mSocket, &socketHandle.descriptor);
-
-            if(FD_ISSET(socketHandle.mSocket, &socketHandle.descriptor)){
-                thread receiveThread(&socketHandle::receive, socketHandle);
-                receiveThread.join();
-            }
+            thread readyThread([&socketHandle, this]() {this->connectionReady(socketHandle);});
+            readyThread.join();
         }
     }
     catch(const exception &ex){

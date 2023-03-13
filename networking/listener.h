@@ -18,7 +18,7 @@ public:
     socketEvents events;
 private:
     void listenInstance(string localAddress, string localPort);
-
+    void connectionReady(socketHandle handle);
 };
 
 
