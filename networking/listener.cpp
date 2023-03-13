@@ -10,7 +10,7 @@
 #include <thread>
 
 void listener::connectionReady(socketHandle handle){
-    handle.ip = std::string(inet_ntoa(handle.handleAddr.sin_addr)) + ":" + std::to_string(handle.handleAddr.sin_port);
+    handle.ip = std::string(inet_ntoa(handle.handleAddr.sin_addr)) + ":" + std::to_string(ntohs(handle.handleAddr.sin_port));
     socketEvents::getInstance().onConnected(&handle);
 
     FD_ZERO(&handle.descriptor);

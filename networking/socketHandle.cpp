@@ -102,8 +102,6 @@ void socketHandle::receive(){
                     socketEvents::getInstance().onDisconnected(this);
                     break;
                 } else {
-                    delete[] message;
-
                     ::uint32_t networkDataSize;
                     memcpy(&networkDataSize, m_buffer, prefixSize);
                     int dataSize = ntohl(networkDataSize);
@@ -118,7 +116,7 @@ void socketHandle::receive(){
                         if(bytesReceived == SOCKET_ERROR){
                             int wsa_error = WSAGetLastError();
                             if(wsa_error == WSAEWOULDBLOCK){
-                                Sleep(10);
+                                Sleep(5);
                                 continue;
                             }
                             else {
@@ -191,10 +189,8 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
                 else if(iResult == 0){
                     throw runtime_error("Error connection attempt took too long.");
                 }
-
             }
             else if (error == WSAECONNREFUSED){
-
                 //WSAECONNREFUSED if peer is not listening
                 //try to connect again after some time
             }
@@ -213,7 +209,7 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
 
         int handleAddrLen = sizeof(handleAddr);
         getpeername(mSocket, (sockaddr*)&handleAddr, &handleAddrLen);
-        ip = string(inet_ntoa(handleAddr.sin_addr)) + ":" + std::to_string(handleAddr.sin_port);
+        ip = string(inet_ntoa(handleAddr.sin_addr)) + ":" + to_string(ntohs(handleAddr.sin_port));
         socketEvents::getInstance().onConnected(this);
 
         if(FD_ISSET(mSocket, &descriptor)){
@@ -222,24 +218,22 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
         }
     }
     catch(const exception &ex){
-        closesocket(mSocket);
-        WSACleanup();
         cerr << "Exception: " << ex.what() << endl;
         //cerr << "WSACode: " << WSAGetLastError() << endl;
-
     }
+    closesocket(mSocket);
+    memset(&handleAddr, 0, sizeof(handleAddr));
+    delete[] m_buffer;
     if(keepTrying){
-        closesocket(mSocket);
-        WSACleanup();
-        delete[] m_buffer;
-        m_buffer = nullptr;
         m_buffer = new char[m_bufferSize];
         Sleep(waitRetry);
         cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", retrying..." << endl;
         connectInstance(remoteAddress, remotePort);
     } else {
+        m_buffer = nullptr;
         cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", terminating connection attempt." << endl;
     }
+    WSACleanup();
 }
 
 void socketHandle::connect(string remoteAddress, string remotePort){
