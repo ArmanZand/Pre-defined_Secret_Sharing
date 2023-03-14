@@ -40,7 +40,9 @@ int main(int argc, char *argv[]) {
         }
     }
     try{
+        if(!empty(configPath)){
         parameters::loadConfig(configPath);
+        }
         socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
         socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});
         socketEvents::getInstance().setOnReady([](socketHandle * handle, bool initiator) { OnReady(*handle, initiator);});
