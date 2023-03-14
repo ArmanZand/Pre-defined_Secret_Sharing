@@ -4,3 +4,4 @@
 /protoc/NetworkMessage.pb.cc
 /protoc/NetworkMessage.pb.h
 /protobuf/
+/cmake-build-debug-visual-studio/

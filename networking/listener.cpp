@@ -9,8 +9,11 @@
 #include <iostream>
 #include <thread>
 
+using namespace std;
 void listener::connectionReady(socketHandle handle){
-    handle.ip = std::string(inet_ntoa(handle.handleAddr.sin_addr)) + ":" + std::to_string(ntohs(handle.handleAddr.sin_port));
+    char ipStr[INET_ADDRSTRLEN];
+    inet_ntop(AF_INET, &(handle.handleAddr.sin_addr), ipStr, INET_ADDRSTRLEN);
+    handle.ip = string(ipStr) + ":" + to_string(ntohs(handle.handleAddr.sin_port));
     socketEvents::getInstance().onConnected(&handle);
 
     FD_ZERO(&handle.descriptor);
@@ -46,7 +49,7 @@ void listener::listenInstance(string localAddress, string localPort){
             throw runtime_error("Error getting address info.");
         }
 
-        result = bind(listenSocket, pAddrinfo->ai_addr, (int)pAddrinfo-> ai_addrlen);
+        result = ::bind(listenSocket, pAddrinfo->ai_addr, (int)pAddrinfo-> ai_addrlen);
         if(result == SOCKET_ERROR){
             freeaddrinfo(pAddrinfo);
             throw runtime_error("Error binding socket.");

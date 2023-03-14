@@ -20,117 +20,117 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
-PROTOBUF_CONSTEXPR ProtobufMessage::ProtobufMessage(
+PROTOBUF_CONSTEXPR protobufMessage::protobufMessage(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.command_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
   , /*decltype(_impl_._oneof_case_)*/{}} {}
-struct ProtobufMessageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ProtobufMessageDefaultTypeInternal()
+struct protobufMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR protobufMessageDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ProtobufMessageDefaultTypeInternal() {}
+  ~protobufMessageDefaultTypeInternal() {}
   union {
-    ProtobufMessage _instance;
+    protobufMessage _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProtobufMessageDefaultTypeInternal _ProtobufMessage_default_instance_;
-PROTOBUF_CONSTEXPR NodeInfo::NodeInfo(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 protobufMessageDefaultTypeInternal _protobufMessage_default_instance_;
+PROTOBUF_CONSTEXPR nodeInfo::nodeInfo(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.id_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct NodeInfoDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NodeInfoDefaultTypeInternal()
+struct nodeInfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR nodeInfoDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~NodeInfoDefaultTypeInternal() {}
+  ~nodeInfoDefaultTypeInternal() {}
   union {
-    NodeInfo _instance;
+    nodeInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NodeInfoDefaultTypeInternal _NodeInfo_default_instance_;
-PROTOBUF_CONSTEXPR NodeInfoReply::NodeInfoReply(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodeInfoDefaultTypeInternal _nodeInfo_default_instance_;
+PROTOBUF_CONSTEXPR nodeInfoReply::nodeInfoReply(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.id_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct NodeInfoReplyDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NodeInfoReplyDefaultTypeInternal()
+struct nodeInfoReplyDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR nodeInfoReplyDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~NodeInfoReplyDefaultTypeInternal() {}
+  ~nodeInfoReplyDefaultTypeInternal() {}
   union {
-    NodeInfoReply _instance;
+    nodeInfoReply _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NodeInfoReplyDefaultTypeInternal _NodeInfoReply_default_instance_;
-PROTOBUF_CONSTEXPR ExampleMessage::ExampleMessage(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodeInfoReplyDefaultTypeInternal _nodeInfoReply_default_instance_;
+PROTOBUF_CONSTEXPR exampleMessage::exampleMessage(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct ExampleMessageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ExampleMessageDefaultTypeInternal()
+struct exampleMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR exampleMessageDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ExampleMessageDefaultTypeInternal() {}
+  ~exampleMessageDefaultTypeInternal() {}
   union {
-    ExampleMessage _instance;
+    exampleMessage _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExampleMessageDefaultTypeInternal _ExampleMessage_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 exampleMessageDefaultTypeInternal _exampleMessage_default_instance_;
 static ::_pb::Metadata file_level_metadata_networkMessage_2eproto[4];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_networkMessage_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_networkMessage_2eproto = nullptr;
 
 const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ProtobufMessage, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::protobufMessage, _internal_metadata_),
   ~0u,  // no _extensions_
-  PROTOBUF_FIELD_OFFSET(::ProtobufMessage, _impl_._oneof_case_[0]),
+  PROTOBUF_FIELD_OFFSET(::protobufMessage, _impl_._oneof_case_[0]),
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
-  PROTOBUF_FIELD_OFFSET(::ProtobufMessage, _impl_.command_),
+  PROTOBUF_FIELD_OFFSET(::protobufMessage, _impl_.command_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::NodeInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::nodeInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::NodeInfo, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::nodeInfo, _impl_.id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::NodeInfoReply, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::nodeInfoReply, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::NodeInfoReply, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::nodeInfoReply, _impl_.id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ExampleMessage, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::exampleMessage, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ExampleMessage, _impl_.message_),
+  PROTOBUF_FIELD_OFFSET(::exampleMessage, _impl_.message_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::ProtobufMessage)},
-  { 10, -1, -1, sizeof(::NodeInfo)},
-  { 17, -1, -1, sizeof(::NodeInfoReply)},
-  { 24, -1, -1, sizeof(::ExampleMessage)},
+  { 0, -1, -1, sizeof(::protobufMessage)},
+  { 10, -1, -1, sizeof(::nodeInfo)},
+  { 17, -1, -1, sizeof(::nodeInfoReply)},
+  { 24, -1, -1, sizeof(::exampleMessage)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-  &::_ProtobufMessage_default_instance_._instance,
-  &::_NodeInfo_default_instance_._instance,
-  &::_NodeInfoReply_default_instance_._instance,
-  &::_ExampleMessage_default_instance_._instance,
+  &::_protobufMessage_default_instance_._instance,
+  &::_nodeInfo_default_instance_._instance,
+  &::_nodeInfoReply_default_instance_._instance,
+  &::_exampleMessage_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_networkMessage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024networkMessage.proto\"\217\001\n\017ProtobufMessa"
-  "ge\022)\n\016ExampleMessage\030d \001(\0132\017.ExampleMess"
-  "ageH\000\022\035\n\010NodeInfo\030\001 \001(\0132\t.NodeInfoH\000\022\'\n\r"
-  "NodeInfoReply\030\002 \001(\0132\016.NodeInfoReplyH\000B\t\n"
-  "\007command\"\026\n\010NodeInfo\022\n\n\002Id\030\001 \001(\005\"\033\n\rNode"
-  "InfoReply\022\n\n\002Id\030\001 \001(\005\"!\n\016ExampleMessage\022"
+  "\n\024networkMessage.proto\"\217\001\n\017protobufMessa"
+  "ge\022)\n\016exampleMessage\030d \001(\0132\017.exampleMess"
+  "ageH\000\022\035\n\010nodeInfo\030\001 \001(\0132\t.nodeInfoH\000\022\'\n\r"
+  "nodeInfoReply\030\002 \001(\0132\016.nodeInfoReplyH\000B\t\n"
+  "\007command\"\026\n\010nodeInfo\022\n\n\002Id\030\001 \001(\005\"\033\n\rnode"
+  "InfoReply\022\n\n\002Id\030\001 \001(\005\"!\n\016exampleMessage\022"
   "\017\n\007message\030\001 \001(\tB\026\252\002\023Networking.Messages"
   "b\006proto3"
   ;
@@ -152,26 +152,26 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 
 // ===================================================================
 
-class ProtobufMessage::_Internal {
+class protobufMessage::_Internal {
  public:
-  static const ::ExampleMessage& examplemessage(const ProtobufMessage* msg);
-  static const ::NodeInfo& nodeinfo(const ProtobufMessage* msg);
-  static const ::NodeInfoReply& nodeinforeply(const ProtobufMessage* msg);
+  static const ::exampleMessage& examplemessage(const protobufMessage* msg);
+  static const ::nodeInfo& nodeinfo(const protobufMessage* msg);
+  static const ::nodeInfoReply& nodeinforeply(const protobufMessage* msg);
 };
 
-const ::ExampleMessage&
-ProtobufMessage::_Internal::examplemessage(const ProtobufMessage* msg) {
+const ::exampleMessage&
+protobufMessage::_Internal::examplemessage(const protobufMessage* msg) {
   return *msg->_impl_.command_.examplemessage_;
 }
-const ::NodeInfo&
-ProtobufMessage::_Internal::nodeinfo(const ProtobufMessage* msg) {
+const ::nodeInfo&
+protobufMessage::_Internal::nodeinfo(const protobufMessage* msg) {
   return *msg->_impl_.command_.nodeinfo_;
 }
-const ::NodeInfoReply&
-ProtobufMessage::_Internal::nodeinforeply(const ProtobufMessage* msg) {
+const ::nodeInfoReply&
+protobufMessage::_Internal::nodeinforeply(const protobufMessage* msg) {
   return *msg->_impl_.command_.nodeinforeply_;
 }
-void ProtobufMessage::set_allocated_examplemessage(::ExampleMessage* examplemessage) {
+void protobufMessage::set_allocated_examplemessage(::exampleMessage* examplemessage) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_command();
   if (examplemessage) {
@@ -184,9 +184,9 @@ void ProtobufMessage::set_allocated_examplemessage(::ExampleMessage* examplemess
     set_has_examplemessage();
     _impl_.command_.examplemessage_ = examplemessage;
   }
-  // @@protoc_insertion_point(field_set_allocated:ProtobufMessage.ExampleMessage)
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.exampleMessage)
 }
-void ProtobufMessage::set_allocated_nodeinfo(::NodeInfo* nodeinfo) {
+void protobufMessage::set_allocated_nodeinfo(::nodeInfo* nodeinfo) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_command();
   if (nodeinfo) {
@@ -199,9 +199,9 @@ void ProtobufMessage::set_allocated_nodeinfo(::NodeInfo* nodeinfo) {
     set_has_nodeinfo();
     _impl_.command_.nodeinfo_ = nodeinfo;
   }
-  // @@protoc_insertion_point(field_set_allocated:ProtobufMessage.NodeInfo)
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.nodeInfo)
 }
-void ProtobufMessage::set_allocated_nodeinforeply(::NodeInfoReply* nodeinforeply) {
+void protobufMessage::set_allocated_nodeinforeply(::nodeInfoReply* nodeinforeply) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_command();
   if (nodeinforeply) {
@@ -214,17 +214,17 @@ void ProtobufMessage::set_allocated_nodeinforeply(::NodeInfoReply* nodeinforeply
     set_has_nodeinforeply();
     _impl_.command_.nodeinforeply_ = nodeinforeply;
   }
-  // @@protoc_insertion_point(field_set_allocated:ProtobufMessage.NodeInfoReply)
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.nodeInfoReply)
 }
-ProtobufMessage::ProtobufMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+protobufMessage::protobufMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:ProtobufMessage)
+  // @@protoc_insertion_point(arena_constructor:protobufMessage)
 }
-ProtobufMessage::ProtobufMessage(const ProtobufMessage& from)
+protobufMessage::protobufMessage(const protobufMessage& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ProtobufMessage* const _this = this; (void)_this;
+  protobufMessage* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.command_){}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -234,17 +234,17 @@ ProtobufMessage::ProtobufMessage(const ProtobufMessage& from)
   clear_has_command();
   switch (from.command_case()) {
     case kExampleMessage: {
-      _this->_internal_mutable_examplemessage()->::ExampleMessage::MergeFrom(
+      _this->_internal_mutable_examplemessage()->::exampleMessage::MergeFrom(
           from._internal_examplemessage());
       break;
     }
     case kNodeInfo: {
-      _this->_internal_mutable_nodeinfo()->::NodeInfo::MergeFrom(
+      _this->_internal_mutable_nodeinfo()->::nodeInfo::MergeFrom(
           from._internal_nodeinfo());
       break;
     }
     case kNodeInfoReply: {
-      _this->_internal_mutable_nodeinforeply()->::NodeInfoReply::MergeFrom(
+      _this->_internal_mutable_nodeinforeply()->::nodeInfoReply::MergeFrom(
           from._internal_nodeinforeply());
       break;
     }
@@ -252,10 +252,10 @@ ProtobufMessage::ProtobufMessage(const ProtobufMessage& from)
       break;
     }
   }
-  // @@protoc_insertion_point(copy_constructor:ProtobufMessage)
+  // @@protoc_insertion_point(copy_constructor:protobufMessage)
 }
 
-inline void ProtobufMessage::SharedCtor(
+inline void protobufMessage::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -267,8 +267,8 @@ inline void ProtobufMessage::SharedCtor(
   clear_has_command();
 }
 
-ProtobufMessage::~ProtobufMessage() {
-  // @@protoc_insertion_point(destructor:ProtobufMessage)
+protobufMessage::~protobufMessage() {
+  // @@protoc_insertion_point(destructor:protobufMessage)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -276,19 +276,19 @@ ProtobufMessage::~ProtobufMessage() {
   SharedDtor();
 }
 
-inline void ProtobufMessage::SharedDtor() {
+inline void protobufMessage::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (has_command()) {
     clear_command();
   }
 }
 
-void ProtobufMessage::SetCachedSize(int size) const {
+void protobufMessage::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void ProtobufMessage::clear_command() {
-// @@protoc_insertion_point(one_of_clear_start:ProtobufMessage)
+void protobufMessage::clear_command() {
+// @@protoc_insertion_point(one_of_clear_start:protobufMessage)
   switch (command_case()) {
     case kExampleMessage: {
       if (GetArenaForAllocation() == nullptr) {
@@ -316,8 +316,8 @@ void ProtobufMessage::clear_command() {
 }
 
 
-void ProtobufMessage::Clear() {
-// @@protoc_insertion_point(message_clear_start:ProtobufMessage)
+void protobufMessage::Clear() {
+// @@protoc_insertion_point(message_clear_start:protobufMessage)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -326,13 +326,13 @@ void ProtobufMessage::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ProtobufMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* protobufMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .NodeInfo NodeInfo = 1;
+      // .nodeInfo nodeInfo = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr = ctx->ParseMessage(_internal_mutable_nodeinfo(), ptr);
@@ -340,7 +340,7 @@ const char* ProtobufMessage::_InternalParse(const char* ptr, ::_pbi::ParseContex
         } else
           goto handle_unusual;
         continue;
-      // .NodeInfoReply NodeInfoReply = 2;
+      // .nodeInfoReply nodeInfoReply = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_nodeinforeply(), ptr);
@@ -348,7 +348,7 @@ const char* ProtobufMessage::_InternalParse(const char* ptr, ::_pbi::ParseContex
         } else
           goto handle_unusual;
         continue;
-      // .ExampleMessage ExampleMessage = 100;
+      // .exampleMessage exampleMessage = 100;
       case 100:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_examplemessage(), ptr);
@@ -379,27 +379,27 @@ failure:
 #undef CHK_
 }
 
-uint8_t* ProtobufMessage::_InternalSerialize(
+uint8_t* protobufMessage::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ProtobufMessage)
+  // @@protoc_insertion_point(serialize_to_array_start:protobufMessage)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .NodeInfo NodeInfo = 1;
+  // .nodeInfo nodeInfo = 1;
   if (_internal_has_nodeinfo()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::nodeinfo(this),
         _Internal::nodeinfo(this).GetCachedSize(), target, stream);
   }
 
-  // .NodeInfoReply NodeInfoReply = 2;
+  // .nodeInfoReply nodeInfoReply = 2;
   if (_internal_has_nodeinforeply()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, _Internal::nodeinforeply(this),
         _Internal::nodeinforeply(this).GetCachedSize(), target, stream);
   }
 
-  // .ExampleMessage ExampleMessage = 100;
+  // .exampleMessage exampleMessage = 100;
   if (_internal_has_examplemessage()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(100, _Internal::examplemessage(this),
@@ -410,12 +410,12 @@ uint8_t* ProtobufMessage::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ProtobufMessage)
+  // @@protoc_insertion_point(serialize_to_array_end:protobufMessage)
   return target;
 }
 
-size_t ProtobufMessage::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ProtobufMessage)
+size_t protobufMessage::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:protobufMessage)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -423,21 +423,21 @@ size_t ProtobufMessage::ByteSizeLong() const {
   (void) cached_has_bits;
 
   switch (command_case()) {
-    // .ExampleMessage ExampleMessage = 100;
+    // .exampleMessage exampleMessage = 100;
     case kExampleMessage: {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.command_.examplemessage_);
       break;
     }
-    // .NodeInfo NodeInfo = 1;
+    // .nodeInfo nodeInfo = 1;
     case kNodeInfo: {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.command_.nodeinfo_);
       break;
     }
-    // .NodeInfoReply NodeInfoReply = 2;
+    // .nodeInfoReply nodeInfoReply = 2;
     case kNodeInfoReply: {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -451,34 +451,34 @@ size_t ProtobufMessage::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ProtobufMessage::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData protobufMessage::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ProtobufMessage::MergeImpl
+    protobufMessage::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ProtobufMessage::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*protobufMessage::GetClassData() const { return &_class_data_; }
 
 
-void ProtobufMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<ProtobufMessage*>(&to_msg);
-  auto& from = static_cast<const ProtobufMessage&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:ProtobufMessage)
+void protobufMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<protobufMessage*>(&to_msg);
+  auto& from = static_cast<const protobufMessage&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:protobufMessage)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   switch (from.command_case()) {
     case kExampleMessage: {
-      _this->_internal_mutable_examplemessage()->::ExampleMessage::MergeFrom(
+      _this->_internal_mutable_examplemessage()->::exampleMessage::MergeFrom(
           from._internal_examplemessage());
       break;
     }
     case kNodeInfo: {
-      _this->_internal_mutable_nodeinfo()->::NodeInfo::MergeFrom(
+      _this->_internal_mutable_nodeinfo()->::nodeInfo::MergeFrom(
           from._internal_nodeinfo());
       break;
     }
     case kNodeInfoReply: {
-      _this->_internal_mutable_nodeinforeply()->::NodeInfoReply::MergeFrom(
+      _this->_internal_mutable_nodeinforeply()->::nodeInfoReply::MergeFrom(
           from._internal_nodeinforeply());
       break;
     }
@@ -489,25 +489,25 @@ void ProtobufMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void ProtobufMessage::CopyFrom(const ProtobufMessage& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ProtobufMessage)
+void protobufMessage::CopyFrom(const protobufMessage& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:protobufMessage)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ProtobufMessage::IsInitialized() const {
+bool protobufMessage::IsInitialized() const {
   return true;
 }
 
-void ProtobufMessage::InternalSwap(ProtobufMessage* other) {
+void protobufMessage::InternalSwap(protobufMessage* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.command_, other->_impl_.command_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ProtobufMessage::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata protobufMessage::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
       file_level_metadata_networkMessage_2eproto[0]);
@@ -515,29 +515,29 @@ void ProtobufMessage::InternalSwap(ProtobufMessage* other) {
 
 // ===================================================================
 
-class NodeInfo::_Internal {
+class nodeInfo::_Internal {
  public:
 };
 
-NodeInfo::NodeInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+nodeInfo::nodeInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:NodeInfo)
+  // @@protoc_insertion_point(arena_constructor:nodeInfo)
 }
-NodeInfo::NodeInfo(const NodeInfo& from)
+nodeInfo::nodeInfo(const nodeInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  NodeInfo* const _this = this; (void)_this;
+  nodeInfo* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.id_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _this->_impl_.id_ = from._impl_.id_;
-  // @@protoc_insertion_point(copy_constructor:NodeInfo)
+  // @@protoc_insertion_point(copy_constructor:nodeInfo)
 }
 
-inline void NodeInfo::SharedCtor(
+inline void nodeInfo::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -547,8 +547,8 @@ inline void NodeInfo::SharedCtor(
   };
 }
 
-NodeInfo::~NodeInfo() {
-  // @@protoc_insertion_point(destructor:NodeInfo)
+nodeInfo::~nodeInfo() {
+  // @@protoc_insertion_point(destructor:nodeInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -556,16 +556,16 @@ NodeInfo::~NodeInfo() {
   SharedDtor();
 }
 
-inline void NodeInfo::SharedDtor() {
+inline void nodeInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void NodeInfo::SetCachedSize(int size) const {
+void nodeInfo::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void NodeInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:NodeInfo)
+void nodeInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:nodeInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -574,7 +574,7 @@ void NodeInfo::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* NodeInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* nodeInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -611,9 +611,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* NodeInfo::_InternalSerialize(
+uint8_t* nodeInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NodeInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:nodeInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -627,12 +627,12 @@ uint8_t* NodeInfo::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NodeInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:nodeInfo)
   return target;
 }
 
-size_t NodeInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:NodeInfo)
+size_t nodeInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:nodeInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -647,17 +647,17 @@ size_t NodeInfo::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NodeInfo::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData nodeInfo::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    NodeInfo::MergeImpl
+    nodeInfo::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NodeInfo::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*nodeInfo::GetClassData() const { return &_class_data_; }
 
 
-void NodeInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<NodeInfo*>(&to_msg);
-  auto& from = static_cast<const NodeInfo&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:NodeInfo)
+void nodeInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<nodeInfo*>(&to_msg);
+  auto& from = static_cast<const nodeInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:nodeInfo)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -668,24 +668,24 @@ void NodeInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void NodeInfo::CopyFrom(const NodeInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:NodeInfo)
+void nodeInfo::CopyFrom(const nodeInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:nodeInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool NodeInfo::IsInitialized() const {
+bool nodeInfo::IsInitialized() const {
   return true;
 }
 
-void NodeInfo::InternalSwap(NodeInfo* other) {
+void nodeInfo::InternalSwap(nodeInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.id_, other->_impl_.id_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata NodeInfo::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata nodeInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
       file_level_metadata_networkMessage_2eproto[1]);
@@ -693,29 +693,29 @@ void NodeInfo::InternalSwap(NodeInfo* other) {
 
 // ===================================================================
 
-class NodeInfoReply::_Internal {
+class nodeInfoReply::_Internal {
  public:
 };
 
-NodeInfoReply::NodeInfoReply(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+nodeInfoReply::nodeInfoReply(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:NodeInfoReply)
+  // @@protoc_insertion_point(arena_constructor:nodeInfoReply)
 }
-NodeInfoReply::NodeInfoReply(const NodeInfoReply& from)
+nodeInfoReply::nodeInfoReply(const nodeInfoReply& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  NodeInfoReply* const _this = this; (void)_this;
+  nodeInfoReply* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.id_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _this->_impl_.id_ = from._impl_.id_;
-  // @@protoc_insertion_point(copy_constructor:NodeInfoReply)
+  // @@protoc_insertion_point(copy_constructor:nodeInfoReply)
 }
 
-inline void NodeInfoReply::SharedCtor(
+inline void nodeInfoReply::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -725,8 +725,8 @@ inline void NodeInfoReply::SharedCtor(
   };
 }
 
-NodeInfoReply::~NodeInfoReply() {
-  // @@protoc_insertion_point(destructor:NodeInfoReply)
+nodeInfoReply::~nodeInfoReply() {
+  // @@protoc_insertion_point(destructor:nodeInfoReply)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -734,16 +734,16 @@ NodeInfoReply::~NodeInfoReply() {
   SharedDtor();
 }
 
-inline void NodeInfoReply::SharedDtor() {
+inline void nodeInfoReply::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void NodeInfoReply::SetCachedSize(int size) const {
+void nodeInfoReply::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void NodeInfoReply::Clear() {
-// @@protoc_insertion_point(message_clear_start:NodeInfoReply)
+void nodeInfoReply::Clear() {
+// @@protoc_insertion_point(message_clear_start:nodeInfoReply)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -752,7 +752,7 @@ void NodeInfoReply::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* NodeInfoReply::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* nodeInfoReply::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -789,9 +789,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* NodeInfoReply::_InternalSerialize(
+uint8_t* nodeInfoReply::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NodeInfoReply)
+  // @@protoc_insertion_point(serialize_to_array_start:nodeInfoReply)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -805,12 +805,12 @@ uint8_t* NodeInfoReply::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NodeInfoReply)
+  // @@protoc_insertion_point(serialize_to_array_end:nodeInfoReply)
   return target;
 }
 
-size_t NodeInfoReply::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:NodeInfoReply)
+size_t nodeInfoReply::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:nodeInfoReply)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -825,17 +825,17 @@ size_t NodeInfoReply::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NodeInfoReply::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData nodeInfoReply::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    NodeInfoReply::MergeImpl
+    nodeInfoReply::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NodeInfoReply::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*nodeInfoReply::GetClassData() const { return &_class_data_; }
 
 
-void NodeInfoReply::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<NodeInfoReply*>(&to_msg);
-  auto& from = static_cast<const NodeInfoReply&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:NodeInfoReply)
+void nodeInfoReply::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<nodeInfoReply*>(&to_msg);
+  auto& from = static_cast<const nodeInfoReply&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:nodeInfoReply)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -846,24 +846,24 @@ void NodeInfoReply::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void NodeInfoReply::CopyFrom(const NodeInfoReply& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:NodeInfoReply)
+void nodeInfoReply::CopyFrom(const nodeInfoReply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:nodeInfoReply)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool NodeInfoReply::IsInitialized() const {
+bool nodeInfoReply::IsInitialized() const {
   return true;
 }
 
-void NodeInfoReply::InternalSwap(NodeInfoReply* other) {
+void nodeInfoReply::InternalSwap(nodeInfoReply* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.id_, other->_impl_.id_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata NodeInfoReply::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata nodeInfoReply::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
       file_level_metadata_networkMessage_2eproto[2]);
@@ -871,19 +871,19 @@ void NodeInfoReply::InternalSwap(NodeInfoReply* other) {
 
 // ===================================================================
 
-class ExampleMessage::_Internal {
+class exampleMessage::_Internal {
  public:
 };
 
-ExampleMessage::ExampleMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+exampleMessage::exampleMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:ExampleMessage)
+  // @@protoc_insertion_point(arena_constructor:exampleMessage)
 }
-ExampleMessage::ExampleMessage(const ExampleMessage& from)
+exampleMessage::exampleMessage(const exampleMessage& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ExampleMessage* const _this = this; (void)_this;
+  exampleMessage* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.message_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -897,10 +897,10 @@ ExampleMessage::ExampleMessage(const ExampleMessage& from)
     _this->_impl_.message_.Set(from._internal_message(), 
       _this->GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:ExampleMessage)
+  // @@protoc_insertion_point(copy_constructor:exampleMessage)
 }
 
-inline void ExampleMessage::SharedCtor(
+inline void exampleMessage::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -914,8 +914,8 @@ inline void ExampleMessage::SharedCtor(
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-ExampleMessage::~ExampleMessage() {
-  // @@protoc_insertion_point(destructor:ExampleMessage)
+exampleMessage::~exampleMessage() {
+  // @@protoc_insertion_point(destructor:exampleMessage)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -923,17 +923,17 @@ ExampleMessage::~ExampleMessage() {
   SharedDtor();
 }
 
-inline void ExampleMessage::SharedDtor() {
+inline void exampleMessage::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.message_.Destroy();
 }
 
-void ExampleMessage::SetCachedSize(int size) const {
+void exampleMessage::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void ExampleMessage::Clear() {
-// @@protoc_insertion_point(message_clear_start:ExampleMessage)
+void exampleMessage::Clear() {
+// @@protoc_insertion_point(message_clear_start:exampleMessage)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -942,7 +942,7 @@ void ExampleMessage::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ExampleMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* exampleMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -954,7 +954,7 @@ const char* ExampleMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext
           auto str = _internal_mutable_message();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "ExampleMessage.message"));
+          CHK_(::_pbi::VerifyUTF8(str, "exampleMessage.message"));
         } else
           goto handle_unusual;
         continue;
@@ -981,9 +981,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* ExampleMessage::_InternalSerialize(
+uint8_t* exampleMessage::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ExampleMessage)
+  // @@protoc_insertion_point(serialize_to_array_start:exampleMessage)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -992,7 +992,7 @@ uint8_t* ExampleMessage::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ExampleMessage.message");
+      "exampleMessage.message");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_message(), target);
   }
@@ -1001,12 +1001,12 @@ uint8_t* ExampleMessage::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ExampleMessage)
+  // @@protoc_insertion_point(serialize_to_array_end:exampleMessage)
   return target;
 }
 
-size_t ExampleMessage::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ExampleMessage)
+size_t exampleMessage::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:exampleMessage)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1023,17 +1023,17 @@ size_t ExampleMessage::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ExampleMessage::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData exampleMessage::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ExampleMessage::MergeImpl
+    exampleMessage::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExampleMessage::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*exampleMessage::GetClassData() const { return &_class_data_; }
 
 
-void ExampleMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<ExampleMessage*>(&to_msg);
-  auto& from = static_cast<const ExampleMessage&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:ExampleMessage)
+void exampleMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<exampleMessage*>(&to_msg);
+  auto& from = static_cast<const exampleMessage&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:exampleMessage)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1044,18 +1044,18 @@ void ExampleMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void ExampleMessage::CopyFrom(const ExampleMessage& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ExampleMessage)
+void exampleMessage::CopyFrom(const exampleMessage& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:exampleMessage)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ExampleMessage::IsInitialized() const {
+bool exampleMessage::IsInitialized() const {
   return true;
 }
 
-void ExampleMessage::InternalSwap(ExampleMessage* other) {
+void exampleMessage::InternalSwap(exampleMessage* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -1066,7 +1066,7 @@ void ExampleMessage::InternalSwap(ExampleMessage* other) {
   );
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ExampleMessage::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata exampleMessage::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
       file_level_metadata_networkMessage_2eproto[3]);
@@ -1074,21 +1074,21 @@ void ExampleMessage::InternalSwap(ExampleMessage* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::ProtobufMessage*
-Arena::CreateMaybeMessage< ::ProtobufMessage >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ProtobufMessage >(arena);
+template<> PROTOBUF_NOINLINE ::protobufMessage*
+Arena::CreateMaybeMessage< ::protobufMessage >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::protobufMessage >(arena);
 }
-template<> PROTOBUF_NOINLINE ::NodeInfo*
-Arena::CreateMaybeMessage< ::NodeInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::NodeInfo >(arena);
+template<> PROTOBUF_NOINLINE ::nodeInfo*
+Arena::CreateMaybeMessage< ::nodeInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::nodeInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::NodeInfoReply*
-Arena::CreateMaybeMessage< ::NodeInfoReply >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::NodeInfoReply >(arena);
+template<> PROTOBUF_NOINLINE ::nodeInfoReply*
+Arena::CreateMaybeMessage< ::nodeInfoReply >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::nodeInfoReply >(arena);
 }
-template<> PROTOBUF_NOINLINE ::ExampleMessage*
-Arena::CreateMaybeMessage< ::ExampleMessage >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ExampleMessage >(arena);
+template<> PROTOBUF_NOINLINE ::exampleMessage*
+Arena::CreateMaybeMessage< ::exampleMessage >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::exampleMessage >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

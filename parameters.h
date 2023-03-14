@@ -6,7 +6,7 @@
 #define CLEAN_SOCKETS_PARAMETERS_H
 
 
-static const volatile int m_bufferSize = 8192;
+constexpr int m_bufferSize = 8192;
 bool keepTrying = true;
 int waitRetry = 1000;
 const int prefixSize = sizeof(int);

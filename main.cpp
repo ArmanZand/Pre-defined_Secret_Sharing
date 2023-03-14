@@ -3,6 +3,7 @@
 #include "networking/socketEvents.h"
 #include "networking/listener.h"
 #include "networking/socketHandle.h"
+#include "networking/networkMessage.pb.h"
 using namespace std;
 
 
@@ -47,7 +48,7 @@ int main(int argc, char *argv[]) {
             i++;
         }
     }
-
+    protobufMessage pm;
     try{
         socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
         socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});

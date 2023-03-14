@@ -7,7 +7,7 @@
 #include <Ws2tcpip.h>
 #include <algorithm>
 
-#include "parameters.h"
+#include "../parameters.h"
 
 char * m_buffer = new char [m_bufferSize];
 char * message;
@@ -209,7 +209,10 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
 
         int handleAddrLen = sizeof(handleAddr);
         getpeername(mSocket, (sockaddr*)&handleAddr, &handleAddrLen);
-        ip = string(inet_ntoa(handleAddr.sin_addr)) + ":" + to_string(ntohs(handleAddr.sin_port));
+        char ipStr[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &(handleAddr.sin_addr), ipStr, INET_ADDRSTRLEN);
+        ip = string(ipStr) + ":" + to_string(ntohs(handleAddr.sin_port));
+
         socketEvents::getInstance().onConnected(this);
 
         if(FD_ISSET(mSocket, &descriptor)){
