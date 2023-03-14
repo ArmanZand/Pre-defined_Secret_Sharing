@@ -32,28 +32,6 @@ void OnReceive(socketHandle & socketHandle, protobufMessage & message){
 
 int main(int argc, char *argv[]) {
     vector<string> args(argv, argv + argc);
-/*
-    string ip;
-    string port;
-    bool listen = false;
-    bool connect = false;
-    for (int i = 0; i < argc; i++) {
-        if (args[i] == "-c") {
-            connect = true;
-        }
-        else if (args[i] == "-l") {
-            listen = true;
-        }
-        else if (args[i] == "-i" && i + 1 < argc) {
-            ip = args[i + 1];
-            i++;
-        }
-        else if (args[i] == "-p" && i + 1 < argc) {
-            port = args[i + 1];
-            i++;
-        }
-    }
-    */
     string configPath;
     for(int i = 0; i < argc; i++){
         if (args[i] == "-c" && i + 1 < argc) {
