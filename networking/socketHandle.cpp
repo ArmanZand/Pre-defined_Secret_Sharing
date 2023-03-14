@@ -31,7 +31,7 @@ void socketHandle::send(protobufMessage & message){
         //char * data = new char[dataSize];
         char * data = new char[dataSize];
         message.SerializeToArray(data, dataSize);
-        int prefixSize = get<int>(config["PREFIX_SIZE"]);
+        int prefixSize = p_constPrefixSize;
         int totalSize = dataSize + prefixSize;
         char buffer[p_constBufferSize];
         memset(buffer, 0, p_constBufferSize);
@@ -104,7 +104,7 @@ void socketHandle::receive(){
                     break;
                 } else {
                     ::uint32_t networkDataSize;
-                    int prefixSize = get<int>(config["PREFIX_SIZE"]);
+                    int prefixSize = p_constPrefixSize;
                     memcpy(&networkDataSize, m_buffer, prefixSize);
                     int dataSize = ntohl(networkDataSize);
                     char * message = new char[dataSize];

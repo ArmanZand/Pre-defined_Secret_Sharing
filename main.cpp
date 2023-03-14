@@ -1,5 +1,7 @@
 #include <iostream>
+#include <sstream>
 #include <vector>
+#include <string>
 #include "networking/socketEvents.h"
 #include "networking/listener.h"
 #include "networking/socketHandle.h"
@@ -30,7 +32,7 @@ void OnReceive(socketHandle & socketHandle, protobufMessage & message){
 
 int main(int argc, char *argv[]) {
     vector<string> args(argv, argv + argc);
-
+/*
     string ip;
     string port;
     bool listen = false;
@@ -51,18 +53,38 @@ int main(int argc, char *argv[]) {
             i++;
         }
     }
+    */
+    string configPath;
+    for(int i = 0; i < argc; i++){
+        if (args[i] == "-c" && i + 1 < argc) {
+            configPath = args[i+1];
+            i++;
+        }
+    }
     try{
+        parameters::loadConfig(configPath);
         socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
         socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});
         socketEvents::getInstance().setOnReady([](socketHandle * handle, bool initiator) { OnReady(*handle, initiator);});
         socketEvents::getInstance().setOnReceive([](socketHandle * handle, protobufMessage * message) { OnReceive(*handle, *message);});
-        if(listen){
+        if(parameters::keyExists("LISTENER_START")){
+            string address = get<string>(config["LISTENER_START"]);
+            int delimiter = address.find(":");
+            string ip = address.substr(0, delimiter);
+            string port = address.substr(delimiter+1);
             listener listener;
             listener.start(ip, port);
         }
-        if(connect){
-            socketHandle handle;
-            handle.connect(ip, port);
+        if(parameters::keyExists("AUTO_CONNECT")){
+            stringstream ss(get<string>(config["AUTO_CONNECT"]));
+            string address;
+            while(getline(ss, address, ',')){
+                int delimiter = address.find(":");
+                string ip = address.substr(0, delimiter);
+                string port = address.substr(delimiter+1);
+                socketHandle handle;
+                handle.connect(ip, port);
+            }
         }
     }
     catch(const exception &ex){
