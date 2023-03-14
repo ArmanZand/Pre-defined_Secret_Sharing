@@ -7,12 +7,6 @@
 #include <Ws2tcpip.h>
 #include <algorithm>
 
-
-#include "../parameters.h"
-
-char * m_buffer = new char [m_bufferSize];
-char * message;
-
 using namespace std;
 bool socketHandle::isConnected(){
     fd_set fdCheck;
@@ -34,27 +28,28 @@ void socketHandle::send(protobufMessage & message){
             return;
         }
         int dataSize = message.ByteSizeLong();
+        //char * data = new char[dataSize];
         char * data = new char[dataSize];
         message.SerializeToArray(data, dataSize);
-
-        int totalSize = dataSize +prefixSize;
-        char buffer[m_bufferSize];
-        memset(buffer, 0, m_bufferSize);
+        int prefixSize = get<int>(config["PREFIX_SIZE"]);
+        int totalSize = dataSize + prefixSize;
+        char buffer[p_constBufferSize];
+        memset(buffer, 0, p_constBufferSize);
 
         ::uint32_t networkDataSize = htonl(dataSize);
         memcpy(buffer, &networkDataSize, prefixSize);
 
-        int minToSend = min(dataSize, (int)m_bufferSize - prefixSize);
+        int minToSend = min(dataSize, (int)p_constBufferSize - prefixSize);
         memcpy(buffer + prefixSize, data, minToSend);
 
-        int bytesSent = ::send(mSocket, buffer, min((int)m_bufferSize, dataSize + prefixSize), 0);
+        int bytesSent = ::send(mSocket, buffer, min((int)p_constBufferSize, dataSize + prefixSize), 0);
         if(bytesSent == SOCKET_ERROR){
             throw runtime_error("Error sending data.");
         } else {
             int remainingSize = totalSize - bytesSent;
             int totalSent = bytesSent - prefixSize;
             while(remainingSize > 0){
-                int bytesToSend = min(remainingSize, (int)m_bufferSize);
+                int bytesToSend = min(remainingSize, (int)p_constBufferSize);
 
                 memcpy(buffer, data +  totalSent, bytesToSend);
                 bytesSent = ::send(mSocket,  data + totalSent, bytesToSend, 0);
@@ -75,7 +70,9 @@ void socketHandle::send(protobufMessage & message){
 
 void socketHandle::receive(){
     while(true) {
+
         try {
+
             if(!isConnected()){
                 socketEvents::getInstance().onDisconnected(this);
                 return;
@@ -85,7 +82,8 @@ void socketHandle::receive(){
                 throw runtime_error("Error waiting for data.");
             }
             else {
-                int bytesReceived = recv(mSocket, m_buffer, m_bufferSize, 0);
+                int bytesReceived = recv(mSocket, m_buffer, p_constBufferSize, 0);
+
                 if(bytesReceived == SOCKET_ERROR){
                     int error = WSAGetLastError() ;
                     if(error == WSAEWOULDBLOCK){
@@ -106,16 +104,17 @@ void socketHandle::receive(){
                     break;
                 } else {
                     ::uint32_t networkDataSize;
+                    int prefixSize = get<int>(config["PREFIX_SIZE"]);
                     memcpy(&networkDataSize, m_buffer, prefixSize);
                     int dataSize = ntohl(networkDataSize);
-                    message = new char[dataSize];
+                    char * message = new char[dataSize];
 
                     memcpy(message, m_buffer + prefixSize, min(bytesReceived - prefixSize, dataSize));
 
                     int remainingSize = dataSize - bytesReceived + prefixSize;
                     int totalReceived = bytesReceived - prefixSize;
                     while(remainingSize > 0){
-                        int bytesReceived = ::recv(mSocket, m_buffer, min((int)m_bufferSize, remainingSize),0);
+                        int bytesReceived = ::recv(mSocket, m_buffer, min((int)p_constBufferSize, remainingSize), 0);
                         if(bytesReceived == SOCKET_ERROR){
                             int wsa_error = WSAGetLastError();
                             if(wsa_error == WSAEWOULDBLOCK){
@@ -123,6 +122,7 @@ void socketHandle::receive(){
                                 continue;
                             }
                             else {
+                                delete[] message;
                                 throw runtime_error("Error occurred during receiving of multiple packets.");
                             }
                         }
@@ -141,7 +141,6 @@ void socketHandle::receive(){
         catch (exception &ex){
             cerr << ex.what() << endl;
             //cerr << "WSACode: " << WSAGetLastError() << endl;
-            delete[] message;
             socketEvents::getInstance().onDisconnected(this);
             closesocket(mSocket);
             WSACleanup();
@@ -232,9 +231,9 @@ void socketHandle::connectInstance(string remoteAddress, string remotePort) {
     closesocket(mSocket);
     memset(&handleAddr, 0, sizeof(handleAddr));
     delete[] m_buffer;
-    if(keepTrying){
-        m_buffer = new char[m_bufferSize];
-        Sleep(waitRetry);
+    if(get<bool>(config["KEEP_TRYING"])){
+        m_buffer = new char[p_constBufferSize];
+        Sleep(get<int>(config["WAIT_RETRY"]));
         cout << "Could not connect to " << remoteAddress << ":" << remotePort << ", retrying..." << endl;
         connectInstance(remoteAddress, remotePort);
     } else {
@@ -252,4 +251,5 @@ void socketHandle::connect(string remoteAddress, string remotePort){
 socketHandle::socketHandle() {
 
 }
+
 
