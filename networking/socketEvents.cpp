@@ -8,27 +8,6 @@ socketEvents &socketEvents::getInstance() {
     static socketEvents instance;
     return instance;
 }
-/*
-template<typename T>
-void socketEvents::removeEvent(vector<T> & handlers, const T& handler){
-    for(size_t i = 0; i < handlers.size(); i++){
-        if (handlers[i].target_type() == handler.target_type() &&
-            handlers[i].template target<void(T)>() == handler.template target<void(T)>()) {
-            handlers.erase(handlers.begin() + i);
-            return;
-        }
-    }
-}*/
-template<typename T>
-void socketEvents::removeEvent(std::vector<T>& handlers, const T& handler) {
-    auto it = find_if(handlers.begin(), handlers.end(), [&](const T& h) {
-        return h.target_type() == handler.target_type() &&
-               h.template target<void(T)>() == handler.template target<void(T)>();
-    });
-    if (it != handlers.end()) {
-        handlers.erase(it);
-    }
-}
 
 void socketEvents::setOnConnected(socketEvents::handleConnectedEvent handler) {
     onConnectedHandlers.push_back(handler);
@@ -41,15 +20,13 @@ void socketEvents::onConnected(socketHandle *handle) {
 }
 
 void socketEvents::removeOnConnected(socketEvents::handleConnectedEvent handler){
-    removeEvent(onConnectedHandlers, handler);
-    /*
     for (size_t i = 0; i < onConnectedHandlers.size(); i++){
         if (onConnectedHandlers[i].target_type() == handler.target_type() &&
             onConnectedHandlers[i].target<void(socketHandle*)>() == handler.target<void(socketHandle*)>()){
             onConnectedHandlers.erase(onConnectedHandlers.begin() + i);
             return;
         }
-    }*/
+    }
 }
 
 void socketEvents::setOnDisconnected(socketEvents::handleDisconnectedEvent handler) {
@@ -57,7 +34,13 @@ void socketEvents::setOnDisconnected(socketEvents::handleDisconnectedEvent handl
 }
 
 void socketEvents::removeOnDisconnected(socketEvents::handleDisconnectedEvent handler) {
-    removeEvent(onDisconnectedHandlers, handler);
+    for (size_t i = 0; i < onDisconnectedHandlers.size(); i++){
+        if (onDisconnectedHandlers[i].target_type() == handler.target_type() &&
+            onDisconnectedHandlers[i].target<void(socketHandle*)>() == handler.target<void(socketHandle*)>()){
+            onDisconnectedHandlers.erase(onDisconnectedHandlers.begin() + i);
+            return;
+        }
+    }
 }
 
 void socketEvents::onDisconnected(socketHandle *handle) {
@@ -72,7 +55,13 @@ void socketEvents::setOnReady(socketEvents::handleReadyEvent handler) {
 }
 
 void socketEvents::removeOnReady(socketEvents::handleReadyEvent handler) {
-    removeEvent(onReadyHandlers, handler);
+    for (size_t i = 0; i < onReadyHandlers.size(); i++){
+        if (onReadyHandlers[i].target_type() == handler.target_type() &&
+            onReadyHandlers[i].target<void(socketHandle*)>() == handler.target<void(socketHandle*)>()){
+            onReadyHandlers.erase(onReadyHandlers.begin() + i);
+            return;
+        }
+    }
 }
 
 void socketEvents::onReady(socketHandle *handle, bool initiator) {
@@ -86,10 +75,16 @@ void socketEvents::setOnReceive(socketEvents::handleReceiveEvent handler) {
 }
 
 void socketEvents::removeOnReceive(socketEvents::handleReceiveEvent handler) {
-    removeEvent(onReceiveHandlers, handler);
+    for (size_t i = 0; i < onReceiveHandlers.size(); i++){
+        if (onReceiveHandlers[i].target_type() == handler.target_type() &&
+            onReceiveHandlers[i].target<void(socketHandle*, protobufMessage*)>() == handler.target<void(socketHandle*, protobufMessage*)>()){
+            onReceiveHandlers.erase(onReceiveHandlers.begin() + i);
+            return;
+        }
+    }
 }
 
-void socketEvents::onReceive(socketHandle *handle, string message) {
+void socketEvents::onReceive(socketHandle *handle, protobufMessage * message) {
     for(handleReceiveEvent & onReceiveEvent : onReceiveHandlers){
         onReceiveEvent(handle, message);
     }
