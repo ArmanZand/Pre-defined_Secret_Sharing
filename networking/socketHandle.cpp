@@ -7,6 +7,7 @@
 #include <Ws2tcpip.h>
 #include <algorithm>
 
+
 #include "../parameters.h"
 
 char * m_buffer = new char [m_bufferSize];
@@ -25,15 +26,17 @@ bool socketHandle::isConnected(){
     }
     return (result >= 0);
 }
-void socketHandle::send(string message){
+
+void socketHandle::send(protobufMessage & message){
     try {
         if(!isConnected()){
             socketEvents::getInstance().onDisconnected(this);
             return;
         }
-        const char * data = message.c_str();
+        int dataSize = message.ByteSizeLong();
+        char * data = new char[dataSize];
+        message.SerializeToArray(data, dataSize);
 
-        int dataSize = message.size();
         int totalSize = dataSize +prefixSize;
         char buffer[m_bufferSize];
         memset(buffer, 0, m_bufferSize);
@@ -127,9 +130,11 @@ void socketHandle::receive(){
                         remainingSize -= bytesReceived;
                         totalReceived += bytesReceived;
                     }
-                    string result(message, dataSize);
+                    protobufMessage pm;
+                    pm.ParseFromArray(message, dataSize);
+
                     delete[] message;
-                    socketEvents::getInstance().onReceive(this, result);
+                    socketEvents::getInstance().onReceive(this, &pm);
                 }
             }
         }

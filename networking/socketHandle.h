@@ -9,7 +9,7 @@
 #include <WinSock2.h>
 #include <thread>
 #include "socketEvents.h"
-
+#include "networkMessage.pb.h"
 
 #pragma comment(lib, "ws2_32")
 
@@ -24,7 +24,7 @@ public:
     fd_set descriptor;
 
     void connect(string remoteAddress, string remotePort);
-    void send(string message);
+    void send(protobufMessage & message);
     bool isConnected();
     void receive();
 private:

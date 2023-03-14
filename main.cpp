@@ -15,12 +15,14 @@ void OnDisconnect(const socketHandle& socketHandle){
     cout << "Disconnection detected from " << socketHandle.ip << endl;
 }
 void OnReady(socketHandle & socketHandle, bool initiator){
+    protobufMessage pm;
     if (initiator){
-        socketHandle.send("On ready event proc and on receive event proc test.");
+        pm.mutable_examplemessage()->set_message("On ready event proc and on receive event proc test.");
     }
     else {
-        socketHandle.send("listener has sent this.");
+        pm.mutable_examplemessage()->set_message("listener has sent this.");
     }
+    socketHandle.send(pm);
 }
 void OnReceive(socketHandle & socketHandle, protobufMessage & message){
     resolver::execute(socketHandle, message);
@@ -49,7 +51,6 @@ int main(int argc, char *argv[]) {
             i++;
         }
     }
-    protobufMessage pm;
     try{
         socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
         socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});
