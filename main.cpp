@@ -4,6 +4,7 @@
 #include "networking/listener.h"
 #include "networking/socketHandle.h"
 #include "networking/networkMessage.pb.h"
+#include "resolver.h"
 using namespace std;
 
 
@@ -21,8 +22,8 @@ void OnReady(socketHandle & socketHandle, bool initiator){
         socketHandle.send("listener has sent this.");
     }
 }
-void OnReceive(socketHandle & socketHandle, string message){
-    cout << socketHandle.ip << "> " << message << endl;
+void OnReceive(socketHandle & socketHandle, protobufMessage & message){
+    resolver::execute(socketHandle, message);
 }
 
 int main(int argc, char *argv[]) {
@@ -53,7 +54,7 @@ int main(int argc, char *argv[]) {
         socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
         socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});
         socketEvents::getInstance().setOnReady([](socketHandle * handle, bool initiator) { OnReady(*handle, initiator);});
-        socketEvents::getInstance().setOnReceive([](socketHandle * handle, string message) { OnReceive(*handle, message);});
+        socketEvents::getInstance().setOnReceive([](socketHandle * handle, protobufMessage * message) { OnReceive(*handle, *message);});
         if(listen){
             listener listener;
             listener.start(ip, port);
