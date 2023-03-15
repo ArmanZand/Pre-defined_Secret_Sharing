@@ -10,7 +10,6 @@
 #include <variant>
 //TODO:
 //1. correct destruction
-//2. config file
 //3. listener status events
 //4. protobuf
 //5. scripting

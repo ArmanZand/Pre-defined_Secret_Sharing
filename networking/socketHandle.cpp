@@ -28,7 +28,6 @@ void socketHandle::send(protobufMessage & message){
             return;
         }
         int dataSize = message.ByteSizeLong();
-        //char * data = new char[dataSize];
         char * data = new char[dataSize];
         message.SerializeToArray(data, dataSize);
         int prefixSize = p_constPrefixSize;
@@ -55,12 +54,14 @@ void socketHandle::send(protobufMessage & message){
                 bytesSent = ::send(mSocket,  data + totalSent, bytesToSend, 0);
                 if(bytesSent == SOCKET_ERROR){
                     int err = WSAGetLastError();
+                    delete[] data;
                     throw runtime_error("Error during the sending of multiple packets.");
                 }
                 remainingSize -= bytesSent;
                 totalSent += bytesSent;
             }
         }
+        delete[] data;
     }
     catch (exception &ex){
         cerr << ex.what() << endl;
@@ -70,9 +71,7 @@ void socketHandle::send(protobufMessage & message){
 
 void socketHandle::receive(){
     while(true) {
-
         try {
-
             if(!isConnected()){
                 socketEvents::getInstance().onDisconnected(this);
                 return;
@@ -87,7 +86,7 @@ void socketHandle::receive(){
                 if(bytesReceived == SOCKET_ERROR){
                     int error = WSAGetLastError() ;
                     if(error == WSAEWOULDBLOCK){
-                        Sleep(10);
+                        continue;
                     }
                     else if (error == WSAECONNRESET){
                         throw runtime_error("Error on data receive, connection reset.");
@@ -118,7 +117,6 @@ void socketHandle::receive(){
                         if(bytesReceived == SOCKET_ERROR){
                             int wsa_error = WSAGetLastError();
                             if(wsa_error == WSAEWOULDBLOCK){
-                                Sleep(10);
                                 continue;
                             }
                             else {
@@ -250,6 +248,10 @@ void socketHandle::connect(string remoteAddress, string remotePort){
 
 socketHandle::socketHandle() {
 
+}
+
+socketHandle::~socketHandle() {
+    //delete[] m_buffer;
 }
 
 

@@ -17,6 +17,7 @@ using namespace std;
 class socketHandle {
 public:
     socketHandle();
+    ~socketHandle();
     SOCKET mSocket{};
     sockaddr_in handleAddr{};
     string ip;

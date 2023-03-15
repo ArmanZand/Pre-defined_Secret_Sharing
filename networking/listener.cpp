@@ -61,22 +61,27 @@ void listener::listenInstance(string localAddress, string localPort){
         }
         cout << "Listen thread started on (" << localAddress << ":" << localPort << ")" << endl;
 
-        socketHandle socketHandle;
-        int handleAddrSize = sizeof(socketHandle.handleAddr);
-
         while(true){
+            socketHandle socketHandle;
+            int handleAddrSize = sizeof(socketHandle.handleAddr);
             socketHandle.mSocket = accept(listenSocket, (sockaddr * ) &socketHandle.handleAddr, &handleAddrSize);
             if (socketHandle.mSocket == INVALID_SOCKET) {
-                throw runtime_error("Error on socket accept.");
+                int wsa_error = WSAGetLastError();
+                if(wsa_error == WSAEINTR){
+                    listenInstance(localAddress, localPort);
+                }
+                runtime_error("Error on socket accept: " + to_string(wsa_error));
             }
-            thread readyThread([&socketHandle, this]() {this->connectionReady(socketHandle);});
-            readyThread.join();
+            if(socketHandle.isConnected()){
+                thread readyThread([&socketHandle, this]() {this->connectionReady(socketHandle);});
+                readyThread.join();
+            }
         }
     }
     catch(const exception &ex){
         closesocket(listenSocket);
         WSACleanup();
-        cerr << "Exception: " << ex.what() << endl;
+        cerr << ex.what() << endl;
         //cerr << "WSACode: " << WSAGetLastError() << endl;
     }
 }
