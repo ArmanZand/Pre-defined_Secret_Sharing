@@ -9,10 +9,10 @@
 #include <sstream>
 #include <variant>
 //TODO:
-//1. correct destruction
-//3. listener status events
-//4. protobuf
-//5. scripting
+//- listener stop
+//- listener status events
+//- prng
+//- bignum
 
 
 const int p_constBufferSize = 8192;

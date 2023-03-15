@@ -72,7 +72,6 @@ int main(int argc, char *argv[]) {
     }
     cout << "End of main thread, press enter to continue...";
     cin.ignore();
-
     return 0;
 }
 
