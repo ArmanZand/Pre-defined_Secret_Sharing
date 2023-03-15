@@ -251,7 +251,7 @@ socketHandle::socketHandle() {
 }
 
 socketHandle::~socketHandle() {
-    //delete[] m_buffer;
+
 }
 
 
