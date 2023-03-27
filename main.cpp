@@ -7,6 +7,7 @@
 #include "networking/socketHandle.h"
 #include "networking/networkMessage.pb.h"
 #include "resolver.h"
+#include <gmp.h>
 using namespace std;
 
 
@@ -31,6 +32,10 @@ void OnReceive(socketHandle & socketHandle, protobufMessage & message){
 }
 
 int main(int argc, char *argv[]) {
+    mpz_t integ;
+    mpz_init(integ);
+    mpz_set_str(integ, "222222222222222222222222222222222222222222222222222222212222222222222222222222222222222222222222222222222222222222222222222222222222", 10);
+    cout << integ << endl;
     vector<string> args(argv, argv + argc);
     string configPath;
     for(int i = 0; i < argc; i++){
