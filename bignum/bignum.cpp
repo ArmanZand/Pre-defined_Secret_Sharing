@@ -13,32 +13,32 @@ bignum::bignum(const char * str) {
 
 }
 
-bignum bignum::operator+(const bignum &other) {
+bignum bignum::operator+(bignum &other) {
     bignum result;
     mpz_add(result.value, value, other.value);
     return result;
 }
 
-bignum bignum::operator-(const bignum &other) {
+bignum bignum::operator-(bignum &other) {
     bignum result;
     mpz_sub(result.value, value, other.value);
     return result;
 }
 
-bignum bignum::operator*(const bignum &other) {
+bignum bignum::operator*(bignum &other) {
     bignum result;
     mpz_mul(result.value, value, other.value);
     return result;
 }
 
-pair<bignum, bignum> bignum::operator/(const bignum &other) {
+pair<bignum, bignum> bignum::operator/(bignum &other) {
     bignum quotient;
     bignum remainder;
     mpz_cdiv_qr(quotient.value, remainder.value, value, other.value);
     return make_pair(quotient, remainder);
 }
 
-bignum bignum::operator%(const bignum &other) {
+bignum bignum::operator%(bignum &other) {
     bignum result;
     mpz_mod(result.value, value, other.value);
     return result;
@@ -50,49 +50,49 @@ bignum bignum::operator^(unsigned long int &exponent) {
     return result;
 }
 
-bool bignum::operator==(const bignum &other) {
+bool bignum::operator==(bignum &other) {
     int result = mpz_cmp(value, other.value);
     return (result == 0);
 }
 
-bool bignum::operator!=(const bignum &other) {
+bool bignum::operator!=(bignum &other) {
     int result = mpz_cmp(value, other.value);
     return (result != 0);
 }
 
-bool bignum::operator<(const bignum &other) {
+bool bignum::operator<(bignum &other) {
     int result = mpz_cmp(value, other.value);
     return (result < 0);
 }
 
-bool bignum::operator>(const bignum &other) {
+bool bignum::operator>(bignum &other) {
     int result = mpz_cmp(value, other.value);
     return (result > 0);
 }
 
-bool bignum::operator<=(const bignum &other) {
+bool bignum::operator<=(bignum &other) {
     int result = mpz_cmp(value, other.value);
     return (result <= 0);
 }
 
-bool bignum::operator>=(const bignum &other) {
+bool bignum::operator>=(bignum &other) {
     int result = mpz_cmp(value, other.value);
     return (result >= 0);
 }
 
-bignum bignum::modpow(const bignum &base, const bignum &exponent, const bignum &mod) {
+bignum bignum::modpow(bignum &base, bignum &exponent, bignum &mod) {
     bignum result;
     mpz_powm(result.value, base.value, exponent.value, mod.value);
     return result;
 }
 
-bignum bignum::gcd(const bignum &a, const bignum &b) {
+bignum bignum::gcd(bignum &a, bignum &b) {
     bignum result;
     mpz_gcd(result.value, a.value, b.value);
     return result;
 }
 
-bignum bignum::modinv(const bignum &a, const bignum &p) {
+bignum bignum::modinv(bignum &a, bignum &p) {
     bignum result;
     mpz_invert(result.value, a.value, p.value);
     return result;
@@ -107,6 +107,12 @@ bignum bignum::parseBytes(unsigned char * bytes, size_t count) {
     mpz_import(result.value, count, 0, sizeof(unsigned char), 0, 0, bytes);
     return result;
 }
+
+bignum bignum::operator+=(bignum &other) {
+    mpz_add(value, value, other.value);
+    return *this;
+}
+
 
 
 

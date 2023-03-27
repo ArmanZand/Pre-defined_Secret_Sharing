@@ -15,26 +15,26 @@ public:
 
     static bignum parseBytes(unsigned char * bytes, size_t count);
 
-    bignum operator+(const bignum &other);
-    bignum operator-(const bignum &other);
-    bignum operator*(const bignum &other);
-    pair<bignum, bignum> operator/(const bignum &other);
-    bignum operator%(const bignum &other);
+    bignum operator+(bignum &other);
+    bignum operator+=(bignum &other);
+    bignum operator-(bignum &other);
+    bignum operator*(bignum &other);
+    pair<bignum, bignum> operator/(bignum &other);
+    bignum operator%(bignum &other);
     bignum operator^(unsigned long int &exponent);
-    bool operator==(const bignum &other);
-    bool operator!=(const bignum &other);
-    bool operator<(const bignum &other);
-    bool operator>(const bignum &other);
-    bool operator<=(const bignum &other);
-    bool operator>=(const bignum &other);
-    friend ostream & operator<<(ostream & out, const bignum & obj){
+    bool operator==(bignum &other);
+    bool operator!=(bignum &other);
+    bool operator<(bignum &other);
+    bool operator>(bignum &other);
+    bool operator<=(bignum &other);
+    bool operator>=(bignum &other);
+    friend ostream & operator<<(ostream & out, bignum & obj){
         return out << obj.value;
     }
 
-    static bignum modpow(const bignum & base, const bignum & exponent, const bignum & mod);
-    static bignum gcd(const bignum & a, const bignum & b);
-    static bignum modinv(const bignum & a, const bignum & p);
-
+    static bignum modpow(bignum & base, bignum & exponent, bignum & mod);
+    static bignum gcd(bignum & a, bignum & b);
+    static bignum modinv(bignum & a, bignum & p);
 };
 
 
