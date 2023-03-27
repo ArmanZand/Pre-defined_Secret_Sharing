@@ -4,6 +4,12 @@
 
 #include "bignum.h"
 #include <iostream>
+
+bignum::~bignum() {
+    //mpz_clear(value);
+}
+
+
 bignum::bignum(const char * str) {
     int flag = mpz_init_set_str(value, str, 10);
     if(flag == -1){
@@ -113,6 +119,17 @@ bignum bignum::parseBytes(unsigned char * bytes, size_t count) {
     return result;
 }
 
+bignum bignum::parseHex(const char *hex) {
+    bignum result;
+    mpz_init_set_str(result.value, hex, 16);
+    return result;
+}
+bignum bignum::parseStr(const char * str) {
+    bignum result;
+    mpz_init_set_str(result.value, str, 10);
+    return result;
+}
+
 bignum bignum::operator+=(bignum &other) {
     mpz_add(value, value, other.value);
     return *this;
@@ -128,6 +145,19 @@ bignum bignum::operator*=(bignum &other) {
     mpz_mul(value, value, other.value);
     return *this;
 }
+
+string bignum::toStr() {
+    char * str_array = mpz_get_str(nullptr, 10, value);
+    string result(str_array);
+    return result;
+}
+
+string bignum::toHex() {
+    char * str_array = mpz_get_str(nullptr, 16, value);
+    string result(str_array);
+    return result;
+}
+
 
 
 

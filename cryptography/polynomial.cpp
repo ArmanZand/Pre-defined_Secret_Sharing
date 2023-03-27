@@ -6,6 +6,11 @@
 polynomial::polynomial(const bignum *prime) {
     p = *prime;
 }
+polynomial::polynomial(const bignum *prime, vector<bignum> coefficients) {
+    p = *prime;
+    coeffs = coefficients;
+}
+
 
 bracket bracket::operator*(bracket &other) {
     vector<member> result;
@@ -36,11 +41,12 @@ bracket::bracket(initializer_list<member> input_members) {
     bracket::members = input_members;
 }
 
-vector<bignum> polynomial::interpolate(vector<point> points) {
-    return polynomial::reconstructPolynomial(points);
+vector<bignum> & polynomial::interpolate(vector<point> & points) {
+    polynomial::reconstructPolynomial(points);
+    return coeffs;
 }
 
-vector<bracket> polynomial::expandBrackets(vector<vector<bignum>> bracketStructure) {
+vector<bracket> polynomial::expandBrackets(vector<vector<bignum>> & bracketStructure) {
     vector<bracket> expandedBrackets;
     for(int i = 0; i < bracketStructure.size(); i++){
         expandedBrackets.push_back({ member(bignum(1), bignum("1")), member(bracketStructure[i][0],0) });
@@ -52,7 +58,7 @@ vector<bracket> polynomial::expandBrackets(vector<vector<bignum>> bracketStructu
     return expandedBrackets;
 }
 
-vector<bignum> polynomial::reconstructPolynomial(vector<point> & points) {
+void polynomial::reconstructPolynomial(vector<point> & points) {
     vector<vector<bignum>> brackets;
     vector<bignum> divisors;
 
@@ -69,7 +75,7 @@ vector<bignum> polynomial::reconstructPolynomial(vector<point> & points) {
     }
 
     vector<bracket> expandedBrackets = polynomial::expandBrackets(brackets);
-    vector<bignum> polyCoeffs(expandedBrackets.size());
+    coeffs = vector<bignum>(expandedBrackets.size());
     for(int i = 0; i < expandedBrackets.size(); i++){
         for(int j = 0; j < expandedBrackets[i].members.size(); j++){
             expandedBrackets[i].members[j].num = expandedBrackets[i].members[j].num * points[i].z;
@@ -77,10 +83,28 @@ vector<bignum> polynomial::reconstructPolynomial(vector<point> & points) {
             bignum divisor(divisors[i] % p);
             bignum div_inv = bignum::modinv(divisor, p);
             bignum compute_div = expandedBrackets[i].members[j].num * div_inv;
-            polyCoeffs[expandedBrackets[i].members.size() - j - 1] += compute_div;
-            polyCoeffs[expandedBrackets[i].members.size() - j - 1]  = polyCoeffs[expandedBrackets[i].members.size() - j - 1] % p;
+            coeffs[expandedBrackets[i].members.size() - j - 1] += compute_div;
+            coeffs[expandedBrackets[i].members.size() - j - 1]  = coeffs[expandedBrackets[i].members.size() - j - 1] % p;
         }
     }
-    return polyCoeffs;
 }
+
+
+point polynomial::evaluate(bignum & x) {
+    bignum sum(0);
+    for(int i = 0; i < coeffs.size(); i++){
+        bignum b_i(i);
+        bignum exp = bignum::modpow(x, b_i, p);
+        bignum mult = coeffs[i] *  exp;
+        sum += mult;
+    }
+    bignum z = sum % p;
+    return point(x, z);
+}
+
+point polynomial::evaluate(int x) {
+    bignum b_x(x);
+    return evaluate(b_x);
+}
+
 

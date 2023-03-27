@@ -36,11 +36,15 @@ public:
 class polynomial {
 private:
     bignum p;
-    vector<bracket> expandBrackets(vector<vector<bignum>> bracketStructure);
-    vector<bignum> reconstructPolynomial(vector<point> & points);
+    vector<bignum> coeffs;
+    vector<bracket> expandBrackets(vector<vector<bignum>> & bracketStructure);
+    void reconstructPolynomial(vector<point> & points);
 public:
     polynomial(const bignum * prime);
-    vector<bignum> polynomial::interpolate(vector<point> points);
+    polynomial(const bignum * prime, vector<bignum> coefficients);
+    vector<bignum> & polynomial::interpolate(vector<point>  & points);
+    point evaluate(bignum & x);
+    point evaluate(int x);
 };
 
 

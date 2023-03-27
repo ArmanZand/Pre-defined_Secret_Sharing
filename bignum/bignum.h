@@ -13,7 +13,12 @@ private:
 public:
     bignum(const char * str = "0");
     bignum(int input);
+    ~bignum();
+    string toStr();
+    string toHex();
+    static bignum parseHex(const char * hex);
     static bignum parseBytes(unsigned char * bytes, size_t count);
+    static bignum parseStr(const char * str);
 
     bignum operator-();
     bignum operator+(bignum &other);
