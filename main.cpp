@@ -7,8 +7,9 @@
 #include "networking/socketHandle.h"
 #include "networking/networkMessage.pb.h"
 #include "resolver.h"
+
+#include "cryptography/polynomial.h"
 #include "bignum/bignum.h"
-#include "cryptography/cryptoUtilities.h"
 using namespace std;
 
 
@@ -33,6 +34,12 @@ void OnReceive(socketHandle & socketHandle, protobufMessage & message){
 }
 
 int main(int argc, char *argv[]) {
+
+    bignum prime("97");
+    polynomial p(&prime);
+    vector<point> points = { point(0, 5), point(1,10), point(2,20) };
+    vector<bignum> coeffs = p.interpolate(points);
+
     vector<string> args(argv, argv + argc);
     string configPath;
     for(int i = 0; i < argc; i++){

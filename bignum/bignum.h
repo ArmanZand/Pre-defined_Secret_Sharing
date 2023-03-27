@@ -12,13 +12,15 @@ private:
     mpz_t value;
 public:
     bignum(const char * str = "0");
-
+    bignum(int input);
     static bignum parseBytes(unsigned char * bytes, size_t count);
 
+    bignum operator-();
     bignum operator+(bignum &other);
     bignum operator+=(bignum &other);
     bignum operator-(bignum &other);
     bignum operator*(bignum &other);
+    bignum operator*=(bignum &other);
     pair<bignum, bignum> operator/(bignum &other);
     bignum operator%(bignum &other);
     bignum operator^(unsigned long int &exponent);

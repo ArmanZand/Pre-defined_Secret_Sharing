@@ -13,31 +13,34 @@ public:
     member(const bignum & number,const bignum & degree) : num(number) , deg(degree) {}
     bignum num;
     bignum deg;
-
 };
 
 struct bracket {
 public:
-    bracket(vector<member> & members) : members(members) {}
+    bracket(vector<member> & input_members);
+    bracket(initializer_list<member> input_members);
     vector<member> members;
-    bracket multiplyWith(bracket & other);
+    bracket operator*(bracket & other);
 };
 
 struct point {
 public:
     point(bignum & from, bignum & to, bignum & value) : x(from), y(to), z(value) {}
-    const bignum x; //from node
-    const bignum y; //to node
-    const bignum z; //value
+    point(int from, int value) : x(bignum(from)), z(bignum(value)), y(0) {}
+    point(bignum & from, bignum & value) : x(from), z(value), y(0) {}
+    bignum x; //from node
+    bignum y; //to node
+    bignum z; //value
 };
 
 class polynomial {
 private:
-    int t;
     bignum p;
+    vector<bracket> expandBrackets(vector<vector<bignum>> bracketStructure);
+    vector<bignum> reconstructPolynomial(vector<point> & points);
 public:
-    polynomial(const bignum * prime, int * threshold);
-    void polynomial::interpolate(vector<point> * points);
+    polynomial(const bignum * prime);
+    vector<bignum> polynomial::interpolate(vector<point> points);
 };
 
 

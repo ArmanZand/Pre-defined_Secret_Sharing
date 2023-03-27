@@ -13,6 +13,11 @@ bignum::bignum(const char * str) {
 
 }
 
+bignum::bignum(int input) {
+    //int flag = mpz_init_set_str(value, str, 10);
+    mpz_init_set_ui(value, input);
+}
+
 bignum bignum::operator+(bignum &other) {
     bignum result;
     mpz_add(result.value, value, other.value);
@@ -112,6 +117,19 @@ bignum bignum::operator+=(bignum &other) {
     mpz_add(value, value, other.value);
     return *this;
 }
+
+bignum bignum::operator-() {
+    bignum result;
+    mpz_neg(result.value, value);
+    return result;
+}
+
+bignum bignum::operator*=(bignum &other) {
+    mpz_mul(value, value, other.value);
+    return *this;
+}
+
+
 
 
 
