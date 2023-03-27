@@ -7,8 +7,8 @@
 
 
 class cryptoUtilities {
-private:
-    void secureRandom(unsigned char * buffer, size_t length);
+public:
+    static void secureRandom(unsigned char * buffer, size_t length);
 };
 
 

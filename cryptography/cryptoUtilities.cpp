@@ -7,7 +7,7 @@
 #include <bcrypt.h>
 
 
-void cryptoUtilities::secureRandom(unsigned char *buffer, size_t length) {
+void cryptoUtilities::secureRandom(unsigned char * buffer, size_t length) {
     BCRYPT_ALG_HANDLE hProvider;
     BCryptOpenAlgorithmProvider(&hProvider, BCRYPT_RNG_ALGORITHM, NULL, 0);
     BCryptGenRandom(hProvider, buffer, length, 0);
