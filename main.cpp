@@ -12,7 +12,6 @@
 #include "cryptography/polynomial.h"
 #include "bignum.h"
 
-
 void OnConnect(const socketHandle& socketHandle){
     cout << "Connection accepted from " << socketHandle.ip << endl;
 }
