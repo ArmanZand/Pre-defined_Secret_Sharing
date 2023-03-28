@@ -13,7 +13,7 @@ bignum::~bignum() {
 bignum::bignum(const char * str) {
     int flag = mpz_init_set_str(value, str, 10);
     if(flag == -1){
-        throw runtime_error("bignum parsing: Input base is not correct.");
+        throw std::runtime_error("bignum parsing: Input base is not correct.");
         mpz_clear(value);
     }
 
@@ -42,11 +42,11 @@ bignum bignum::operator*(bignum &other) {
     return result;
 }
 
-pair<bignum, bignum> bignum::operator/(bignum &other) {
+std::pair<bignum, bignum> bignum::operator/(bignum &other) {
     bignum quotient;
     bignum remainder;
     mpz_cdiv_qr(quotient.value, remainder.value, value, other.value);
-    return make_pair(quotient, remainder);
+    return std::make_pair(quotient, remainder);
 }
 
 bignum bignum::operator%(bignum &other) {
@@ -146,15 +146,53 @@ bignum bignum::operator*=(bignum &other) {
     return *this;
 }
 
-string bignum::toStr() {
+std::string bignum::toStr() {
     char * str_array = mpz_get_str(nullptr, 10, value);
-    string result(str_array);
+    std::string result(str_array);
     return result;
 }
 
-string bignum::toHex() {
+std::string bignum::toHex() {
     char * str_array = mpz_get_str(nullptr, 16, value);
-    string result(str_array);
+    std::string result(str_array);
+    return result;
+}
+
+bool bignum::operator==(int other) {
+    int result = mpz_cmp(value, bignum(other).value);
+    return (result == 0);
+}
+
+bignum bignum::operator>>(int bitshift) {
+    bignum result;
+    mpz_fdiv_q_2exp(result.value, value, bitshift);
+    return result;
+}
+
+bignum bignum::operator<<(int bitshift) {
+    bignum result;
+    mpz_mul_2exp(result.value, value, bitshift);
+    return result;
+}
+
+bignum bignum::operator|=(bignum &other) {
+    mpz_ior(value, value, other.value);
+    return *this;
+}
+
+int bignum::bitLength() {
+    return mpz_sizeinbase(value, 2);
+}
+
+bignum bignum::operator&(bignum &other) {
+    bignum result;
+    mpz_and(result.value, value, other.value);
+    return result;
+}
+
+bignum bignum::copy() {
+    bignum result;
+    mpz_init_set(result.value, value);
     return result;
 }
 

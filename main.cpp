@@ -8,9 +8,9 @@
 #include "networking/networkMessage.pb.h"
 #include "resolver.h"
 
+#include "cryptography/cryptoUtilities.h"
 #include "cryptography/polynomial.h"
 #include "bignum.h"
-using namespace std;
 
 
 void OnConnect(const socketHandle& socketHandle){
@@ -34,6 +34,10 @@ void OnReceive(socketHandle & socketHandle, protobufMessage & message){
 }
 
 int main(int argc, char *argv[]) {
+
+
+    std::cout << cryptoUtilities::nextBignum(1,10) << std::endl;
+
     vector<string> args(argv, argv + argc);
     string configPath;
     for(int i = 0; i < argc; i++){
