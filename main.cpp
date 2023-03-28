@@ -9,7 +9,7 @@
 #include "resolver.h"
 
 #include "cryptography/polynomial.h"
-#include "bignum/bignum.h"
+#include "bignum.h"
 using namespace std;
 
 

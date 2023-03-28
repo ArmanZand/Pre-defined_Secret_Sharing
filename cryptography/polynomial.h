@@ -4,7 +4,7 @@
 
 #ifndef CLEAN_SOCKETS_POLYNOMIAL_H
 #define CLEAN_SOCKETS_POLYNOMIAL_H
-#include "../bignum/bignum.h"
+#include "../bignum.h"
 #include <vector>
 using namespace std;
 
