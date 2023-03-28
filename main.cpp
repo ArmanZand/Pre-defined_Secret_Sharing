@@ -34,10 +34,6 @@ void OnReceive(socketHandle & socketHandle, protobufMessage & message){
 }
 
 int main(int argc, char *argv[]) {
-
-
-    std::cout << cryptoUtilities::nextBignum(1,10) << std::endl;
-
     vector<string> args(argv, argv + argc);
     string configPath;
     for(int i = 0; i < argc; i++){
