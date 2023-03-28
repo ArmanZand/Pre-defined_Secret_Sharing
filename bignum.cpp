@@ -121,7 +121,7 @@ bignum bignum::parseBytes(unsigned char * bytes, size_t count) {
 
 bignum bignum::parseHex(const char *hex) {
     bignum result;
-    mpz_init_set_str(result.value, hex, 16);
+    int flag = mpz_init_set_str(result.value, hex, 16);
     return result;
 }
 bignum bignum::parseStr(const char * str) {

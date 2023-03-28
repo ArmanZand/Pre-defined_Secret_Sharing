@@ -78,7 +78,7 @@ void polynomial::reconstructPolynomial(vector<point> & points) {
     coeffs = vector<bignum>(expandedBrackets.size());
     for(int i = 0; i < expandedBrackets.size(); i++){
         for(int j = 0; j < expandedBrackets[i].members.size(); j++){
-            expandedBrackets[i].members[j].num = expandedBrackets[i].members[j].num * points[i].z;
+            expandedBrackets[i].members[j].num = expandedBrackets[i].members[j].num * points[i].y;
 
             bignum divisor(divisors[i] % p);
             bignum div_inv = bignum::modinv(divisor, p);

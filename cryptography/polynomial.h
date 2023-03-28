@@ -25,12 +25,10 @@ public:
 
 struct point {
 public:
-    point(bignum & from, bignum & to, bignum & value) : x(from), y(to), z(value) {}
-    point(int from, int value) : x(bignum(from)), z(bignum(value)), y(0) {}
-    point(bignum & from, bignum & value) : x(from), z(value), y(0) {}
+    point(int from, int value) : x(bignum(from)), y(bignum(value)) {}
+    point(bignum & from, bignum & value) : x(from), y(value){}
     bignum x; //from node
-    bignum y; //to node
-    bignum z; //value
+    bignum y; //value
 };
 //polynomial usage example
 //    bignum prime(97);
