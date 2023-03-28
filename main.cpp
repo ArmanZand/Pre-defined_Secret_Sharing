@@ -34,14 +34,6 @@ void OnReceive(socketHandle & socketHandle, protobufMessage & message){
 }
 
 int main(int argc, char *argv[]) {
-
-    bignum prime(97);
-    polynomial p(&prime);
-    vector<point> points = { point(0, 5), point(1,10), point(2,20) };
-    p.interpolate(points);
-
-    point res = p.evaluate(0);
-    cout << res.z << endl;
     vector<string> args(argv, argv + argc);
     string configPath;
     for(int i = 0; i < argc; i++){

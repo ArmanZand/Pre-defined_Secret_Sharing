@@ -8,18 +8,17 @@
 #include <iostream>
 #include <sstream>
 #include <variant>
+#include "bignum.h"
 //TODO:
 //- listener stop
 //- listener status events
-//- prng
-//- bignum
 
 
 const int p_constBufferSize = 8192;
 const int p_constPrefixSize = sizeof(int);
 using namespace std;
 
-static unordered_map<string, variant<int, bool, string>> config = {
+static unordered_map<string, variant<int, bool, string, bignum>> config = {
         {"KEEP_TRYING",true},
         {"WAIT_RETRY", 1000}
 };
@@ -29,7 +28,7 @@ public:
     static bool keyExists(string key) {
         return config.count(key) > 0;
     }
-    static variant<int, bool, string> find(string key){
+    static variant<int, bool, string, bignum> find(string key){
         auto it = config.find(key);
         if(it != config.end()){
             return it->second;
@@ -62,7 +61,30 @@ public:
                     config["LISTENER_START"] = value;
                     continue;
                 }
-
+                if(key == "PRIME_HEX") {
+                    config["PRIME"] = bignum::parseHex(value.c_str());
+                    continue;
+                }
+                if(key == "PRIME") {
+                    config["PRIME"] = bignum::parseStr(value.c_str());
+                    continue;
+                }
+                if(key == "PLAYER_SECRET_HEX") {
+                    config["PLAYER_SECRET_HEX"] = bignum::parseHex(value.c_str());
+                    continue;
+                }
+                if(key == "PLAYER_SECRET_BIGNUM") {
+                    config["PLAYER_SECRET_BIGNUM"] = bignum::parseStr(value.c_str());
+                    continue;
+                }
+                if(key == "DEALER_SECRET_HEX") {
+                    config["DEALER_SECRET_HEX"] = bignum::parseHex(value.c_str());
+                    continue;
+                }
+                if(key == "DEALER_SECRET_BIGNUM"){
+                    config["DEALER_SECRET_BIGNUM"] = bignum::parseStr(value.c_str());
+                    continue;
+                }
             }
         } catch(exception & ex){
             cerr << ex.what() << endl;

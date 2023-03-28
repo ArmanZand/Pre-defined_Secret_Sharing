@@ -32,6 +32,14 @@ public:
     bignum y; //to node
     bignum z; //value
 };
+//polynomial usage example
+//    bignum prime(97);
+//    polynomial p(&prime);
+//    vector<point> points = { point(0, 5), point(1,10), point(2,20) };
+//    p.interpolate(points);
+//
+//    point res = p.evaluate(0);
+//    cout << res.z << endl;
 
 class polynomial {
 private:
