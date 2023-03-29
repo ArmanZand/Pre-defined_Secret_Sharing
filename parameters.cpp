@@ -3,12 +3,13 @@
 //
 #include "parameters.h"
 
-
+const char * nodeTypeNames[] = { "undefined", "secret sharer", "dealer", "secret recover"};
 unordered_map<string, variant<int, bool, string, bignum>> config = {
-{"KEEP_TRYING",true},
-{"WAIT_RETRY", 1000},
-{ "NODE_ID", bignum("0")},
-{ "NODE_NAME", string("Node")},
+    {"KEEP_TRYING",true},
+    {"WAIT_RETRY", 1000},
+    { "NODE_ID", bignum("0")},
+    { "NODE_NAME", string("Node")},
+    { "NODE_TYPE", 0}
 };
 
 bool parameters::keyExists(string key) {
@@ -62,6 +63,10 @@ void parameters::loadConfig(string filePath){
             }
             if(key == "NODE_NAME"){
                 config["NODE_NAME"] = value;
+                continue;
+            }
+            if(key == "NODE_TYPE"){
+                config["NODE_TYPE"] = stoi(value);
                 continue;
             }
             if(key == "PRIME_HEX") {

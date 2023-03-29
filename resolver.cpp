@@ -29,27 +29,29 @@ void resolver::execute(socketHandle &handle, protobufMessage &pm) {
 void resolver::nodeInfo(socketHandle &handle, protobufMessage &pm){
     handle.name = pm.nodeinfo().name();
     handle.id = bignum::parseStr(pm.nodeinfo().id().c_str());
+    handle.type = pm.nodeinfo().type();
     cout << "Discovered Node Info for " << handle.ip << ":" << endl;
     cout << "\tName: " << handle.name << endl;
     cout << "\tId: " << handle.id.toStr() << endl;
+    cout << "\tType: " << nodeTypeNames[handle.type]  << endl;
     protobufMessage rm;
-    string nodeId = get<bignum>(config["NODE_ID"]).toStr();
-    string nodeName = get<string>(config["NODE_NAME"]);
-    rm.mutable_nodeinforeply()->set_id(nodeId);
-    rm.mutable_nodeinforeply()->set_name(nodeName);
+    rm.mutable_nodeinforeply()->set_id(get<bignum>(config["NODE_ID"]).toStr());
+    rm.mutable_nodeinforeply()->set_name(get<string>(config["NODE_NAME"]));
+    rm.mutable_nodeinforeply()->set_type(static_cast<nodeType>(get<int>(config["NODE_TYPE"])));
     handle.send(rm);
 }
 
 void resolver::nodeInfoReply(socketHandle &handle, protobufMessage &pm){
     handle.name = pm.nodeinforeply().name();
     handle.id = bignum::parseStr(pm.nodeinforeply().id().c_str());
+    handle.type = pm.nodeinforeply().type();
     cout << "Discovered Node Info for " << handle.ip << ":" << endl;
     cout << "\tName: " << handle.name << endl;
     cout << "\tId: " << handle.id.toStr() << endl;
+    cout << "\tType: " << nodeTypeNames[handle.type]  << endl;
 }
 
 void resolver::nodePayload(socketHandle &handle, protobufMessage &pm) {
-
 }
 
 void resolver::share(socketHandle &handle, protobufMessage &pm) {

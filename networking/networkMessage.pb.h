@@ -29,6 +29,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -67,6 +68,33 @@ template<> ::protobufMessage* Arena::CreateMaybeMessage<::protobufMessage>(Arena
 template<> ::share* Arena::CreateMaybeMessage<::share>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
+enum nodeType : int {
+  undefined = 0,
+  secretSharer = 1,
+  dealer = 2,
+  secretRecoverer = 3,
+  nodeType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  nodeType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool nodeType_IsValid(int value);
+constexpr nodeType nodeType_MIN = undefined;
+constexpr nodeType nodeType_MAX = secretRecoverer;
+constexpr int nodeType_ARRAYSIZE = nodeType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* nodeType_descriptor();
+template<typename T>
+inline const std::string& nodeType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, nodeType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function nodeType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    nodeType_descriptor(), enum_t_value);
+}
+inline bool nodeType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, nodeType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<nodeType>(
+    nodeType_descriptor(), name, value);
+}
 // ===================================================================
 
 class protobufMessage final :
@@ -432,6 +460,7 @@ class nodeInfo final :
   enum : int {
     kIdFieldNumber = 1,
     kNameFieldNumber = 2,
+    kTypeFieldNumber = 3,
   };
   // string Id = 1;
   void clear_id();
@@ -461,6 +490,15 @@ class nodeInfo final :
   std::string* _internal_mutable_name();
   public:
 
+  // .nodeType type = 3;
+  void clear_type();
+  ::nodeType type() const;
+  void set_type(::nodeType value);
+  private:
+  ::nodeType _internal_type() const;
+  void _internal_set_type(::nodeType value);
+  public:
+
   // @@protoc_insertion_point(class_scope:nodeInfo)
  private:
   class _Internal;
@@ -471,6 +509,7 @@ class nodeInfo final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    int type_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -601,6 +640,7 @@ class nodeInfoReply final :
   enum : int {
     kIdFieldNumber = 1,
     kNameFieldNumber = 2,
+    kTypeFieldNumber = 3,
   };
   // string Id = 1;
   void clear_id();
@@ -630,6 +670,15 @@ class nodeInfoReply final :
   std::string* _internal_mutable_name();
   public:
 
+  // .nodeType type = 3;
+  void clear_type();
+  ::nodeType type() const;
+  void set_type(::nodeType value);
+  private:
+  ::nodeType _internal_type() const;
+  void _internal_set_type(::nodeType value);
+  public:
+
   // @@protoc_insertion_point(class_scope:nodeInfoReply)
  private:
   class _Internal;
@@ -640,6 +689,7 @@ class nodeInfoReply final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    int type_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1387,6 +1437,26 @@ inline void nodeInfo::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:nodeInfo.Name)
 }
 
+// .nodeType type = 3;
+inline void nodeInfo::clear_type() {
+  _impl_.type_ = 0;
+}
+inline ::nodeType nodeInfo::_internal_type() const {
+  return static_cast< ::nodeType >(_impl_.type_);
+}
+inline ::nodeType nodeInfo::type() const {
+  // @@protoc_insertion_point(field_get:nodeInfo.type)
+  return _internal_type();
+}
+inline void nodeInfo::_internal_set_type(::nodeType value) {
+  
+  _impl_.type_ = value;
+}
+inline void nodeInfo::set_type(::nodeType value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:nodeInfo.type)
+}
+
 // -------------------------------------------------------------------
 
 // nodeInfoReply
@@ -1489,6 +1559,26 @@ inline void nodeInfoReply::set_allocated_name(std::string* name) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:nodeInfoReply.Name)
+}
+
+// .nodeType type = 3;
+inline void nodeInfoReply::clear_type() {
+  _impl_.type_ = 0;
+}
+inline ::nodeType nodeInfoReply::_internal_type() const {
+  return static_cast< ::nodeType >(_impl_.type_);
+}
+inline ::nodeType nodeInfoReply::type() const {
+  // @@protoc_insertion_point(field_get:nodeInfoReply.type)
+  return _internal_type();
+}
+inline void nodeInfoReply::_internal_set_type(::nodeType value) {
+  
+  _impl_.type_ = value;
+}
+inline void nodeInfoReply::set_type(::nodeType value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:nodeInfoReply.type)
 }
 
 // -------------------------------------------------------------------
@@ -1663,6 +1753,16 @@ inline void share::set_allocated_y(std::string* y) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::nodeType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::nodeType>() {
+  return ::nodeType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

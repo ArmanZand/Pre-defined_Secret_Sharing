@@ -15,12 +15,16 @@
 #pragma comment(lib, "ws2_32")
 
 using namespace std;
+
+
+
 class socketHandle {
 public:
     socketHandle();
     ~socketHandle();
     SOCKET mSocket{};
     sockaddr_in handleAddr{};
+    nodeType type;
     string ip;
     string name;
     bignum id;

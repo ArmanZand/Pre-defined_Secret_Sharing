@@ -21,10 +21,9 @@ void OnDisconnect(const socketHandle& socketHandle){
 void OnReady(socketHandle & socketHandle, bool initiator){
     if(initiator){
         protobufMessage pm;
-        string nodeId = get<bignum>(config["NODE_ID"]).toStr();
-        string nodeName = get<string>(config["NODE_NAME"]);
-        pm.mutable_nodeinfo()->set_id(nodeId);
-        pm.mutable_nodeinfo()->set_name(nodeName);
+        pm.mutable_nodeinfo()->set_id(get<bignum>(config["NODE_ID"]).toStr());
+        pm.mutable_nodeinfo()->set_name(get<string>(config["NODE_NAME"]));
+        pm.mutable_nodeinfo()->set_type(static_cast<nodeType>(get<int>(config["NODE_TYPE"])));
         socketHandle.send(pm);
     }
 

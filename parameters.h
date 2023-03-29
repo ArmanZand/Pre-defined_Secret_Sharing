@@ -23,6 +23,7 @@ const int p_constPrefixSize = sizeof(int);
 using namespace std;
 
 extern unordered_map<string, variant<int, bool, string, bignum>> config;
+extern const char * nodeTypeNames[];
 
 class parameters {
 public:
