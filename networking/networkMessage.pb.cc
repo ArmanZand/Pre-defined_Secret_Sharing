@@ -64,6 +64,17 @@ struct nodeInfoReplyDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodeInfoReplyDefaultTypeInternal _nodeInfoReply_default_instance_;
+PROTOBUF_CONSTEXPR nodeInfoAck::nodeInfoAck(
+    ::_pbi::ConstantInitialized) {}
+struct nodeInfoAckDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR nodeInfoAckDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~nodeInfoAckDefaultTypeInternal() {}
+  union {
+    nodeInfoAck _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodeInfoAckDefaultTypeInternal _nodeInfoAck_default_instance_;
 PROTOBUF_CONSTEXPR nodePayload::nodePayload(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.payload_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -91,7 +102,7 @@ struct shareDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 shareDefaultTypeInternal _share_default_instance_;
-static ::_pb::Metadata file_level_metadata_networkMessage_2eproto[5];
+static ::_pb::Metadata file_level_metadata_networkMessage_2eproto[6];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_networkMessage_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_networkMessage_2eproto = nullptr;
 
@@ -102,6 +113,7 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
   PROTOBUF_FIELD_OFFSET(::protobufMessage, _impl_._oneof_case_[0]),
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
@@ -126,6 +138,12 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
   PROTOBUF_FIELD_OFFSET(::nodeInfoReply, _impl_.name_),
   PROTOBUF_FIELD_OFFSET(::nodeInfoReply, _impl_.type_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::nodeInfoAck, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::nodePayload, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -143,40 +161,43 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::protobufMessage)},
-  { 11, -1, -1, sizeof(::nodeInfo)},
-  { 20, -1, -1, sizeof(::nodeInfoReply)},
-  { 29, -1, -1, sizeof(::nodePayload)},
-  { 36, -1, -1, sizeof(::share)},
+  { 12, -1, -1, sizeof(::nodeInfo)},
+  { 21, -1, -1, sizeof(::nodeInfoReply)},
+  { 30, -1, -1, sizeof(::nodeInfoAck)},
+  { 36, -1, -1, sizeof(::nodePayload)},
+  { 43, -1, -1, sizeof(::share)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::_protobufMessage_default_instance_._instance,
   &::_nodeInfo_default_instance_._instance,
   &::_nodeInfoReply_default_instance_._instance,
+  &::_nodeInfoAck_default_instance_._instance,
   &::_nodePayload_default_instance_._instance,
   &::_share_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_networkMessage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024networkMessage.proto\"\242\001\n\017protobufMessa"
+  "\n\024networkMessage.proto\"\307\001\n\017protobufMessa"
   "ge\022\035\n\010nodeInfo\030\001 \001(\0132\t.nodeInfoH\000\022\'\n\rnod"
   "eInfoReply\030\002 \001(\0132\016.nodeInfoReplyH\000\022#\n\013no"
-  "dePayload\030e \001(\0132\014.nodePayloadH\000\022\027\n\005share"
-  "\030f \001(\0132\006.shareH\000B\t\n\007command\"=\n\010nodeInfo\022"
-  "\n\n\002Id\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162"
-  "\t.nodeType\"B\n\rnodeInfoReply\022\n\n\002Id\030\001 \001(\t\022"
-  "\014\n\004Name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162\t.nodeType\"\036"
-  "\n\013nodePayload\022\017\n\007Payload\030\001 \001(\t\"\035\n\005share\022"
-  "\t\n\001X\030\001 \001(\t\022\t\n\001Y\030\002 \001(\t*L\n\010nodeType\022\r\n\tund"
-  "efined\020\000\022\020\n\014secretSharer\020\001\022\n\n\006dealer\020\002\022\023"
-  "\n\017secretRecoverer\020\003B\026\252\002\023Networking.Messa"
-  "gesb\006proto3"
+  "deInfoAck\030\003 \001(\0132\014.nodeInfoAckH\000\022#\n\013nodeP"
+  "ayload\030e \001(\0132\014.nodePayloadH\000\022\027\n\005share\030f "
+  "\001(\0132\006.shareH\000B\t\n\007command\"=\n\010nodeInfo\022\n\n\002"
+  "Id\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162\t.n"
+  "odeType\"B\n\rnodeInfoReply\022\n\n\002Id\030\001 \001(\t\022\014\n\004"
+  "Name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162\t.nodeType\"\r\n\013n"
+  "odeInfoAck\"\036\n\013nodePayload\022\017\n\007Payload\030\001 \001"
+  "(\t\"\035\n\005share\022\t\n\001X\030\001 \001(\t\022\t\n\001Y\030\002 \001(\t*L\n\010nod"
+  "eType\022\r\n\tundefined\020\000\022\020\n\014secretSharer\020\001\022\n"
+  "\n\006dealer\020\002\022\023\n\017secretRecoverer\020\003B\026\252\002\023Netw"
+  "orking.Messagesb\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_networkMessage_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_networkMessage_2eproto = {
-    false, false, 491, descriptor_table_protodef_networkMessage_2eproto,
+    false, false, 543, descriptor_table_protodef_networkMessage_2eproto,
     "networkMessage.proto",
-    &descriptor_table_networkMessage_2eproto_once, nullptr, 0, 5,
+    &descriptor_table_networkMessage_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_networkMessage_2eproto::offsets,
     file_level_metadata_networkMessage_2eproto, file_level_enum_descriptors_networkMessage_2eproto,
     file_level_service_descriptors_networkMessage_2eproto,
@@ -210,6 +231,7 @@ class protobufMessage::_Internal {
  public:
   static const ::nodeInfo& nodeinfo(const protobufMessage* msg);
   static const ::nodeInfoReply& nodeinforeply(const protobufMessage* msg);
+  static const ::nodeInfoAck& nodeinfoack(const protobufMessage* msg);
   static const ::nodePayload& nodepayload(const protobufMessage* msg);
   static const ::share& share(const protobufMessage* msg);
 };
@@ -221,6 +243,10 @@ protobufMessage::_Internal::nodeinfo(const protobufMessage* msg) {
 const ::nodeInfoReply&
 protobufMessage::_Internal::nodeinforeply(const protobufMessage* msg) {
   return *msg->_impl_.command_.nodeinforeply_;
+}
+const ::nodeInfoAck&
+protobufMessage::_Internal::nodeinfoack(const protobufMessage* msg) {
+  return *msg->_impl_.command_.nodeinfoack_;
 }
 const ::nodePayload&
 protobufMessage::_Internal::nodepayload(const protobufMessage* msg) {
@@ -259,6 +285,21 @@ void protobufMessage::set_allocated_nodeinforeply(::nodeInfoReply* nodeinforeply
     _impl_.command_.nodeinforeply_ = nodeinforeply;
   }
   // @@protoc_insertion_point(field_set_allocated:protobufMessage.nodeInfoReply)
+}
+void protobufMessage::set_allocated_nodeinfoack(::nodeInfoAck* nodeinfoack) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_command();
+  if (nodeinfoack) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(nodeinfoack);
+    if (message_arena != submessage_arena) {
+      nodeinfoack = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, nodeinfoack, submessage_arena);
+    }
+    set_has_nodeinfoack();
+    _impl_.command_.nodeinfoack_ = nodeinfoack;
+  }
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.nodeInfoAck)
 }
 void protobufMessage::set_allocated_nodepayload(::nodePayload* nodepayload) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
@@ -315,6 +356,11 @@ protobufMessage::protobufMessage(const protobufMessage& from)
     case kNodeInfoReply: {
       _this->_internal_mutable_nodeinforeply()->::nodeInfoReply::MergeFrom(
           from._internal_nodeinforeply());
+      break;
+    }
+    case kNodeInfoAck: {
+      _this->_internal_mutable_nodeinfoack()->::nodeInfoAck::MergeFrom(
+          from._internal_nodeinfoack());
       break;
     }
     case kNodePayload: {
@@ -381,6 +427,12 @@ void protobufMessage::clear_command() {
       }
       break;
     }
+    case kNodeInfoAck: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.command_.nodeinfoack_;
+      }
+      break;
+    }
     case kNodePayload: {
       if (GetArenaForAllocation() == nullptr) {
         delete _impl_.command_.nodepayload_;
@@ -429,6 +481,14 @@ const char* protobufMessage::_InternalParse(const char* ptr, ::_pbi::ParseContex
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_nodeinforeply(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .nodeInfoAck nodeInfoAck = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_nodeinfoack(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -492,6 +552,13 @@ uint8_t* protobufMessage::_InternalSerialize(
         _Internal::nodeinforeply(this).GetCachedSize(), target, stream);
   }
 
+  // .nodeInfoAck nodeInfoAck = 3;
+  if (_internal_has_nodeinfoack()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::nodeinfoack(this),
+        _Internal::nodeinfoack(this).GetCachedSize(), target, stream);
+  }
+
   // .nodePayload nodePayload = 101;
   if (_internal_has_nodepayload()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -535,6 +602,13 @@ size_t protobufMessage::ByteSizeLong() const {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.command_.nodeinforeply_);
+      break;
+    }
+    // .nodeInfoAck nodeInfoAck = 3;
+    case kNodeInfoAck: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.command_.nodeinfoack_);
       break;
     }
     // .nodePayload nodePayload = 101;
@@ -582,6 +656,11 @@ void protobufMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
     case kNodeInfoReply: {
       _this->_internal_mutable_nodeinforeply()->::nodeInfoReply::MergeFrom(
           from._internal_nodeinforeply());
+      break;
+    }
+    case kNodeInfoAck: {
+      _this->_internal_mutable_nodeinfoack()->::nodeInfoAck::MergeFrom(
+          from._internal_nodeinfoack());
       break;
     }
     case kNodePayload: {
@@ -1193,6 +1272,46 @@ void nodeInfoReply::InternalSwap(nodeInfoReply* other) {
 
 // ===================================================================
 
+class nodeInfoAck::_Internal {
+ public:
+};
+
+nodeInfoAck::nodeInfoAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:nodeInfoAck)
+}
+nodeInfoAck::nodeInfoAck(const nodeInfoAck& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  nodeInfoAck* const _this = this; (void)_this;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:nodeInfoAck)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData nodeInfoAck::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*nodeInfoAck::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata nodeInfoAck::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
+      file_level_metadata_networkMessage_2eproto[3]);
+}
+
+// ===================================================================
+
 class nodePayload::_Internal {
  public:
 };
@@ -1391,7 +1510,7 @@ void nodePayload::InternalSwap(nodePayload* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata nodePayload::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
-      file_level_metadata_networkMessage_2eproto[3]);
+      file_level_metadata_networkMessage_2eproto[4]);
 }
 
 // ===================================================================
@@ -1644,7 +1763,7 @@ void share::InternalSwap(share* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata share::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
-      file_level_metadata_networkMessage_2eproto[4]);
+      file_level_metadata_networkMessage_2eproto[5]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1660,6 +1779,10 @@ Arena::CreateMaybeMessage< ::nodeInfo >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::nodeInfoReply*
 Arena::CreateMaybeMessage< ::nodeInfoReply >(Arena* arena) {
   return Arena::CreateMessageInternal< ::nodeInfoReply >(arena);
+}
+template<> PROTOBUF_NOINLINE ::nodeInfoAck*
+Arena::CreateMaybeMessage< ::nodeInfoAck >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::nodeInfoAck >(arena);
 }
 template<> PROTOBUF_NOINLINE ::nodePayload*
 Arena::CreateMaybeMessage< ::nodePayload >(Arena* arena) {

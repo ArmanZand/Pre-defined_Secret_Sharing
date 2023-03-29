@@ -7,19 +7,33 @@ message protobufMessage {
   oneof command {
     nodeInfo nodeInfo = 1;
     nodeInfoReply nodeInfoReply = 2;
-
+    nodeInfoAck nodeInfoAck = 3;
     nodePayload nodePayload = 101;
     share share = 102;
   }
 }
+
+enum nodeType {
+  undefined = 0;
+  secretSharer = 1;
+  dealer = 2;
+  secretRecoverer = 3;
+}
+
 message nodeInfo {
     string Id = 1;
     string Name = 2;
+    nodeType type = 3;
 }
 
 message nodeInfoReply {
   string Id = 1;
   string Name = 2;
+  nodeType type = 3;
+}
+
+message nodeInfoAck {
+
 }
 
 message nodePayload {

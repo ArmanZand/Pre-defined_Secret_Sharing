@@ -23,6 +23,7 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
+#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
 #include <google/protobuf/generated_message_reflection.h>
@@ -48,6 +49,9 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 class nodeInfo;
 struct nodeInfoDefaultTypeInternal;
 extern nodeInfoDefaultTypeInternal _nodeInfo_default_instance_;
+class nodeInfoAck;
+struct nodeInfoAckDefaultTypeInternal;
+extern nodeInfoAckDefaultTypeInternal _nodeInfoAck_default_instance_;
 class nodeInfoReply;
 struct nodeInfoReplyDefaultTypeInternal;
 extern nodeInfoReplyDefaultTypeInternal _nodeInfoReply_default_instance_;
@@ -62,6 +66,7 @@ struct shareDefaultTypeInternal;
 extern shareDefaultTypeInternal _share_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::nodeInfo* Arena::CreateMaybeMessage<::nodeInfo>(Arena*);
+template<> ::nodeInfoAck* Arena::CreateMaybeMessage<::nodeInfoAck>(Arena*);
 template<> ::nodeInfoReply* Arena::CreateMaybeMessage<::nodeInfoReply>(Arena*);
 template<> ::nodePayload* Arena::CreateMaybeMessage<::nodePayload>(Arena*);
 template<> ::protobufMessage* Arena::CreateMaybeMessage<::protobufMessage>(Arena*);
@@ -143,6 +148,7 @@ class protobufMessage final :
   enum CommandCase {
     kNodeInfo = 1,
     kNodeInfoReply = 2,
+    kNodeInfoAck = 3,
     kNodePayload = 101,
     kShare = 102,
     COMMAND_NOT_SET = 0,
@@ -228,6 +234,7 @@ class protobufMessage final :
   enum : int {
     kNodeInfoFieldNumber = 1,
     kNodeInfoReplyFieldNumber = 2,
+    kNodeInfoAckFieldNumber = 3,
     kNodePayloadFieldNumber = 101,
     kShareFieldNumber = 102,
   };
@@ -266,6 +273,24 @@ class protobufMessage final :
   void unsafe_arena_set_allocated_nodeinforeply(
       ::nodeInfoReply* nodeinforeply);
   ::nodeInfoReply* unsafe_arena_release_nodeinforeply();
+
+  // .nodeInfoAck nodeInfoAck = 3;
+  bool has_nodeinfoack() const;
+  private:
+  bool _internal_has_nodeinfoack() const;
+  public:
+  void clear_nodeinfoack();
+  const ::nodeInfoAck& nodeinfoack() const;
+  PROTOBUF_NODISCARD ::nodeInfoAck* release_nodeinfoack();
+  ::nodeInfoAck* mutable_nodeinfoack();
+  void set_allocated_nodeinfoack(::nodeInfoAck* nodeinfoack);
+  private:
+  const ::nodeInfoAck& _internal_nodeinfoack() const;
+  ::nodeInfoAck* _internal_mutable_nodeinfoack();
+  public:
+  void unsafe_arena_set_allocated_nodeinfoack(
+      ::nodeInfoAck* nodeinfoack);
+  ::nodeInfoAck* unsafe_arena_release_nodeinfoack();
 
   // .nodePayload nodePayload = 101;
   bool has_nodepayload() const;
@@ -310,6 +335,7 @@ class protobufMessage final :
   class _Internal;
   void set_has_nodeinfo();
   void set_has_nodeinforeply();
+  void set_has_nodeinfoack();
   void set_has_nodepayload();
   void set_has_share();
 
@@ -325,6 +351,7 @@ class protobufMessage final :
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
       ::nodeInfo* nodeinfo_;
       ::nodeInfoReply* nodeinforeply_;
+      ::nodeInfoAck* nodeinfoack_;
       ::nodePayload* nodepayload_;
       ::share* share_;
     } command_;
@@ -697,6 +724,124 @@ class nodeInfoReply final :
 };
 // -------------------------------------------------------------------
 
+class nodeInfoAck final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:nodeInfoAck) */ {
+ public:
+  inline nodeInfoAck() : nodeInfoAck(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR nodeInfoAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  nodeInfoAck(const nodeInfoAck& from);
+  nodeInfoAck(nodeInfoAck&& from) noexcept
+    : nodeInfoAck() {
+    *this = ::std::move(from);
+  }
+
+  inline nodeInfoAck& operator=(const nodeInfoAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline nodeInfoAck& operator=(nodeInfoAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const nodeInfoAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const nodeInfoAck* internal_default_instance() {
+    return reinterpret_cast<const nodeInfoAck*>(
+               &_nodeInfoAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(nodeInfoAck& a, nodeInfoAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(nodeInfoAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(nodeInfoAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  nodeInfoAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<nodeInfoAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const nodeInfoAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const nodeInfoAck& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "nodeInfoAck";
+  }
+  protected:
+  explicit nodeInfoAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:nodeInfoAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+  };
+  friend struct ::TableStruct_networkMessage_2eproto;
+};
+// -------------------------------------------------------------------
+
 class nodePayload final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:nodePayload) */ {
  public:
@@ -745,7 +890,7 @@ class nodePayload final :
                &_nodePayload_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(nodePayload& a, nodePayload& b) {
     a.Swap(&b);
@@ -898,7 +1043,7 @@ class share final :
                &_share_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(share& a, share& b) {
     a.Swap(&b);
@@ -1173,6 +1318,80 @@ inline ::nodeInfoReply* protobufMessage::_internal_mutable_nodeinforeply() {
 inline ::nodeInfoReply* protobufMessage::mutable_nodeinforeply() {
   ::nodeInfoReply* _msg = _internal_mutable_nodeinforeply();
   // @@protoc_insertion_point(field_mutable:protobufMessage.nodeInfoReply)
+  return _msg;
+}
+
+// .nodeInfoAck nodeInfoAck = 3;
+inline bool protobufMessage::_internal_has_nodeinfoack() const {
+  return command_case() == kNodeInfoAck;
+}
+inline bool protobufMessage::has_nodeinfoack() const {
+  return _internal_has_nodeinfoack();
+}
+inline void protobufMessage::set_has_nodeinfoack() {
+  _impl_._oneof_case_[0] = kNodeInfoAck;
+}
+inline void protobufMessage::clear_nodeinfoack() {
+  if (_internal_has_nodeinfoack()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.command_.nodeinfoack_;
+    }
+    clear_has_command();
+  }
+}
+inline ::nodeInfoAck* protobufMessage::release_nodeinfoack() {
+  // @@protoc_insertion_point(field_release:protobufMessage.nodeInfoAck)
+  if (_internal_has_nodeinfoack()) {
+    clear_has_command();
+    ::nodeInfoAck* temp = _impl_.command_.nodeinfoack_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.command_.nodeinfoack_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::nodeInfoAck& protobufMessage::_internal_nodeinfoack() const {
+  return _internal_has_nodeinfoack()
+      ? *_impl_.command_.nodeinfoack_
+      : reinterpret_cast< ::nodeInfoAck&>(::_nodeInfoAck_default_instance_);
+}
+inline const ::nodeInfoAck& protobufMessage::nodeinfoack() const {
+  // @@protoc_insertion_point(field_get:protobufMessage.nodeInfoAck)
+  return _internal_nodeinfoack();
+}
+inline ::nodeInfoAck* protobufMessage::unsafe_arena_release_nodeinfoack() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:protobufMessage.nodeInfoAck)
+  if (_internal_has_nodeinfoack()) {
+    clear_has_command();
+    ::nodeInfoAck* temp = _impl_.command_.nodeinfoack_;
+    _impl_.command_.nodeinfoack_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void protobufMessage::unsafe_arena_set_allocated_nodeinfoack(::nodeInfoAck* nodeinfoack) {
+  clear_command();
+  if (nodeinfoack) {
+    set_has_nodeinfoack();
+    _impl_.command_.nodeinfoack_ = nodeinfoack;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protobufMessage.nodeInfoAck)
+}
+inline ::nodeInfoAck* protobufMessage::_internal_mutable_nodeinfoack() {
+  if (!_internal_has_nodeinfoack()) {
+    clear_command();
+    set_has_nodeinfoack();
+    _impl_.command_.nodeinfoack_ = CreateMaybeMessage< ::nodeInfoAck >(GetArenaForAllocation());
+  }
+  return _impl_.command_.nodeinfoack_;
+}
+inline ::nodeInfoAck* protobufMessage::mutable_nodeinfoack() {
+  ::nodeInfoAck* _msg = _internal_mutable_nodeinfoack();
+  // @@protoc_insertion_point(field_mutable:protobufMessage.nodeInfoAck)
   return _msg;
 }
 
@@ -1583,6 +1802,10 @@ inline void nodeInfoReply::set_type(::nodeType value) {
 
 // -------------------------------------------------------------------
 
+// nodeInfoAck
+
+// -------------------------------------------------------------------
+
 // nodePayload
 
 // string Payload = 1;
@@ -1742,6 +1965,8 @@ inline void share::set_allocated_y(std::string* y) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -9,7 +9,9 @@ using commandHandler = function<void(socketHandle &, protobufMessage &)>;
 unordered_map<protobufMessage::CommandCase, commandHandler> commands = {
         { protobufMessage::kNodeInfo, resolver::nodeInfo },
         { protobufMessage::kNodeInfoReply, resolver::nodeInfoReply },
+        { protobufMessage::kNodeInfoAck, resolver::nodeInfoAck },
         { protobufMessage::kNodePayload, resolver::nodePayload },
+
         { protobufMessage::kShare, resolver::share }
 };
 void resolver::execute(socketHandle &handle, protobufMessage &pm) {
@@ -49,6 +51,13 @@ void resolver::nodeInfoReply(socketHandle &handle, protobufMessage &pm){
     cout << "\tName: " << handle.name << endl;
     cout << "\tId: " << handle.id.toStr() << endl;
     cout << "\tType: " << nodeTypeNames[handle.type]  << endl;
+    protobufMessage rm;
+    rm.mutable_nodeinfoack();
+    handle.send(rm);
+}
+
+void resolver::nodeInfoAck(socketHandle &handle, protobufMessage &pm){
+    //Node info is synced
 }
 
 void resolver::nodePayload(socketHandle &handle, protobufMessage &pm) {

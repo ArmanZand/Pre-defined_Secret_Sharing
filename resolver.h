@@ -14,6 +14,7 @@ public:
 
     static void nodeInfo(socketHandle & handle, protobufMessage & pm);
     static void nodeInfoReply(socketHandle & handle, protobufMessage & pm);
+    static void nodeInfoAck(socketHandle & handle, protobufMessage & pm);
     static void nodePayload(socketHandle & handle, protobufMessage & pm);
     static void share(socketHandle & handle, protobufMessage & pm);
 
