@@ -10,13 +10,13 @@
 
 class resolver {
 public:
-    static void execute(socketHandle & handle, protobufMessage & pm);
+    static void execute(socketHandle * handlePtr, protobufMessage & pm);
 
-    static void nodeInfo(socketHandle & handle, protobufMessage & pm);
-    static void nodeInfoReply(socketHandle & handle, protobufMessage & pm);
-    static void nodeInfoAck(socketHandle & handle, protobufMessage & pm);
-    static void nodePayload(socketHandle & handle, protobufMessage & pm);
-    static void share(socketHandle & handle, protobufMessage & pm);
+    static void nodeInfo(socketHandle *handlePtr, protobufMessage & pm);
+    static void nodeInfoReply(socketHandle *handlePtr, protobufMessage & pm);
+    static void nodeInfoAck(socketHandle *handlePtr, protobufMessage & pm);
+    static void nodePayload(socketHandle *handlePtr, protobufMessage & pm);
+    static void share(socketHandle *handlePtr, protobufMessage & pm);
 
 };
 

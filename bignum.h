@@ -35,6 +35,7 @@ public:
     bignum operator%(bignum &other);
     bignum operator^(unsigned long int &exponent);
     bool operator==(bignum &other);
+    bool operator==(const bignum &other);
     bool operator==(int other);
     bool operator!=(bignum &other);
     bool operator<(bignum &other);

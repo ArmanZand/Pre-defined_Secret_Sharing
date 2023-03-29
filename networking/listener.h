@@ -14,11 +14,11 @@ using namespace std;
 
 class listener {
 public:
-    void start(string localAddress, string localPort);
+    unique_ptr<std::thread> start(string localAddress, string localPort);
     socketEvents events;
 private:
     void listenInstance(string localAddress, string localPort);
-    void connectionReady(socketHandle handle);
+    void connectionReady(socketHandle * handlePtr);
 };
 
 

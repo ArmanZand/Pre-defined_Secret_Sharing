@@ -201,6 +201,11 @@ int bignum::toInt() {
     return result;
 }
 
+bool bignum::operator==(const bignum &other) {
+    int result = mpz_cmp(value, bignum(other).value);
+    return (result == 0);
+}
+
 
 
 

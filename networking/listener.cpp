@@ -10,18 +10,18 @@
 #include <thread>
 
 using namespace std;
-void listener::connectionReady(socketHandle handle){
+void listener::connectionReady(socketHandle * handlePtr){
     char ipStr[INET_ADDRSTRLEN];
-    inet_ntop(AF_INET, &(handle.handleAddr.sin_addr), ipStr, INET_ADDRSTRLEN);
-    handle.ip = string(ipStr) + ":" + to_string(ntohs(handle.handleAddr.sin_port));
-    socketEvents::getInstance().onConnected(&handle);
+    inet_ntop(AF_INET, &(handlePtr->handleAddr.sin_addr), ipStr, INET_ADDRSTRLEN);
+    handlePtr->ip = string(ipStr) + ":" + to_string(ntohs(handlePtr->handleAddr.sin_port));
+    socketEvents::getInstance().onConnected(handlePtr);
 
-    FD_ZERO(&handle.descriptor);
-    FD_SET(handle.mSocket, &handle.descriptor);
+    FD_ZERO(&(handlePtr->descriptor));
+    FD_SET(handlePtr->mSocket, &(handlePtr->descriptor));
 
-    if(FD_ISSET(handle.mSocket, &handle.descriptor)){
-        socketEvents::getInstance().onReady(&handle, false);
-        handle.receive();
+    if(FD_ISSET(handlePtr->mSocket, &handlePtr->descriptor)){
+        socketEvents::getInstance().onReady(handlePtr, false);
+        handlePtr->receive();
     }
 }
 
@@ -62,19 +62,23 @@ void listener::listenInstance(string localAddress, string localPort){
         cout << "Listen thread started on (" << localAddress << ":" << localPort << ")" << endl;
 
         while(true){
-            socketHandle socketHandle;
-            int handleAddrSize = sizeof(socketHandle.handleAddr);
-            socketHandle.mSocket = accept(listenSocket, (sockaddr * ) &socketHandle.handleAddr, &handleAddrSize);
-            if (socketHandle.mSocket == INVALID_SOCKET) {
+            SOCKET temp_socket;
+            sockaddr_in temp_handleAddr {};
+            //
+            int handleAddrSize = sizeof(temp_handleAddr);
+            temp_socket = ::accept(listenSocket, (sockaddr * ) &(temp_handleAddr), &handleAddrSize);
+            if (temp_socket == INVALID_SOCKET) {
                 int wsa_error = WSAGetLastError();
                 if(wsa_error == WSAEINTR){
                     listenInstance(localAddress, localPort);
                 }
                 runtime_error("Error on socket accept: " + to_string(wsa_error));
             }
-            if(socketHandle.isConnected()){
-                thread readyThread([&socketHandle, this]() {this->connectionReady(socketHandle);});
-                readyThread.join();
+            socketHandle * handlePtr = new socketHandle();
+            handlePtr->mSocket = temp_socket;
+            handlePtr->handleAddr = temp_handleAddr;
+            if(handlePtr->isConnected()){
+                make_unique<thread>([handlePtr, this]() {this->connectionReady(handlePtr);})->detach();
             }
         }
     }
@@ -86,8 +90,7 @@ void listener::listenInstance(string localAddress, string localPort){
     }
 }
 
-void listener::start(string localAddress, string localPort){
-    thread listenThread([&localAddress, &localPort, this]() { this->listenInstance(localAddress, localPort);});
-    listenThread.join();
+unique_ptr<thread> listener::start(string localAddress, string localPort){
+    return make_unique<thread>([localAddress, localPort, this]() { this->listenInstance(localAddress, localPort); });
 }
 

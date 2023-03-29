@@ -17,7 +17,6 @@
 using namespace std;
 
 
-
 class socketHandle {
 public:
     socketHandle();
@@ -29,15 +28,30 @@ public:
     string name;
     bignum id;
     fd_set descriptor{};
-    void connect(string remoteAddress, string remotePort);
+    unique_ptr<std::thread> connect(string remoteAddress, string remotePort);
     void send(protobufMessage & message);
     bool isConnected();
     void receive();
+    bool operator==(socketHandle & other);
+    bool operator==(const socketHandle & other);
+    bool operator!=(socketHandle & other);
+    bool operator!=(const socketHandle & other);
+
+    void disconnect();
 
 private:
     void connectInstance(string remoteAddress, string remotePort);
     char * m_buffer = new char[p_constBufferSize];
 };
 
+class handleTracker {
+private:
+
+public:
+    static vector<socketHandle*> m_handles;
+    static void add(socketHandle * handle);
+    static void remove(socketHandle * handle);
+    static void clear();
+};
 
 #endif //CLEAN_SOCKETS_SOCKETHANDLE_H
