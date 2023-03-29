@@ -11,6 +11,7 @@
 #include "socketEvents.h"
 #include "networkMessage.pb.h"
 #include "../parameters.h"
+#include "../bignum.h"
 #pragma comment(lib, "ws2_32")
 
 using namespace std;
@@ -21,6 +22,8 @@ public:
     SOCKET mSocket{};
     sockaddr_in handleAddr{};
     string ip;
+    string name;
+    bignum id;
     fd_set descriptor{};
     void connect(string remoteAddress, string remotePort);
     void send(protobufMessage & message);

@@ -16,6 +16,7 @@ public:
     ~bignum();
     std::string toStr();
     std::string toHex();
+    int toInt();
     int bitLength();
     bignum copy();
 

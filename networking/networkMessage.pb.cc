@@ -36,7 +36,8 @@ struct protobufMessageDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 protobufMessageDefaultTypeInternal _protobufMessage_default_instance_;
 PROTOBUF_CONSTEXPR nodeInfo::nodeInfo(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.id_)*/0
+    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct nodeInfoDefaultTypeInternal {
   PROTOBUF_CONSTEXPR nodeInfoDefaultTypeInternal()
@@ -49,7 +50,8 @@ struct nodeInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodeInfoDefaultTypeInternal _nodeInfo_default_instance_;
 PROTOBUF_CONSTEXPR nodeInfoReply::nodeInfoReply(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.id_)*/0
+    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct nodeInfoReplyDefaultTypeInternal {
   PROTOBUF_CONSTEXPR nodeInfoReplyDefaultTypeInternal()
@@ -60,20 +62,34 @@ struct nodeInfoReplyDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodeInfoReplyDefaultTypeInternal _nodeInfoReply_default_instance_;
-PROTOBUF_CONSTEXPR exampleMessage::exampleMessage(
+PROTOBUF_CONSTEXPR nodePayload::nodePayload(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.payload_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct exampleMessageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR exampleMessageDefaultTypeInternal()
+struct nodePayloadDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR nodePayloadDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~exampleMessageDefaultTypeInternal() {}
+  ~nodePayloadDefaultTypeInternal() {}
   union {
-    exampleMessage _instance;
+    nodePayload _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 exampleMessageDefaultTypeInternal _exampleMessage_default_instance_;
-static ::_pb::Metadata file_level_metadata_networkMessage_2eproto[4];
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodePayloadDefaultTypeInternal _nodePayload_default_instance_;
+PROTOBUF_CONSTEXPR share::share(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.x_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.y_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct shareDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR shareDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~shareDefaultTypeInternal() {}
+  union {
+    share _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 shareDefaultTypeInternal _share_default_instance_;
+static ::_pb::Metadata file_level_metadata_networkMessage_2eproto[5];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_networkMessage_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_networkMessage_2eproto = nullptr;
 
@@ -87,6 +103,7 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
   PROTOBUF_FIELD_OFFSET(::protobufMessage, _impl_.command_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::nodeInfo, _internal_metadata_),
@@ -95,6 +112,7 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::nodeInfo, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::nodeInfo, _impl_.name_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::nodeInfoReply, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -102,43 +120,56 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::nodeInfoReply, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::nodeInfoReply, _impl_.name_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::exampleMessage, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::nodePayload, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::exampleMessage, _impl_.message_),
+  PROTOBUF_FIELD_OFFSET(::nodePayload, _impl_.payload_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::share, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::share, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::share, _impl_.y_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::protobufMessage)},
-  { 10, -1, -1, sizeof(::nodeInfo)},
-  { 17, -1, -1, sizeof(::nodeInfoReply)},
-  { 24, -1, -1, sizeof(::exampleMessage)},
+  { 11, -1, -1, sizeof(::nodeInfo)},
+  { 19, -1, -1, sizeof(::nodeInfoReply)},
+  { 27, -1, -1, sizeof(::nodePayload)},
+  { 34, -1, -1, sizeof(::share)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::_protobufMessage_default_instance_._instance,
   &::_nodeInfo_default_instance_._instance,
   &::_nodeInfoReply_default_instance_._instance,
-  &::_exampleMessage_default_instance_._instance,
+  &::_nodePayload_default_instance_._instance,
+  &::_share_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_networkMessage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024networkMessage.proto\"\217\001\n\017protobufMessa"
-  "ge\022)\n\016exampleMessage\030d \001(\0132\017.exampleMess"
-  "ageH\000\022\035\n\010nodeInfo\030\001 \001(\0132\t.nodeInfoH\000\022\'\n\r"
-  "nodeInfoReply\030\002 \001(\0132\016.nodeInfoReplyH\000B\t\n"
-  "\007command\"\026\n\010nodeInfo\022\n\n\002Id\030\001 \001(\005\"\033\n\rnode"
-  "InfoReply\022\n\n\002Id\030\001 \001(\005\"!\n\016exampleMessage\022"
-  "\017\n\007message\030\001 \001(\tB\026\252\002\023Networking.Messages"
-  "b\006proto3"
+  "\n\024networkMessage.proto\"\242\001\n\017protobufMessa"
+  "ge\022\035\n\010nodeInfo\030\001 \001(\0132\t.nodeInfoH\000\022\'\n\rnod"
+  "eInfoReply\030\002 \001(\0132\016.nodeInfoReplyH\000\022#\n\013no"
+  "dePayload\030e \001(\0132\014.nodePayloadH\000\022\027\n\005share"
+  "\030f \001(\0132\006.shareH\000B\t\n\007command\"$\n\010nodeInfo\022"
+  "\n\n\002Id\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\")\n\rnodeInfoRep"
+  "ly\022\n\n\002Id\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\"\036\n\013nodePayl"
+  "oad\022\017\n\007Payload\030\001 \001(\t\"\035\n\005share\022\t\n\001X\030\001 \001(\t"
+  "\022\t\n\001Y\030\002 \001(\tB\026\252\002\023Networking.Messagesb\006pro"
+  "to3"
   ;
 static ::_pbi::once_flag descriptor_table_networkMessage_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_networkMessage_2eproto = {
-    false, false, 288, descriptor_table_protodef_networkMessage_2eproto,
+    false, false, 363, descriptor_table_protodef_networkMessage_2eproto,
     "networkMessage.proto",
-    &descriptor_table_networkMessage_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_networkMessage_2eproto_once, nullptr, 0, 5,
     schemas, file_default_instances, TableStruct_networkMessage_2eproto::offsets,
     file_level_metadata_networkMessage_2eproto, file_level_enum_descriptors_networkMessage_2eproto,
     file_level_service_descriptors_networkMessage_2eproto,
@@ -154,15 +185,12 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 
 class protobufMessage::_Internal {
  public:
-  static const ::exampleMessage& examplemessage(const protobufMessage* msg);
   static const ::nodeInfo& nodeinfo(const protobufMessage* msg);
   static const ::nodeInfoReply& nodeinforeply(const protobufMessage* msg);
+  static const ::nodePayload& nodepayload(const protobufMessage* msg);
+  static const ::share& share(const protobufMessage* msg);
 };
 
-const ::exampleMessage&
-protobufMessage::_Internal::examplemessage(const protobufMessage* msg) {
-  return *msg->_impl_.command_.examplemessage_;
-}
 const ::nodeInfo&
 protobufMessage::_Internal::nodeinfo(const protobufMessage* msg) {
   return *msg->_impl_.command_.nodeinfo_;
@@ -171,20 +199,13 @@ const ::nodeInfoReply&
 protobufMessage::_Internal::nodeinforeply(const protobufMessage* msg) {
   return *msg->_impl_.command_.nodeinforeply_;
 }
-void protobufMessage::set_allocated_examplemessage(::exampleMessage* examplemessage) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  clear_command();
-  if (examplemessage) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(examplemessage);
-    if (message_arena != submessage_arena) {
-      examplemessage = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, examplemessage, submessage_arena);
-    }
-    set_has_examplemessage();
-    _impl_.command_.examplemessage_ = examplemessage;
-  }
-  // @@protoc_insertion_point(field_set_allocated:protobufMessage.exampleMessage)
+const ::nodePayload&
+protobufMessage::_Internal::nodepayload(const protobufMessage* msg) {
+  return *msg->_impl_.command_.nodepayload_;
+}
+const ::share&
+protobufMessage::_Internal::share(const protobufMessage* msg) {
+  return *msg->_impl_.command_.share_;
 }
 void protobufMessage::set_allocated_nodeinfo(::nodeInfo* nodeinfo) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
@@ -216,6 +237,36 @@ void protobufMessage::set_allocated_nodeinforeply(::nodeInfoReply* nodeinforeply
   }
   // @@protoc_insertion_point(field_set_allocated:protobufMessage.nodeInfoReply)
 }
+void protobufMessage::set_allocated_nodepayload(::nodePayload* nodepayload) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_command();
+  if (nodepayload) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(nodepayload);
+    if (message_arena != submessage_arena) {
+      nodepayload = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, nodepayload, submessage_arena);
+    }
+    set_has_nodepayload();
+    _impl_.command_.nodepayload_ = nodepayload;
+  }
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.nodePayload)
+}
+void protobufMessage::set_allocated_share(::share* share) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_command();
+  if (share) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(share);
+    if (message_arena != submessage_arena) {
+      share = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, share, submessage_arena);
+    }
+    set_has_share();
+    _impl_.command_.share_ = share;
+  }
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.share)
+}
 protobufMessage::protobufMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -233,11 +284,6 @@ protobufMessage::protobufMessage(const protobufMessage& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   clear_has_command();
   switch (from.command_case()) {
-    case kExampleMessage: {
-      _this->_internal_mutable_examplemessage()->::exampleMessage::MergeFrom(
-          from._internal_examplemessage());
-      break;
-    }
     case kNodeInfo: {
       _this->_internal_mutable_nodeinfo()->::nodeInfo::MergeFrom(
           from._internal_nodeinfo());
@@ -246,6 +292,16 @@ protobufMessage::protobufMessage(const protobufMessage& from)
     case kNodeInfoReply: {
       _this->_internal_mutable_nodeinforeply()->::nodeInfoReply::MergeFrom(
           from._internal_nodeinforeply());
+      break;
+    }
+    case kNodePayload: {
+      _this->_internal_mutable_nodepayload()->::nodePayload::MergeFrom(
+          from._internal_nodepayload());
+      break;
+    }
+    case kShare: {
+      _this->_internal_mutable_share()->::share::MergeFrom(
+          from._internal_share());
       break;
     }
     case COMMAND_NOT_SET: {
@@ -290,12 +346,6 @@ void protobufMessage::SetCachedSize(int size) const {
 void protobufMessage::clear_command() {
 // @@protoc_insertion_point(one_of_clear_start:protobufMessage)
   switch (command_case()) {
-    case kExampleMessage: {
-      if (GetArenaForAllocation() == nullptr) {
-        delete _impl_.command_.examplemessage_;
-      }
-      break;
-    }
     case kNodeInfo: {
       if (GetArenaForAllocation() == nullptr) {
         delete _impl_.command_.nodeinfo_;
@@ -305,6 +355,18 @@ void protobufMessage::clear_command() {
     case kNodeInfoReply: {
       if (GetArenaForAllocation() == nullptr) {
         delete _impl_.command_.nodeinforeply_;
+      }
+      break;
+    }
+    case kNodePayload: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.command_.nodepayload_;
+      }
+      break;
+    }
+    case kShare: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.command_.share_;
       }
       break;
     }
@@ -348,10 +410,18 @@ const char* protobufMessage::_InternalParse(const char* ptr, ::_pbi::ParseContex
         } else
           goto handle_unusual;
         continue;
-      // .exampleMessage exampleMessage = 100;
-      case 100:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          ptr = ctx->ParseMessage(_internal_mutable_examplemessage(), ptr);
+      // .nodePayload nodePayload = 101;
+      case 101:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_nodepayload(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .share share = 102;
+      case 102:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr = ctx->ParseMessage(_internal_mutable_share(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -399,11 +469,18 @@ uint8_t* protobufMessage::_InternalSerialize(
         _Internal::nodeinforeply(this).GetCachedSize(), target, stream);
   }
 
-  // .exampleMessage exampleMessage = 100;
-  if (_internal_has_examplemessage()) {
+  // .nodePayload nodePayload = 101;
+  if (_internal_has_nodepayload()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(100, _Internal::examplemessage(this),
-        _Internal::examplemessage(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(101, _Internal::nodepayload(this),
+        _Internal::nodepayload(this).GetCachedSize(), target, stream);
+  }
+
+  // .share share = 102;
+  if (_internal_has_share()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(102, _Internal::share(this),
+        _Internal::share(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -423,13 +500,6 @@ size_t protobufMessage::ByteSizeLong() const {
   (void) cached_has_bits;
 
   switch (command_case()) {
-    // .exampleMessage exampleMessage = 100;
-    case kExampleMessage: {
-      total_size += 2 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.command_.examplemessage_);
-      break;
-    }
     // .nodeInfo nodeInfo = 1;
     case kNodeInfo: {
       total_size += 1 +
@@ -442,6 +512,20 @@ size_t protobufMessage::ByteSizeLong() const {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.command_.nodeinforeply_);
+      break;
+    }
+    // .nodePayload nodePayload = 101;
+    case kNodePayload: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.command_.nodepayload_);
+      break;
+    }
+    // .share share = 102;
+    case kShare: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.command_.share_);
       break;
     }
     case COMMAND_NOT_SET: {
@@ -467,11 +551,6 @@ void protobufMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
   (void) cached_has_bits;
 
   switch (from.command_case()) {
-    case kExampleMessage: {
-      _this->_internal_mutable_examplemessage()->::exampleMessage::MergeFrom(
-          from._internal_examplemessage());
-      break;
-    }
     case kNodeInfo: {
       _this->_internal_mutable_nodeinfo()->::nodeInfo::MergeFrom(
           from._internal_nodeinfo());
@@ -480,6 +559,16 @@ void protobufMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
     case kNodeInfoReply: {
       _this->_internal_mutable_nodeinforeply()->::nodeInfoReply::MergeFrom(
           from._internal_nodeinforeply());
+      break;
+    }
+    case kNodePayload: {
+      _this->_internal_mutable_nodepayload()->::nodePayload::MergeFrom(
+          from._internal_nodepayload());
+      break;
+    }
+    case kShare: {
+      _this->_internal_mutable_share()->::share::MergeFrom(
+          from._internal_share());
       break;
     }
     case COMMAND_NOT_SET: {
@@ -530,10 +619,26 @@ nodeInfo::nodeInfo(const nodeInfo& from)
   nodeInfo* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.id_){}
+    , decltype(_impl_.name_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _this->_impl_.id_ = from._impl_.id_;
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:nodeInfo)
 }
 
@@ -542,9 +647,18 @@ inline void nodeInfo::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.id_){0}
+      decltype(_impl_.id_){}
+    , decltype(_impl_.name_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 nodeInfo::~nodeInfo() {
@@ -558,6 +672,8 @@ nodeInfo::~nodeInfo() {
 
 inline void nodeInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+  _impl_.name_.Destroy();
 }
 
 void nodeInfo::SetCachedSize(int size) const {
@@ -570,7 +686,8 @@ void nodeInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.id_ = 0;
+  _impl_.id_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -580,11 +697,23 @@ const char* nodeInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 Id = 1;
+      // string Id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "nodeInfo.Id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string Name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "nodeInfo.Name"));
         } else
           goto handle_unusual;
         continue;
@@ -617,10 +746,24 @@ uint8_t* nodeInfo::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 Id = 1;
-  if (this->_internal_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
+  // string Id = 1;
+  if (!this->_internal_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "nodeInfo.Id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  // string Name = 2;
+  if (!this->_internal_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "nodeInfo.Name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -639,9 +782,18 @@ size_t nodeInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 Id = 1;
-  if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+  // string Id = 1;
+  if (!this->_internal_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  // string Name = 2;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -662,8 +814,11 @@ void nodeInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTO
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_id() != 0) {
+  if (!from._internal_id().empty()) {
     _this->_internal_set_id(from._internal_id());
+  }
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -681,8 +836,17 @@ bool nodeInfo::IsInitialized() const {
 
 void nodeInfo::InternalSwap(nodeInfo* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_.id_, other->_impl_.id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.id_, lhs_arena,
+      &other->_impl_.id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata nodeInfo::GetMetadata() const {
@@ -708,10 +872,26 @@ nodeInfoReply::nodeInfoReply(const nodeInfoReply& from)
   nodeInfoReply* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.id_){}
+    , decltype(_impl_.name_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _this->_impl_.id_ = from._impl_.id_;
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:nodeInfoReply)
 }
 
@@ -720,9 +900,18 @@ inline void nodeInfoReply::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.id_){0}
+      decltype(_impl_.id_){}
+    , decltype(_impl_.name_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 nodeInfoReply::~nodeInfoReply() {
@@ -736,6 +925,8 @@ nodeInfoReply::~nodeInfoReply() {
 
 inline void nodeInfoReply::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+  _impl_.name_.Destroy();
 }
 
 void nodeInfoReply::SetCachedSize(int size) const {
@@ -748,7 +939,8 @@ void nodeInfoReply::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.id_ = 0;
+  _impl_.id_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -758,11 +950,23 @@ const char* nodeInfoReply::_InternalParse(const char* ptr, ::_pbi::ParseContext*
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 Id = 1;
+      // string Id = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "nodeInfoReply.Id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string Name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "nodeInfoReply.Name"));
         } else
           goto handle_unusual;
         continue;
@@ -795,10 +999,24 @@ uint8_t* nodeInfoReply::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 Id = 1;
-  if (this->_internal_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
+  // string Id = 1;
+  if (!this->_internal_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "nodeInfoReply.Id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  // string Name = 2;
+  if (!this->_internal_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "nodeInfoReply.Name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_name(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -817,9 +1035,18 @@ size_t nodeInfoReply::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 Id = 1;
-  if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
+  // string Id = 1;
+  if (!this->_internal_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  // string Name = 2;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -840,8 +1067,11 @@ void nodeInfoReply::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_id() != 0) {
+  if (!from._internal_id().empty()) {
     _this->_internal_set_id(from._internal_id());
+  }
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -859,8 +1089,17 @@ bool nodeInfoReply::IsInitialized() const {
 
 void nodeInfoReply::InternalSwap(nodeInfoReply* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_.id_, other->_impl_.id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.id_, lhs_arena,
+      &other->_impl_.id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata nodeInfoReply::GetMetadata() const {
@@ -871,51 +1110,51 @@ void nodeInfoReply::InternalSwap(nodeInfoReply* other) {
 
 // ===================================================================
 
-class exampleMessage::_Internal {
+class nodePayload::_Internal {
  public:
 };
 
-exampleMessage::exampleMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+nodePayload::nodePayload(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:exampleMessage)
+  // @@protoc_insertion_point(arena_constructor:nodePayload)
 }
-exampleMessage::exampleMessage(const exampleMessage& from)
+nodePayload::nodePayload(const nodePayload& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  exampleMessage* const _this = this; (void)_this;
+  nodePayload* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.message_){}
+      decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.message_.InitDefault();
+  _impl_.payload_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.message_.Set("", GetArenaForAllocation());
+    _impl_.payload_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), 
+  if (!from._internal_payload().empty()) {
+    _this->_impl_.payload_.Set(from._internal_payload(), 
       _this->GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:exampleMessage)
+  // @@protoc_insertion_point(copy_constructor:nodePayload)
 }
 
-inline void exampleMessage::SharedCtor(
+inline void nodePayload::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.message_){}
+      decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
-  _impl_.message_.InitDefault();
+  _impl_.payload_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.message_.Set("", GetArenaForAllocation());
+    _impl_.payload_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-exampleMessage::~exampleMessage() {
-  // @@protoc_insertion_point(destructor:exampleMessage)
+nodePayload::~nodePayload() {
+  // @@protoc_insertion_point(destructor:nodePayload)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -923,38 +1162,38 @@ exampleMessage::~exampleMessage() {
   SharedDtor();
 }
 
-inline void exampleMessage::SharedDtor() {
+inline void nodePayload::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.message_.Destroy();
+  _impl_.payload_.Destroy();
 }
 
-void exampleMessage::SetCachedSize(int size) const {
+void nodePayload::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void exampleMessage::Clear() {
-// @@protoc_insertion_point(message_clear_start:exampleMessage)
+void nodePayload::Clear() {
+// @@protoc_insertion_point(message_clear_start:nodePayload)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.message_.ClearToEmpty();
+  _impl_.payload_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* exampleMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* nodePayload::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string message = 1;
+      // string Payload = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_message();
+          auto str = _internal_mutable_payload();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "exampleMessage.message"));
+          CHK_(::_pbi::VerifyUTF8(str, "nodePayload.Payload"));
         } else
           goto handle_unusual;
         continue;
@@ -981,95 +1220,348 @@ failure:
 #undef CHK_
 }
 
-uint8_t* exampleMessage::_InternalSerialize(
+uint8_t* nodePayload::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:exampleMessage)
+  // @@protoc_insertion_point(serialize_to_array_start:nodePayload)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
+  // string Payload = 1;
+  if (!this->_internal_payload().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      this->_internal_payload().data(), static_cast<int>(this->_internal_payload().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "exampleMessage.message");
+      "nodePayload.Payload");
     target = stream->WriteStringMaybeAliased(
-        1, this->_internal_message(), target);
+        1, this->_internal_payload(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:exampleMessage)
+  // @@protoc_insertion_point(serialize_to_array_end:nodePayload)
   return target;
 }
 
-size_t exampleMessage::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:exampleMessage)
+size_t nodePayload::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:nodePayload)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
+  // string Payload = 1;
+  if (!this->_internal_payload().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_message());
+        this->_internal_payload());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData exampleMessage::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData nodePayload::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    exampleMessage::MergeImpl
+    nodePayload::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*exampleMessage::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*nodePayload::GetClassData() const { return &_class_data_; }
 
 
-void exampleMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<exampleMessage*>(&to_msg);
-  auto& from = static_cast<const exampleMessage&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:exampleMessage)
+void nodePayload::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<nodePayload*>(&to_msg);
+  auto& from = static_cast<const nodePayload&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:nodePayload)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_message().empty()) {
-    _this->_internal_set_message(from._internal_message());
+  if (!from._internal_payload().empty()) {
+    _this->_internal_set_payload(from._internal_payload());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void exampleMessage::CopyFrom(const exampleMessage& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:exampleMessage)
+void nodePayload::CopyFrom(const nodePayload& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:nodePayload)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool exampleMessage::IsInitialized() const {
+bool nodePayload::IsInitialized() const {
   return true;
 }
 
-void exampleMessage::InternalSwap(exampleMessage* other) {
+void nodePayload::InternalSwap(nodePayload* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.message_, lhs_arena,
-      &other->_impl_.message_, rhs_arena
+      &_impl_.payload_, lhs_arena,
+      &other->_impl_.payload_, rhs_arena
   );
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata exampleMessage::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata nodePayload::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
       file_level_metadata_networkMessage_2eproto[3]);
+}
+
+// ===================================================================
+
+class share::_Internal {
+ public:
+};
+
+share::share(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:share)
+}
+share::share(const share& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  share* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.x_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.x_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_x().empty()) {
+    _this->_impl_.x_.Set(from._internal_x(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.y_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.y_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_y().empty()) {
+    _this->_impl_.y_.Set(from._internal_y(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:share)
+}
+
+inline void share::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.x_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.x_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.y_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.y_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+share::~share() {
+  // @@protoc_insertion_point(destructor:share)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void share::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.x_.Destroy();
+  _impl_.y_.Destroy();
+}
+
+void share::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void share::Clear() {
+// @@protoc_insertion_point(message_clear_start:share)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.x_.ClearToEmpty();
+  _impl_.y_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* share::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string X = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_x();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "share.X"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string Y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_y();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "share.Y"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* share::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:share)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string X = 1;
+  if (!this->_internal_x().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_x().data(), static_cast<int>(this->_internal_x().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "share.X");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_x(), target);
+  }
+
+  // string Y = 2;
+  if (!this->_internal_y().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_y().data(), static_cast<int>(this->_internal_y().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "share.Y");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_y(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:share)
+  return target;
+}
+
+size_t share::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:share)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string X = 1;
+  if (!this->_internal_x().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_x());
+  }
+
+  // string Y = 2;
+  if (!this->_internal_y().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_y());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData share::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    share::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*share::GetClassData() const { return &_class_data_; }
+
+
+void share::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<share*>(&to_msg);
+  auto& from = static_cast<const share&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:share)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_x().empty()) {
+    _this->_internal_set_x(from._internal_x());
+  }
+  if (!from._internal_y().empty()) {
+    _this->_internal_set_y(from._internal_y());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void share::CopyFrom(const share& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:share)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool share::IsInitialized() const {
+  return true;
+}
+
+void share::InternalSwap(share* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.x_, lhs_arena,
+      &other->_impl_.x_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.y_, lhs_arena,
+      &other->_impl_.y_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata share::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
+      file_level_metadata_networkMessage_2eproto[4]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1086,9 +1578,13 @@ template<> PROTOBUF_NOINLINE ::nodeInfoReply*
 Arena::CreateMaybeMessage< ::nodeInfoReply >(Arena* arena) {
   return Arena::CreateMessageInternal< ::nodeInfoReply >(arena);
 }
-template<> PROTOBUF_NOINLINE ::exampleMessage*
-Arena::CreateMaybeMessage< ::exampleMessage >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::exampleMessage >(arena);
+template<> PROTOBUF_NOINLINE ::nodePayload*
+Arena::CreateMaybeMessage< ::nodePayload >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::nodePayload >(arena);
+}
+template<> PROTOBUF_NOINLINE ::share*
+Arena::CreateMaybeMessage< ::share >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::share >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

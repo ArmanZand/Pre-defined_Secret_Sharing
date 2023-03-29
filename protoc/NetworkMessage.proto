@@ -5,7 +5,6 @@ option csharp_namespace = "Networking.Messages";
 
 message protobufMessage {
   oneof command {
-    //exampleMessage exampleMessage = 100;
     nodeInfo nodeInfo = 1;
     nodeInfoReply nodeInfoReply = 2;
 
@@ -14,12 +13,13 @@ message protobufMessage {
   }
 }
 message nodeInfo {
-    int32 Id = 1;
+    string Id = 1;
     string Name = 2;
 }
+
 message nodeInfoReply {
-    int32 Id = 1;
-    string Name = 2;
+  string Id = 1;
+  string Name = 2;
 }
 
 message nodePayload {
@@ -29,8 +29,4 @@ message nodePayload {
 message share {
   string X = 1;
   string Y = 2;
-}
-
-message exampleMessage {
-    string message = 1;
 }

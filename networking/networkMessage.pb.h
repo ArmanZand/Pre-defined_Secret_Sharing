@@ -44,23 +44,27 @@ struct TableStruct_networkMessage_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_networkMessage_2eproto;
-class exampleMessage;
-struct exampleMessageDefaultTypeInternal;
-extern exampleMessageDefaultTypeInternal _exampleMessage_default_instance_;
 class nodeInfo;
 struct nodeInfoDefaultTypeInternal;
 extern nodeInfoDefaultTypeInternal _nodeInfo_default_instance_;
 class nodeInfoReply;
 struct nodeInfoReplyDefaultTypeInternal;
 extern nodeInfoReplyDefaultTypeInternal _nodeInfoReply_default_instance_;
+class nodePayload;
+struct nodePayloadDefaultTypeInternal;
+extern nodePayloadDefaultTypeInternal _nodePayload_default_instance_;
 class protobufMessage;
 struct protobufMessageDefaultTypeInternal;
 extern protobufMessageDefaultTypeInternal _protobufMessage_default_instance_;
+class share;
+struct shareDefaultTypeInternal;
+extern shareDefaultTypeInternal _share_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
-template<> ::exampleMessage* Arena::CreateMaybeMessage<::exampleMessage>(Arena*);
 template<> ::nodeInfo* Arena::CreateMaybeMessage<::nodeInfo>(Arena*);
 template<> ::nodeInfoReply* Arena::CreateMaybeMessage<::nodeInfoReply>(Arena*);
+template<> ::nodePayload* Arena::CreateMaybeMessage<::nodePayload>(Arena*);
 template<> ::protobufMessage* Arena::CreateMaybeMessage<::protobufMessage>(Arena*);
+template<> ::share* Arena::CreateMaybeMessage<::share>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
 // ===================================================================
@@ -109,9 +113,10 @@ class protobufMessage final :
     return *internal_default_instance();
   }
   enum CommandCase {
-    kExampleMessage = 100,
     kNodeInfo = 1,
     kNodeInfoReply = 2,
+    kNodePayload = 101,
+    kShare = 102,
     COMMAND_NOT_SET = 0,
   };
 
@@ -193,28 +198,11 @@ class protobufMessage final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kExampleMessageFieldNumber = 100,
     kNodeInfoFieldNumber = 1,
     kNodeInfoReplyFieldNumber = 2,
+    kNodePayloadFieldNumber = 101,
+    kShareFieldNumber = 102,
   };
-  // .exampleMessage exampleMessage = 100;
-  bool has_examplemessage() const;
-  private:
-  bool _internal_has_examplemessage() const;
-  public:
-  void clear_examplemessage();
-  const ::exampleMessage& examplemessage() const;
-  PROTOBUF_NODISCARD ::exampleMessage* release_examplemessage();
-  ::exampleMessage* mutable_examplemessage();
-  void set_allocated_examplemessage(::exampleMessage* examplemessage);
-  private:
-  const ::exampleMessage& _internal_examplemessage() const;
-  ::exampleMessage* _internal_mutable_examplemessage();
-  public:
-  void unsafe_arena_set_allocated_examplemessage(
-      ::exampleMessage* examplemessage);
-  ::exampleMessage* unsafe_arena_release_examplemessage();
-
   // .nodeInfo nodeInfo = 1;
   bool has_nodeinfo() const;
   private:
@@ -251,14 +239,51 @@ class protobufMessage final :
       ::nodeInfoReply* nodeinforeply);
   ::nodeInfoReply* unsafe_arena_release_nodeinforeply();
 
+  // .nodePayload nodePayload = 101;
+  bool has_nodepayload() const;
+  private:
+  bool _internal_has_nodepayload() const;
+  public:
+  void clear_nodepayload();
+  const ::nodePayload& nodepayload() const;
+  PROTOBUF_NODISCARD ::nodePayload* release_nodepayload();
+  ::nodePayload* mutable_nodepayload();
+  void set_allocated_nodepayload(::nodePayload* nodepayload);
+  private:
+  const ::nodePayload& _internal_nodepayload() const;
+  ::nodePayload* _internal_mutable_nodepayload();
+  public:
+  void unsafe_arena_set_allocated_nodepayload(
+      ::nodePayload* nodepayload);
+  ::nodePayload* unsafe_arena_release_nodepayload();
+
+  // .share share = 102;
+  bool has_share() const;
+  private:
+  bool _internal_has_share() const;
+  public:
+  void clear_share();
+  const ::share& share() const;
+  PROTOBUF_NODISCARD ::share* release_share();
+  ::share* mutable_share();
+  void set_allocated_share(::share* share);
+  private:
+  const ::share& _internal_share() const;
+  ::share* _internal_mutable_share();
+  public:
+  void unsafe_arena_set_allocated_share(
+      ::share* share);
+  ::share* unsafe_arena_release_share();
+
   void clear_command();
   CommandCase command_case() const;
   // @@protoc_insertion_point(class_scope:protobufMessage)
  private:
   class _Internal;
-  void set_has_examplemessage();
   void set_has_nodeinfo();
   void set_has_nodeinforeply();
+  void set_has_nodepayload();
+  void set_has_share();
 
   inline bool has_command() const;
   inline void clear_has_command();
@@ -270,9 +295,10 @@ class protobufMessage final :
     union CommandUnion {
       constexpr CommandUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
-      ::exampleMessage* examplemessage_;
       ::nodeInfo* nodeinfo_;
       ::nodeInfoReply* nodeinforeply_;
+      ::nodePayload* nodepayload_;
+      ::share* share_;
     } command_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -405,14 +431,34 @@ class nodeInfo final :
 
   enum : int {
     kIdFieldNumber = 1,
+    kNameFieldNumber = 2,
   };
-  // int32 Id = 1;
+  // string Id = 1;
   void clear_id();
-  int32_t id() const;
-  void set_id(int32_t value);
+  const std::string& id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_id();
+  PROTOBUF_NODISCARD std::string* release_id();
+  void set_allocated_id(std::string* id);
   private:
-  int32_t _internal_id() const;
-  void _internal_set_id(int32_t value);
+  const std::string& _internal_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(const std::string& value);
+  std::string* _internal_mutable_id();
+  public:
+
+  // string Name = 2;
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
   public:
 
   // @@protoc_insertion_point(class_scope:nodeInfo)
@@ -423,7 +469,8 @@ class nodeInfo final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    int32_t id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -553,14 +600,34 @@ class nodeInfoReply final :
 
   enum : int {
     kIdFieldNumber = 1,
+    kNameFieldNumber = 2,
   };
-  // int32 Id = 1;
+  // string Id = 1;
   void clear_id();
-  int32_t id() const;
-  void set_id(int32_t value);
+  const std::string& id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_id();
+  PROTOBUF_NODISCARD std::string* release_id();
+  void set_allocated_id(std::string* id);
   private:
-  int32_t _internal_id() const;
-  void _internal_set_id(int32_t value);
+  const std::string& _internal_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(const std::string& value);
+  std::string* _internal_mutable_id();
+  public:
+
+  // string Name = 2;
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
   public:
 
   // @@protoc_insertion_point(class_scope:nodeInfoReply)
@@ -571,7 +638,8 @@ class nodeInfoReply final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    int32_t id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -579,24 +647,24 @@ class nodeInfoReply final :
 };
 // -------------------------------------------------------------------
 
-class exampleMessage final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:exampleMessage) */ {
+class nodePayload final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:nodePayload) */ {
  public:
-  inline exampleMessage() : exampleMessage(nullptr) {}
-  ~exampleMessage() override;
-  explicit PROTOBUF_CONSTEXPR exampleMessage(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline nodePayload() : nodePayload(nullptr) {}
+  ~nodePayload() override;
+  explicit PROTOBUF_CONSTEXPR nodePayload(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  exampleMessage(const exampleMessage& from);
-  exampleMessage(exampleMessage&& from) noexcept
-    : exampleMessage() {
+  nodePayload(const nodePayload& from);
+  nodePayload(nodePayload&& from) noexcept
+    : nodePayload() {
     *this = ::std::move(from);
   }
 
-  inline exampleMessage& operator=(const exampleMessage& from) {
+  inline nodePayload& operator=(const nodePayload& from) {
     CopyFrom(from);
     return *this;
   }
-  inline exampleMessage& operator=(exampleMessage&& from) noexcept {
+  inline nodePayload& operator=(nodePayload&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -619,20 +687,20 @@ class exampleMessage final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const exampleMessage& default_instance() {
+  static const nodePayload& default_instance() {
     return *internal_default_instance();
   }
-  static inline const exampleMessage* internal_default_instance() {
-    return reinterpret_cast<const exampleMessage*>(
-               &_exampleMessage_default_instance_);
+  static inline const nodePayload* internal_default_instance() {
+    return reinterpret_cast<const nodePayload*>(
+               &_nodePayload_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  friend void swap(exampleMessage& a, exampleMessage& b) {
+  friend void swap(nodePayload& a, nodePayload& b) {
     a.Swap(&b);
   }
-  inline void Swap(exampleMessage* other) {
+  inline void Swap(nodePayload* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -645,7 +713,7 @@ class exampleMessage final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(exampleMessage* other) {
+  void UnsafeArenaSwap(nodePayload* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -653,14 +721,14 @@ class exampleMessage final :
 
   // implements Message ----------------------------------------------
 
-  exampleMessage* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<exampleMessage>(arena);
+  nodePayload* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<nodePayload>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const exampleMessage& from);
+  void CopyFrom(const nodePayload& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const exampleMessage& from) {
-    exampleMessage::MergeImpl(*this, from);
+  void MergeFrom( const nodePayload& from) {
+    nodePayload::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -678,15 +746,15 @@ class exampleMessage final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(exampleMessage* other);
+  void InternalSwap(nodePayload* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "exampleMessage";
+    return "nodePayload";
   }
   protected:
-  explicit exampleMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit nodePayload(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -700,23 +768,23 @@ class exampleMessage final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kMessageFieldNumber = 1,
+    kPayloadFieldNumber = 1,
   };
-  // string message = 1;
-  void clear_message();
-  const std::string& message() const;
+  // string Payload = 1;
+  void clear_payload();
+  const std::string& payload() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_message(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_message();
-  PROTOBUF_NODISCARD std::string* release_message();
-  void set_allocated_message(std::string* message);
+  void set_payload(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_payload();
+  PROTOBUF_NODISCARD std::string* release_payload();
+  void set_allocated_payload(std::string* payload);
   private:
-  const std::string& _internal_message() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
-  std::string* _internal_mutable_message();
+  const std::string& _internal_payload() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_payload(const std::string& value);
+  std::string* _internal_mutable_payload();
   public:
 
-  // @@protoc_insertion_point(class_scope:exampleMessage)
+  // @@protoc_insertion_point(class_scope:nodePayload)
  private:
   class _Internal;
 
@@ -724,7 +792,176 @@ class exampleMessage final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_networkMessage_2eproto;
+};
+// -------------------------------------------------------------------
+
+class share final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:share) */ {
+ public:
+  inline share() : share(nullptr) {}
+  ~share() override;
+  explicit PROTOBUF_CONSTEXPR share(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  share(const share& from);
+  share(share&& from) noexcept
+    : share() {
+    *this = ::std::move(from);
+  }
+
+  inline share& operator=(const share& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline share& operator=(share&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const share& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const share* internal_default_instance() {
+    return reinterpret_cast<const share*>(
+               &_share_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(share& a, share& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(share* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(share* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  share* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<share>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const share& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const share& from) {
+    share::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(share* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "share";
+  }
+  protected:
+  explicit share(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+  };
+  // string X = 1;
+  void clear_x();
+  const std::string& x() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_x(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_x();
+  PROTOBUF_NODISCARD std::string* release_x();
+  void set_allocated_x(std::string* x);
+  private:
+  const std::string& _internal_x() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_x(const std::string& value);
+  std::string* _internal_mutable_x();
+  public:
+
+  // string Y = 2;
+  void clear_y();
+  const std::string& y() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_y(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_y();
+  PROTOBUF_NODISCARD std::string* release_y();
+  void set_allocated_y(std::string* y);
+  private:
+  const std::string& _internal_y() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_y(const std::string& value);
+  std::string* _internal_mutable_y();
+  public:
+
+  // @@protoc_insertion_point(class_scope:share)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr x_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr y_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -740,80 +977,6 @@ class exampleMessage final :
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
 // protobufMessage
-
-// .exampleMessage exampleMessage = 100;
-inline bool protobufMessage::_internal_has_examplemessage() const {
-  return command_case() == kExampleMessage;
-}
-inline bool protobufMessage::has_examplemessage() const {
-  return _internal_has_examplemessage();
-}
-inline void protobufMessage::set_has_examplemessage() {
-  _impl_._oneof_case_[0] = kExampleMessage;
-}
-inline void protobufMessage::clear_examplemessage() {
-  if (_internal_has_examplemessage()) {
-    if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.command_.examplemessage_;
-    }
-    clear_has_command();
-  }
-}
-inline ::exampleMessage* protobufMessage::release_examplemessage() {
-  // @@protoc_insertion_point(field_release:protobufMessage.exampleMessage)
-  if (_internal_has_examplemessage()) {
-    clear_has_command();
-    ::exampleMessage* temp = _impl_.command_.examplemessage_;
-    if (GetArenaForAllocation() != nullptr) {
-      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.command_.examplemessage_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::exampleMessage& protobufMessage::_internal_examplemessage() const {
-  return _internal_has_examplemessage()
-      ? *_impl_.command_.examplemessage_
-      : reinterpret_cast< ::exampleMessage&>(::_exampleMessage_default_instance_);
-}
-inline const ::exampleMessage& protobufMessage::examplemessage() const {
-  // @@protoc_insertion_point(field_get:protobufMessage.exampleMessage)
-  return _internal_examplemessage();
-}
-inline ::exampleMessage* protobufMessage::unsafe_arena_release_examplemessage() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:protobufMessage.exampleMessage)
-  if (_internal_has_examplemessage()) {
-    clear_has_command();
-    ::exampleMessage* temp = _impl_.command_.examplemessage_;
-    _impl_.command_.examplemessage_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void protobufMessage::unsafe_arena_set_allocated_examplemessage(::exampleMessage* examplemessage) {
-  clear_command();
-  if (examplemessage) {
-    set_has_examplemessage();
-    _impl_.command_.examplemessage_ = examplemessage;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protobufMessage.exampleMessage)
-}
-inline ::exampleMessage* protobufMessage::_internal_mutable_examplemessage() {
-  if (!_internal_has_examplemessage()) {
-    clear_command();
-    set_has_examplemessage();
-    _impl_.command_.examplemessage_ = CreateMaybeMessage< ::exampleMessage >(GetArenaForAllocation());
-  }
-  return _impl_.command_.examplemessage_;
-}
-inline ::exampleMessage* protobufMessage::mutable_examplemessage() {
-  ::exampleMessage* _msg = _internal_mutable_examplemessage();
-  // @@protoc_insertion_point(field_mutable:protobufMessage.exampleMessage)
-  return _msg;
-}
 
 // .nodeInfo nodeInfo = 1;
 inline bool protobufMessage::_internal_has_nodeinfo() const {
@@ -963,6 +1126,154 @@ inline ::nodeInfoReply* protobufMessage::mutable_nodeinforeply() {
   return _msg;
 }
 
+// .nodePayload nodePayload = 101;
+inline bool protobufMessage::_internal_has_nodepayload() const {
+  return command_case() == kNodePayload;
+}
+inline bool protobufMessage::has_nodepayload() const {
+  return _internal_has_nodepayload();
+}
+inline void protobufMessage::set_has_nodepayload() {
+  _impl_._oneof_case_[0] = kNodePayload;
+}
+inline void protobufMessage::clear_nodepayload() {
+  if (_internal_has_nodepayload()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.command_.nodepayload_;
+    }
+    clear_has_command();
+  }
+}
+inline ::nodePayload* protobufMessage::release_nodepayload() {
+  // @@protoc_insertion_point(field_release:protobufMessage.nodePayload)
+  if (_internal_has_nodepayload()) {
+    clear_has_command();
+    ::nodePayload* temp = _impl_.command_.nodepayload_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.command_.nodepayload_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::nodePayload& protobufMessage::_internal_nodepayload() const {
+  return _internal_has_nodepayload()
+      ? *_impl_.command_.nodepayload_
+      : reinterpret_cast< ::nodePayload&>(::_nodePayload_default_instance_);
+}
+inline const ::nodePayload& protobufMessage::nodepayload() const {
+  // @@protoc_insertion_point(field_get:protobufMessage.nodePayload)
+  return _internal_nodepayload();
+}
+inline ::nodePayload* protobufMessage::unsafe_arena_release_nodepayload() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:protobufMessage.nodePayload)
+  if (_internal_has_nodepayload()) {
+    clear_has_command();
+    ::nodePayload* temp = _impl_.command_.nodepayload_;
+    _impl_.command_.nodepayload_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void protobufMessage::unsafe_arena_set_allocated_nodepayload(::nodePayload* nodepayload) {
+  clear_command();
+  if (nodepayload) {
+    set_has_nodepayload();
+    _impl_.command_.nodepayload_ = nodepayload;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protobufMessage.nodePayload)
+}
+inline ::nodePayload* protobufMessage::_internal_mutable_nodepayload() {
+  if (!_internal_has_nodepayload()) {
+    clear_command();
+    set_has_nodepayload();
+    _impl_.command_.nodepayload_ = CreateMaybeMessage< ::nodePayload >(GetArenaForAllocation());
+  }
+  return _impl_.command_.nodepayload_;
+}
+inline ::nodePayload* protobufMessage::mutable_nodepayload() {
+  ::nodePayload* _msg = _internal_mutable_nodepayload();
+  // @@protoc_insertion_point(field_mutable:protobufMessage.nodePayload)
+  return _msg;
+}
+
+// .share share = 102;
+inline bool protobufMessage::_internal_has_share() const {
+  return command_case() == kShare;
+}
+inline bool protobufMessage::has_share() const {
+  return _internal_has_share();
+}
+inline void protobufMessage::set_has_share() {
+  _impl_._oneof_case_[0] = kShare;
+}
+inline void protobufMessage::clear_share() {
+  if (_internal_has_share()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.command_.share_;
+    }
+    clear_has_command();
+  }
+}
+inline ::share* protobufMessage::release_share() {
+  // @@protoc_insertion_point(field_release:protobufMessage.share)
+  if (_internal_has_share()) {
+    clear_has_command();
+    ::share* temp = _impl_.command_.share_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.command_.share_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::share& protobufMessage::_internal_share() const {
+  return _internal_has_share()
+      ? *_impl_.command_.share_
+      : reinterpret_cast< ::share&>(::_share_default_instance_);
+}
+inline const ::share& protobufMessage::share() const {
+  // @@protoc_insertion_point(field_get:protobufMessage.share)
+  return _internal_share();
+}
+inline ::share* protobufMessage::unsafe_arena_release_share() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:protobufMessage.share)
+  if (_internal_has_share()) {
+    clear_has_command();
+    ::share* temp = _impl_.command_.share_;
+    _impl_.command_.share_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void protobufMessage::unsafe_arena_set_allocated_share(::share* share) {
+  clear_command();
+  if (share) {
+    set_has_share();
+    _impl_.command_.share_ = share;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protobufMessage.share)
+}
+inline ::share* protobufMessage::_internal_mutable_share() {
+  if (!_internal_has_share()) {
+    clear_command();
+    set_has_share();
+    _impl_.command_.share_ = CreateMaybeMessage< ::share >(GetArenaForAllocation());
+  }
+  return _impl_.command_.share_;
+}
+inline ::share* protobufMessage::mutable_share() {
+  ::share* _msg = _internal_mutable_share();
+  // @@protoc_insertion_point(field_mutable:protobufMessage.share)
+  return _msg;
+}
+
 inline bool protobufMessage::has_command() const {
   return command_case() != COMMAND_NOT_SET;
 }
@@ -976,107 +1287,373 @@ inline protobufMessage::CommandCase protobufMessage::command_case() const {
 
 // nodeInfo
 
-// int32 Id = 1;
+// string Id = 1;
 inline void nodeInfo::clear_id() {
-  _impl_.id_ = 0;
+  _impl_.id_.ClearToEmpty();
 }
-inline int32_t nodeInfo::_internal_id() const {
-  return _impl_.id_;
-}
-inline int32_t nodeInfo::id() const {
+inline const std::string& nodeInfo::id() const {
   // @@protoc_insertion_point(field_get:nodeInfo.Id)
   return _internal_id();
 }
-inline void nodeInfo::_internal_set_id(int32_t value) {
-  
-  _impl_.id_ = value;
-}
-inline void nodeInfo::set_id(int32_t value) {
-  _internal_set_id(value);
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void nodeInfo::set_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:nodeInfo.Id)
+}
+inline std::string* nodeInfo::mutable_id() {
+  std::string* _s = _internal_mutable_id();
+  // @@protoc_insertion_point(field_mutable:nodeInfo.Id)
+  return _s;
+}
+inline const std::string& nodeInfo::_internal_id() const {
+  return _impl_.id_.Get();
+}
+inline void nodeInfo::_internal_set_id(const std::string& value) {
+  
+  _impl_.id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* nodeInfo::_internal_mutable_id() {
+  
+  return _impl_.id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* nodeInfo::release_id() {
+  // @@protoc_insertion_point(field_release:nodeInfo.Id)
+  return _impl_.id_.Release();
+}
+inline void nodeInfo::set_allocated_id(std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.id_.SetAllocated(id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.id_.IsDefault()) {
+    _impl_.id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:nodeInfo.Id)
+}
+
+// string Name = 2;
+inline void nodeInfo::clear_name() {
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& nodeInfo::name() const {
+  // @@protoc_insertion_point(field_get:nodeInfo.Name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void nodeInfo::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:nodeInfo.Name)
+}
+inline std::string* nodeInfo::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:nodeInfo.Name)
+  return _s;
+}
+inline const std::string& nodeInfo::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void nodeInfo::_internal_set_name(const std::string& value) {
+  
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* nodeInfo::_internal_mutable_name() {
+  
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* nodeInfo::release_name() {
+  // @@protoc_insertion_point(field_release:nodeInfo.Name)
+  return _impl_.name_.Release();
+}
+inline void nodeInfo::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:nodeInfo.Name)
 }
 
 // -------------------------------------------------------------------
 
 // nodeInfoReply
 
-// int32 Id = 1;
+// string Id = 1;
 inline void nodeInfoReply::clear_id() {
-  _impl_.id_ = 0;
+  _impl_.id_.ClearToEmpty();
 }
-inline int32_t nodeInfoReply::_internal_id() const {
-  return _impl_.id_;
-}
-inline int32_t nodeInfoReply::id() const {
+inline const std::string& nodeInfoReply::id() const {
   // @@protoc_insertion_point(field_get:nodeInfoReply.Id)
   return _internal_id();
 }
-inline void nodeInfoReply::_internal_set_id(int32_t value) {
-  
-  _impl_.id_ = value;
-}
-inline void nodeInfoReply::set_id(int32_t value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:nodeInfoReply.Id)
-}
-
-// -------------------------------------------------------------------
-
-// exampleMessage
-
-// string message = 1;
-inline void exampleMessage::clear_message() {
-  _impl_.message_.ClearToEmpty();
-}
-inline const std::string& exampleMessage::message() const {
-  // @@protoc_insertion_point(field_get:exampleMessage.message)
-  return _internal_message();
-}
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void exampleMessage::set_message(ArgT0&& arg0, ArgT... args) {
+void nodeInfoReply::set_id(ArgT0&& arg0, ArgT... args) {
  
- _impl_.message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:exampleMessage.message)
+ _impl_.id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:nodeInfoReply.Id)
 }
-inline std::string* exampleMessage::mutable_message() {
-  std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:exampleMessage.message)
+inline std::string* nodeInfoReply::mutable_id() {
+  std::string* _s = _internal_mutable_id();
+  // @@protoc_insertion_point(field_mutable:nodeInfoReply.Id)
   return _s;
 }
-inline const std::string& exampleMessage::_internal_message() const {
-  return _impl_.message_.Get();
+inline const std::string& nodeInfoReply::_internal_id() const {
+  return _impl_.id_.Get();
 }
-inline void exampleMessage::_internal_set_message(const std::string& value) {
+inline void nodeInfoReply::_internal_set_id(const std::string& value) {
   
-  _impl_.message_.Set(value, GetArenaForAllocation());
+  _impl_.id_.Set(value, GetArenaForAllocation());
 }
-inline std::string* exampleMessage::_internal_mutable_message() {
+inline std::string* nodeInfoReply::_internal_mutable_id() {
   
-  return _impl_.message_.Mutable(GetArenaForAllocation());
+  return _impl_.id_.Mutable(GetArenaForAllocation());
 }
-inline std::string* exampleMessage::release_message() {
-  // @@protoc_insertion_point(field_release:exampleMessage.message)
-  return _impl_.message_.Release();
+inline std::string* nodeInfoReply::release_id() {
+  // @@protoc_insertion_point(field_release:nodeInfoReply.Id)
+  return _impl_.id_.Release();
 }
-inline void exampleMessage::set_allocated_message(std::string* message) {
-  if (message != nullptr) {
+inline void nodeInfoReply::set_allocated_id(std::string* id) {
+  if (id != nullptr) {
     
   } else {
     
   }
-  _impl_.message_.SetAllocated(message, GetArenaForAllocation());
+  _impl_.id_.SetAllocated(id, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.message_.IsDefault()) {
-    _impl_.message_.Set("", GetArenaForAllocation());
+  if (_impl_.id_.IsDefault()) {
+    _impl_.id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:exampleMessage.message)
+  // @@protoc_insertion_point(field_set_allocated:nodeInfoReply.Id)
+}
+
+// string Name = 2;
+inline void nodeInfoReply::clear_name() {
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& nodeInfoReply::name() const {
+  // @@protoc_insertion_point(field_get:nodeInfoReply.Name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void nodeInfoReply::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:nodeInfoReply.Name)
+}
+inline std::string* nodeInfoReply::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:nodeInfoReply.Name)
+  return _s;
+}
+inline const std::string& nodeInfoReply::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void nodeInfoReply::_internal_set_name(const std::string& value) {
+  
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* nodeInfoReply::_internal_mutable_name() {
+  
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* nodeInfoReply::release_name() {
+  // @@protoc_insertion_point(field_release:nodeInfoReply.Name)
+  return _impl_.name_.Release();
+}
+inline void nodeInfoReply::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:nodeInfoReply.Name)
+}
+
+// -------------------------------------------------------------------
+
+// nodePayload
+
+// string Payload = 1;
+inline void nodePayload::clear_payload() {
+  _impl_.payload_.ClearToEmpty();
+}
+inline const std::string& nodePayload::payload() const {
+  // @@protoc_insertion_point(field_get:nodePayload.Payload)
+  return _internal_payload();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void nodePayload::set_payload(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.payload_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:nodePayload.Payload)
+}
+inline std::string* nodePayload::mutable_payload() {
+  std::string* _s = _internal_mutable_payload();
+  // @@protoc_insertion_point(field_mutable:nodePayload.Payload)
+  return _s;
+}
+inline const std::string& nodePayload::_internal_payload() const {
+  return _impl_.payload_.Get();
+}
+inline void nodePayload::_internal_set_payload(const std::string& value) {
+  
+  _impl_.payload_.Set(value, GetArenaForAllocation());
+}
+inline std::string* nodePayload::_internal_mutable_payload() {
+  
+  return _impl_.payload_.Mutable(GetArenaForAllocation());
+}
+inline std::string* nodePayload::release_payload() {
+  // @@protoc_insertion_point(field_release:nodePayload.Payload)
+  return _impl_.payload_.Release();
+}
+inline void nodePayload::set_allocated_payload(std::string* payload) {
+  if (payload != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.payload_.SetAllocated(payload, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.payload_.IsDefault()) {
+    _impl_.payload_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:nodePayload.Payload)
+}
+
+// -------------------------------------------------------------------
+
+// share
+
+// string X = 1;
+inline void share::clear_x() {
+  _impl_.x_.ClearToEmpty();
+}
+inline const std::string& share::x() const {
+  // @@protoc_insertion_point(field_get:share.X)
+  return _internal_x();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void share::set_x(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.x_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:share.X)
+}
+inline std::string* share::mutable_x() {
+  std::string* _s = _internal_mutable_x();
+  // @@protoc_insertion_point(field_mutable:share.X)
+  return _s;
+}
+inline const std::string& share::_internal_x() const {
+  return _impl_.x_.Get();
+}
+inline void share::_internal_set_x(const std::string& value) {
+  
+  _impl_.x_.Set(value, GetArenaForAllocation());
+}
+inline std::string* share::_internal_mutable_x() {
+  
+  return _impl_.x_.Mutable(GetArenaForAllocation());
+}
+inline std::string* share::release_x() {
+  // @@protoc_insertion_point(field_release:share.X)
+  return _impl_.x_.Release();
+}
+inline void share::set_allocated_x(std::string* x) {
+  if (x != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.x_.SetAllocated(x, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.x_.IsDefault()) {
+    _impl_.x_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:share.X)
+}
+
+// string Y = 2;
+inline void share::clear_y() {
+  _impl_.y_.ClearToEmpty();
+}
+inline const std::string& share::y() const {
+  // @@protoc_insertion_point(field_get:share.Y)
+  return _internal_y();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void share::set_y(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.y_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:share.Y)
+}
+inline std::string* share::mutable_y() {
+  std::string* _s = _internal_mutable_y();
+  // @@protoc_insertion_point(field_mutable:share.Y)
+  return _s;
+}
+inline const std::string& share::_internal_y() const {
+  return _impl_.y_.Get();
+}
+inline void share::_internal_set_y(const std::string& value) {
+  
+  _impl_.y_.Set(value, GetArenaForAllocation());
+}
+inline std::string* share::_internal_mutable_y() {
+  
+  return _impl_.y_.Mutable(GetArenaForAllocation());
+}
+inline std::string* share::release_y() {
+  // @@protoc_insertion_point(field_release:share.Y)
+  return _impl_.y_.Release();
+}
+inline void share::set_allocated_y(std::string* y) {
+  if (y != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.y_.SetAllocated(y, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.y_.IsDefault()) {
+    _impl_.y_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:share.Y)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

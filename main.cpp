@@ -19,18 +19,21 @@ void OnDisconnect(const socketHandle& socketHandle){
     cout << "Disconnection detected from " << socketHandle.ip << endl;
 }
 void OnReady(socketHandle & socketHandle, bool initiator){
-    protobufMessage pm;
-    if (initiator){
-        pm.mutable_examplemessage()->set_message("On ready event proc and on receive event proc test.");
+    if(initiator){
+        protobufMessage pm;
+        string nodeId = get<bignum>(config["NODE_ID"]).toStr();
+        string nodeName = get<string>(config["NODE_NAME"]);
+        pm.mutable_nodeinfo()->set_id(nodeId);
+        pm.mutable_nodeinfo()->set_name(nodeName);
+        socketHandle.send(pm);
     }
-    else {
-        pm.mutable_examplemessage()->set_message("listener has sent this.");
-    }
-    socketHandle.send(pm);
+
 }
 void OnReceive(socketHandle & socketHandle, protobufMessage & message){
     resolver::execute(socketHandle, message);
 }
+
+
 
 int main(int argc, char *argv[]) {
     vector<string> args(argv, argv + argc);
@@ -42,13 +45,16 @@ int main(int argc, char *argv[]) {
         }
     }
     try{
-        if(!empty(configPath)){
-        parameters::loadConfig(configPath);
-        }
+
         socketEvents::getInstance().setOnConnected([](socketHandle * handle) { OnConnect(*handle); } );
         socketEvents::getInstance().setOnDisconnected([](socketHandle * handle) { OnDisconnect(* handle);});
         socketEvents::getInstance().setOnReady([](socketHandle * handle, bool initiator) { OnReady(*handle, initiator);});
         socketEvents::getInstance().setOnReceive([](socketHandle * handle, protobufMessage * message) { OnReceive(*handle, *message);});
+
+        if(!empty(configPath)){
+            parameters::loadConfig(configPath);
+        }
+
         if(parameters::keyExists("LISTENER_START")){
             string address = get<string>(config["LISTENER_START"]);
             int delimiter = address.find(":");

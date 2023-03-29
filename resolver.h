@@ -7,11 +7,16 @@
 
 #include "networking/socketHandle.h"
 #include "networking/networkMessage.pb.h"
+
 class resolver {
 public:
     static void execute(socketHandle & handle, protobufMessage & pm);
 
-    static void exampleMessage(socketHandle & handle, protobufMessage & pm);
+    static void nodeInfo(socketHandle & handle, protobufMessage & pm);
+    static void nodeInfoReply(socketHandle & handle, protobufMessage & pm);
+    static void nodePayload(socketHandle & handle, protobufMessage & pm);
+    static void share(socketHandle & handle, protobufMessage & pm);
+
 };
 
 #endif //CLEAN_SOCKETS_RESOLVER_H

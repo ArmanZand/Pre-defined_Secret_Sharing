@@ -196,6 +196,11 @@ bignum bignum::copy() {
     return result;
 }
 
+int bignum::toInt() {
+    int result = mpz_get_si(value);
+    return result;
+}
+
 
 
 
