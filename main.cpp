@@ -39,12 +39,6 @@ void OnReceive(socketHandle * handlePtr, protobufMessage & message){
 
 
 int main(int argc, char *argv[]) {
-    bignum test = bignum::parseText("Hello");
-    cout << test.toStr() << endl;
-    string res = test.toText();
-    cout << res << endl;
-
-
     vector<unique_ptr<thread>> activeThreads;
     vector<string> args(argv, argv + argc);
     string configPath;

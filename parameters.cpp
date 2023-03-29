@@ -77,8 +77,8 @@ void parameters::loadConfig(string filePath){
                 config["PRIME"] = bignum::parseStr(value.c_str());
                 continue;
             }
-            if(key == "PLAYER_SECRET_STR") {
-
+            if(key == "PLAYER_SECRET_TEXT") {
+                config["PLAYER_SECRET"] =  bignum::parseText(value.c_str());
                 continue;
             }
             if(key == "PLAYER_SECRET_HEX") {
@@ -87,6 +87,10 @@ void parameters::loadConfig(string filePath){
             }
             if(key == "PLAYER_SECRET_BIGNUM") {
                 config["PLAYER_SECRET"] = bignum::parseStr(value.c_str());
+                continue;
+            }
+            if(key == "DEALER_SECRET_TEXT") {
+                config["DEALER_SECRET"] = bignum::parseText(value.c_str());
                 continue;
             }
             if(key == "DEALER_SECRET_HEX") {

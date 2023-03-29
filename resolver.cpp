@@ -186,7 +186,7 @@ void resolver::secretRecovererProcedure() {
         } else {
             try {
                 bignum parse_x = bignum::parseStr(input.c_str());
-                string result = p.evaluate(parse_x).y.toStr();
+                string result = p.evaluate(parse_x).y.toText();
                 consoleLog::print("Result: " + result);
             }
             catch(exception & ex){
