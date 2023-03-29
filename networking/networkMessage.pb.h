@@ -46,6 +46,12 @@ struct TableStruct_networkMessage_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_networkMessage_2eproto;
+class broadcastShare;
+struct broadcastShareDefaultTypeInternal;
+extern broadcastShareDefaultTypeInternal _broadcastShare_default_instance_;
+class dealerShare;
+struct dealerShareDefaultTypeInternal;
+extern dealerShareDefaultTypeInternal _dealerShare_default_instance_;
 class nodeInfo;
 struct nodeInfoDefaultTypeInternal;
 extern nodeInfoDefaultTypeInternal _nodeInfo_default_instance_;
@@ -61,16 +67,14 @@ extern nodePayloadDefaultTypeInternal _nodePayload_default_instance_;
 class protobufMessage;
 struct protobufMessageDefaultTypeInternal;
 extern protobufMessageDefaultTypeInternal _protobufMessage_default_instance_;
-class share;
-struct shareDefaultTypeInternal;
-extern shareDefaultTypeInternal _share_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
+template<> ::broadcastShare* Arena::CreateMaybeMessage<::broadcastShare>(Arena*);
+template<> ::dealerShare* Arena::CreateMaybeMessage<::dealerShare>(Arena*);
 template<> ::nodeInfo* Arena::CreateMaybeMessage<::nodeInfo>(Arena*);
 template<> ::nodeInfoAck* Arena::CreateMaybeMessage<::nodeInfoAck>(Arena*);
 template<> ::nodeInfoReply* Arena::CreateMaybeMessage<::nodeInfoReply>(Arena*);
 template<> ::nodePayload* Arena::CreateMaybeMessage<::nodePayload>(Arena*);
 template<> ::protobufMessage* Arena::CreateMaybeMessage<::protobufMessage>(Arena*);
-template<> ::share* Arena::CreateMaybeMessage<::share>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
 enum nodeType : int {
@@ -150,7 +154,8 @@ class protobufMessage final :
     kNodeInfoReply = 2,
     kNodeInfoAck = 3,
     kNodePayload = 101,
-    kShare = 102,
+    kDealerShare = 102,
+    kBroadcastShare = 103,
     COMMAND_NOT_SET = 0,
   };
 
@@ -236,7 +241,8 @@ class protobufMessage final :
     kNodeInfoReplyFieldNumber = 2,
     kNodeInfoAckFieldNumber = 3,
     kNodePayloadFieldNumber = 101,
-    kShareFieldNumber = 102,
+    kDealerShareFieldNumber = 102,
+    kBroadcastShareFieldNumber = 103,
   };
   // .nodeInfo nodeInfo = 1;
   bool has_nodeinfo() const;
@@ -310,23 +316,41 @@ class protobufMessage final :
       ::nodePayload* nodepayload);
   ::nodePayload* unsafe_arena_release_nodepayload();
 
-  // .share share = 102;
-  bool has_share() const;
+  // .dealerShare dealerShare = 102;
+  bool has_dealershare() const;
   private:
-  bool _internal_has_share() const;
+  bool _internal_has_dealershare() const;
   public:
-  void clear_share();
-  const ::share& share() const;
-  PROTOBUF_NODISCARD ::share* release_share();
-  ::share* mutable_share();
-  void set_allocated_share(::share* share);
+  void clear_dealershare();
+  const ::dealerShare& dealershare() const;
+  PROTOBUF_NODISCARD ::dealerShare* release_dealershare();
+  ::dealerShare* mutable_dealershare();
+  void set_allocated_dealershare(::dealerShare* dealershare);
   private:
-  const ::share& _internal_share() const;
-  ::share* _internal_mutable_share();
+  const ::dealerShare& _internal_dealershare() const;
+  ::dealerShare* _internal_mutable_dealershare();
   public:
-  void unsafe_arena_set_allocated_share(
-      ::share* share);
-  ::share* unsafe_arena_release_share();
+  void unsafe_arena_set_allocated_dealershare(
+      ::dealerShare* dealershare);
+  ::dealerShare* unsafe_arena_release_dealershare();
+
+  // .broadcastShare broadcastShare = 103;
+  bool has_broadcastshare() const;
+  private:
+  bool _internal_has_broadcastshare() const;
+  public:
+  void clear_broadcastshare();
+  const ::broadcastShare& broadcastshare() const;
+  PROTOBUF_NODISCARD ::broadcastShare* release_broadcastshare();
+  ::broadcastShare* mutable_broadcastshare();
+  void set_allocated_broadcastshare(::broadcastShare* broadcastshare);
+  private:
+  const ::broadcastShare& _internal_broadcastshare() const;
+  ::broadcastShare* _internal_mutable_broadcastshare();
+  public:
+  void unsafe_arena_set_allocated_broadcastshare(
+      ::broadcastShare* broadcastshare);
+  ::broadcastShare* unsafe_arena_release_broadcastshare();
 
   void clear_command();
   CommandCase command_case() const;
@@ -337,7 +361,8 @@ class protobufMessage final :
   void set_has_nodeinforeply();
   void set_has_nodeinfoack();
   void set_has_nodepayload();
-  void set_has_share();
+  void set_has_dealershare();
+  void set_has_broadcastshare();
 
   inline bool has_command() const;
   inline void clear_has_command();
@@ -353,7 +378,8 @@ class protobufMessage final :
       ::nodeInfoReply* nodeinforeply_;
       ::nodeInfoAck* nodeinfoack_;
       ::nodePayload* nodepayload_;
-      ::share* share_;
+      ::dealerShare* dealershare_;
+      ::broadcastShare* broadcastshare_;
     } command_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -995,24 +1021,24 @@ class nodePayload final :
 };
 // -------------------------------------------------------------------
 
-class share final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:share) */ {
+class dealerShare final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:dealerShare) */ {
  public:
-  inline share() : share(nullptr) {}
-  ~share() override;
-  explicit PROTOBUF_CONSTEXPR share(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline dealerShare() : dealerShare(nullptr) {}
+  ~dealerShare() override;
+  explicit PROTOBUF_CONSTEXPR dealerShare(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  share(const share& from);
-  share(share&& from) noexcept
-    : share() {
+  dealerShare(const dealerShare& from);
+  dealerShare(dealerShare&& from) noexcept
+    : dealerShare() {
     *this = ::std::move(from);
   }
 
-  inline share& operator=(const share& from) {
+  inline dealerShare& operator=(const dealerShare& from) {
     CopyFrom(from);
     return *this;
   }
-  inline share& operator=(share&& from) noexcept {
+  inline dealerShare& operator=(dealerShare&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1035,20 +1061,20 @@ class share final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const share& default_instance() {
+  static const dealerShare& default_instance() {
     return *internal_default_instance();
   }
-  static inline const share* internal_default_instance() {
-    return reinterpret_cast<const share*>(
-               &_share_default_instance_);
+  static inline const dealerShare* internal_default_instance() {
+    return reinterpret_cast<const dealerShare*>(
+               &_dealerShare_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     5;
 
-  friend void swap(share& a, share& b) {
+  friend void swap(dealerShare& a, dealerShare& b) {
     a.Swap(&b);
   }
-  inline void Swap(share* other) {
+  inline void Swap(dealerShare* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1061,7 +1087,7 @@ class share final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(share* other) {
+  void UnsafeArenaSwap(dealerShare* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1069,14 +1095,14 @@ class share final :
 
   // implements Message ----------------------------------------------
 
-  share* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<share>(arena);
+  dealerShare* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<dealerShare>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const share& from);
+  void CopyFrom(const dealerShare& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const share& from) {
-    share::MergeImpl(*this, from);
+  void MergeFrom( const dealerShare& from) {
+    dealerShare::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -1094,15 +1120,15 @@ class share final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(share* other);
+  void InternalSwap(dealerShare* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "share";
+    return "dealerShare";
   }
   protected:
-  explicit share(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit dealerShare(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -1147,7 +1173,176 @@ class share final :
   std::string* _internal_mutable_y();
   public:
 
-  // @@protoc_insertion_point(class_scope:share)
+  // @@protoc_insertion_point(class_scope:dealerShare)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr x_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr y_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_networkMessage_2eproto;
+};
+// -------------------------------------------------------------------
+
+class broadcastShare final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:broadcastShare) */ {
+ public:
+  inline broadcastShare() : broadcastShare(nullptr) {}
+  ~broadcastShare() override;
+  explicit PROTOBUF_CONSTEXPR broadcastShare(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  broadcastShare(const broadcastShare& from);
+  broadcastShare(broadcastShare&& from) noexcept
+    : broadcastShare() {
+    *this = ::std::move(from);
+  }
+
+  inline broadcastShare& operator=(const broadcastShare& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline broadcastShare& operator=(broadcastShare&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const broadcastShare& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const broadcastShare* internal_default_instance() {
+    return reinterpret_cast<const broadcastShare*>(
+               &_broadcastShare_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(broadcastShare& a, broadcastShare& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(broadcastShare* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(broadcastShare* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  broadcastShare* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<broadcastShare>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const broadcastShare& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const broadcastShare& from) {
+    broadcastShare::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(broadcastShare* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "broadcastShare";
+  }
+  protected:
+  explicit broadcastShare(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+  };
+  // string X = 1;
+  void clear_x();
+  const std::string& x() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_x(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_x();
+  PROTOBUF_NODISCARD std::string* release_x();
+  void set_allocated_x(std::string* x);
+  private:
+  const std::string& _internal_x() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_x(const std::string& value);
+  std::string* _internal_mutable_x();
+  public:
+
+  // string Y = 2;
+  void clear_y();
+  const std::string& y() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_y(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_y();
+  PROTOBUF_NODISCARD std::string* release_y();
+  void set_allocated_y(std::string* y);
+  private:
+  const std::string& _internal_y() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_y(const std::string& value);
+  std::string* _internal_mutable_y();
+  public:
+
+  // @@protoc_insertion_point(class_scope:broadcastShare)
  private:
   class _Internal;
 
@@ -1469,77 +1664,151 @@ inline ::nodePayload* protobufMessage::mutable_nodepayload() {
   return _msg;
 }
 
-// .share share = 102;
-inline bool protobufMessage::_internal_has_share() const {
-  return command_case() == kShare;
+// .dealerShare dealerShare = 102;
+inline bool protobufMessage::_internal_has_dealershare() const {
+  return command_case() == kDealerShare;
 }
-inline bool protobufMessage::has_share() const {
-  return _internal_has_share();
+inline bool protobufMessage::has_dealershare() const {
+  return _internal_has_dealershare();
 }
-inline void protobufMessage::set_has_share() {
-  _impl_._oneof_case_[0] = kShare;
+inline void protobufMessage::set_has_dealershare() {
+  _impl_._oneof_case_[0] = kDealerShare;
 }
-inline void protobufMessage::clear_share() {
-  if (_internal_has_share()) {
+inline void protobufMessage::clear_dealershare() {
+  if (_internal_has_dealershare()) {
     if (GetArenaForAllocation() == nullptr) {
-      delete _impl_.command_.share_;
+      delete _impl_.command_.dealershare_;
     }
     clear_has_command();
   }
 }
-inline ::share* protobufMessage::release_share() {
-  // @@protoc_insertion_point(field_release:protobufMessage.share)
-  if (_internal_has_share()) {
+inline ::dealerShare* protobufMessage::release_dealershare() {
+  // @@protoc_insertion_point(field_release:protobufMessage.dealerShare)
+  if (_internal_has_dealershare()) {
     clear_has_command();
-    ::share* temp = _impl_.command_.share_;
+    ::dealerShare* temp = _impl_.command_.dealershare_;
     if (GetArenaForAllocation() != nullptr) {
       temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
     }
-    _impl_.command_.share_ = nullptr;
+    _impl_.command_.dealershare_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline const ::share& protobufMessage::_internal_share() const {
-  return _internal_has_share()
-      ? *_impl_.command_.share_
-      : reinterpret_cast< ::share&>(::_share_default_instance_);
+inline const ::dealerShare& protobufMessage::_internal_dealershare() const {
+  return _internal_has_dealershare()
+      ? *_impl_.command_.dealershare_
+      : reinterpret_cast< ::dealerShare&>(::_dealerShare_default_instance_);
 }
-inline const ::share& protobufMessage::share() const {
-  // @@protoc_insertion_point(field_get:protobufMessage.share)
-  return _internal_share();
+inline const ::dealerShare& protobufMessage::dealershare() const {
+  // @@protoc_insertion_point(field_get:protobufMessage.dealerShare)
+  return _internal_dealershare();
 }
-inline ::share* protobufMessage::unsafe_arena_release_share() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:protobufMessage.share)
-  if (_internal_has_share()) {
+inline ::dealerShare* protobufMessage::unsafe_arena_release_dealershare() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:protobufMessage.dealerShare)
+  if (_internal_has_dealershare()) {
     clear_has_command();
-    ::share* temp = _impl_.command_.share_;
-    _impl_.command_.share_ = nullptr;
+    ::dealerShare* temp = _impl_.command_.dealershare_;
+    _impl_.command_.dealershare_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
-inline void protobufMessage::unsafe_arena_set_allocated_share(::share* share) {
+inline void protobufMessage::unsafe_arena_set_allocated_dealershare(::dealerShare* dealershare) {
   clear_command();
-  if (share) {
-    set_has_share();
-    _impl_.command_.share_ = share;
+  if (dealershare) {
+    set_has_dealershare();
+    _impl_.command_.dealershare_ = dealershare;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protobufMessage.share)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protobufMessage.dealerShare)
 }
-inline ::share* protobufMessage::_internal_mutable_share() {
-  if (!_internal_has_share()) {
+inline ::dealerShare* protobufMessage::_internal_mutable_dealershare() {
+  if (!_internal_has_dealershare()) {
     clear_command();
-    set_has_share();
-    _impl_.command_.share_ = CreateMaybeMessage< ::share >(GetArenaForAllocation());
+    set_has_dealershare();
+    _impl_.command_.dealershare_ = CreateMaybeMessage< ::dealerShare >(GetArenaForAllocation());
   }
-  return _impl_.command_.share_;
+  return _impl_.command_.dealershare_;
 }
-inline ::share* protobufMessage::mutable_share() {
-  ::share* _msg = _internal_mutable_share();
-  // @@protoc_insertion_point(field_mutable:protobufMessage.share)
+inline ::dealerShare* protobufMessage::mutable_dealershare() {
+  ::dealerShare* _msg = _internal_mutable_dealershare();
+  // @@protoc_insertion_point(field_mutable:protobufMessage.dealerShare)
+  return _msg;
+}
+
+// .broadcastShare broadcastShare = 103;
+inline bool protobufMessage::_internal_has_broadcastshare() const {
+  return command_case() == kBroadcastShare;
+}
+inline bool protobufMessage::has_broadcastshare() const {
+  return _internal_has_broadcastshare();
+}
+inline void protobufMessage::set_has_broadcastshare() {
+  _impl_._oneof_case_[0] = kBroadcastShare;
+}
+inline void protobufMessage::clear_broadcastshare() {
+  if (_internal_has_broadcastshare()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.command_.broadcastshare_;
+    }
+    clear_has_command();
+  }
+}
+inline ::broadcastShare* protobufMessage::release_broadcastshare() {
+  // @@protoc_insertion_point(field_release:protobufMessage.broadcastShare)
+  if (_internal_has_broadcastshare()) {
+    clear_has_command();
+    ::broadcastShare* temp = _impl_.command_.broadcastshare_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.command_.broadcastshare_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::broadcastShare& protobufMessage::_internal_broadcastshare() const {
+  return _internal_has_broadcastshare()
+      ? *_impl_.command_.broadcastshare_
+      : reinterpret_cast< ::broadcastShare&>(::_broadcastShare_default_instance_);
+}
+inline const ::broadcastShare& protobufMessage::broadcastshare() const {
+  // @@protoc_insertion_point(field_get:protobufMessage.broadcastShare)
+  return _internal_broadcastshare();
+}
+inline ::broadcastShare* protobufMessage::unsafe_arena_release_broadcastshare() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:protobufMessage.broadcastShare)
+  if (_internal_has_broadcastshare()) {
+    clear_has_command();
+    ::broadcastShare* temp = _impl_.command_.broadcastshare_;
+    _impl_.command_.broadcastshare_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void protobufMessage::unsafe_arena_set_allocated_broadcastshare(::broadcastShare* broadcastshare) {
+  clear_command();
+  if (broadcastshare) {
+    set_has_broadcastshare();
+    _impl_.command_.broadcastshare_ = broadcastshare;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:protobufMessage.broadcastShare)
+}
+inline ::broadcastShare* protobufMessage::_internal_mutable_broadcastshare() {
+  if (!_internal_has_broadcastshare()) {
+    clear_command();
+    set_has_broadcastshare();
+    _impl_.command_.broadcastshare_ = CreateMaybeMessage< ::broadcastShare >(GetArenaForAllocation());
+  }
+  return _impl_.command_.broadcastshare_;
+}
+inline ::broadcastShare* protobufMessage::mutable_broadcastshare() {
+  ::broadcastShare* _msg = _internal_mutable_broadcastshare();
+  // @@protoc_insertion_point(field_mutable:protobufMessage.broadcastShare)
   return _msg;
 }
 
@@ -1860,44 +2129,44 @@ inline void nodePayload::set_allocated_payload(std::string* payload) {
 
 // -------------------------------------------------------------------
 
-// share
+// dealerShare
 
 // string X = 1;
-inline void share::clear_x() {
+inline void dealerShare::clear_x() {
   _impl_.x_.ClearToEmpty();
 }
-inline const std::string& share::x() const {
-  // @@protoc_insertion_point(field_get:share.X)
+inline const std::string& dealerShare::x() const {
+  // @@protoc_insertion_point(field_get:dealerShare.X)
   return _internal_x();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void share::set_x(ArgT0&& arg0, ArgT... args) {
+void dealerShare::set_x(ArgT0&& arg0, ArgT... args) {
  
  _impl_.x_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:share.X)
+  // @@protoc_insertion_point(field_set:dealerShare.X)
 }
-inline std::string* share::mutable_x() {
+inline std::string* dealerShare::mutable_x() {
   std::string* _s = _internal_mutable_x();
-  // @@protoc_insertion_point(field_mutable:share.X)
+  // @@protoc_insertion_point(field_mutable:dealerShare.X)
   return _s;
 }
-inline const std::string& share::_internal_x() const {
+inline const std::string& dealerShare::_internal_x() const {
   return _impl_.x_.Get();
 }
-inline void share::_internal_set_x(const std::string& value) {
+inline void dealerShare::_internal_set_x(const std::string& value) {
   
   _impl_.x_.Set(value, GetArenaForAllocation());
 }
-inline std::string* share::_internal_mutable_x() {
+inline std::string* dealerShare::_internal_mutable_x() {
   
   return _impl_.x_.Mutable(GetArenaForAllocation());
 }
-inline std::string* share::release_x() {
-  // @@protoc_insertion_point(field_release:share.X)
+inline std::string* dealerShare::release_x() {
+  // @@protoc_insertion_point(field_release:dealerShare.X)
   return _impl_.x_.Release();
 }
-inline void share::set_allocated_x(std::string* x) {
+inline void dealerShare::set_allocated_x(std::string* x) {
   if (x != nullptr) {
     
   } else {
@@ -1909,45 +2178,45 @@ inline void share::set_allocated_x(std::string* x) {
     _impl_.x_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:share.X)
+  // @@protoc_insertion_point(field_set_allocated:dealerShare.X)
 }
 
 // string Y = 2;
-inline void share::clear_y() {
+inline void dealerShare::clear_y() {
   _impl_.y_.ClearToEmpty();
 }
-inline const std::string& share::y() const {
-  // @@protoc_insertion_point(field_get:share.Y)
+inline const std::string& dealerShare::y() const {
+  // @@protoc_insertion_point(field_get:dealerShare.Y)
   return _internal_y();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void share::set_y(ArgT0&& arg0, ArgT... args) {
+void dealerShare::set_y(ArgT0&& arg0, ArgT... args) {
  
  _impl_.y_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:share.Y)
+  // @@protoc_insertion_point(field_set:dealerShare.Y)
 }
-inline std::string* share::mutable_y() {
+inline std::string* dealerShare::mutable_y() {
   std::string* _s = _internal_mutable_y();
-  // @@protoc_insertion_point(field_mutable:share.Y)
+  // @@protoc_insertion_point(field_mutable:dealerShare.Y)
   return _s;
 }
-inline const std::string& share::_internal_y() const {
+inline const std::string& dealerShare::_internal_y() const {
   return _impl_.y_.Get();
 }
-inline void share::_internal_set_y(const std::string& value) {
+inline void dealerShare::_internal_set_y(const std::string& value) {
   
   _impl_.y_.Set(value, GetArenaForAllocation());
 }
-inline std::string* share::_internal_mutable_y() {
+inline std::string* dealerShare::_internal_mutable_y() {
   
   return _impl_.y_.Mutable(GetArenaForAllocation());
 }
-inline std::string* share::release_y() {
-  // @@protoc_insertion_point(field_release:share.Y)
+inline std::string* dealerShare::release_y() {
+  // @@protoc_insertion_point(field_release:dealerShare.Y)
   return _impl_.y_.Release();
 }
-inline void share::set_allocated_y(std::string* y) {
+inline void dealerShare::set_allocated_y(std::string* y) {
   if (y != nullptr) {
     
   } else {
@@ -1959,12 +2228,118 @@ inline void share::set_allocated_y(std::string* y) {
     _impl_.y_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:share.Y)
+  // @@protoc_insertion_point(field_set_allocated:dealerShare.Y)
+}
+
+// -------------------------------------------------------------------
+
+// broadcastShare
+
+// string X = 1;
+inline void broadcastShare::clear_x() {
+  _impl_.x_.ClearToEmpty();
+}
+inline const std::string& broadcastShare::x() const {
+  // @@protoc_insertion_point(field_get:broadcastShare.X)
+  return _internal_x();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void broadcastShare::set_x(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.x_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:broadcastShare.X)
+}
+inline std::string* broadcastShare::mutable_x() {
+  std::string* _s = _internal_mutable_x();
+  // @@protoc_insertion_point(field_mutable:broadcastShare.X)
+  return _s;
+}
+inline const std::string& broadcastShare::_internal_x() const {
+  return _impl_.x_.Get();
+}
+inline void broadcastShare::_internal_set_x(const std::string& value) {
+  
+  _impl_.x_.Set(value, GetArenaForAllocation());
+}
+inline std::string* broadcastShare::_internal_mutable_x() {
+  
+  return _impl_.x_.Mutable(GetArenaForAllocation());
+}
+inline std::string* broadcastShare::release_x() {
+  // @@protoc_insertion_point(field_release:broadcastShare.X)
+  return _impl_.x_.Release();
+}
+inline void broadcastShare::set_allocated_x(std::string* x) {
+  if (x != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.x_.SetAllocated(x, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.x_.IsDefault()) {
+    _impl_.x_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:broadcastShare.X)
+}
+
+// string Y = 2;
+inline void broadcastShare::clear_y() {
+  _impl_.y_.ClearToEmpty();
+}
+inline const std::string& broadcastShare::y() const {
+  // @@protoc_insertion_point(field_get:broadcastShare.Y)
+  return _internal_y();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void broadcastShare::set_y(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.y_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:broadcastShare.Y)
+}
+inline std::string* broadcastShare::mutable_y() {
+  std::string* _s = _internal_mutable_y();
+  // @@protoc_insertion_point(field_mutable:broadcastShare.Y)
+  return _s;
+}
+inline const std::string& broadcastShare::_internal_y() const {
+  return _impl_.y_.Get();
+}
+inline void broadcastShare::_internal_set_y(const std::string& value) {
+  
+  _impl_.y_.Set(value, GetArenaForAllocation());
+}
+inline std::string* broadcastShare::_internal_mutable_y() {
+  
+  return _impl_.y_.Mutable(GetArenaForAllocation());
+}
+inline std::string* broadcastShare::release_y() {
+  // @@protoc_insertion_point(field_release:broadcastShare.Y)
+  return _impl_.y_.Release();
+}
+inline void broadcastShare::set_allocated_y(std::string* y) {
+  if (y != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.y_.SetAllocated(y, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.y_.IsDefault()) {
+    _impl_.y_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:broadcastShare.Y)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

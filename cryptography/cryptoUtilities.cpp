@@ -7,6 +7,7 @@
 #include <bcrypt.h>
 #include <iostream>
 
+
 void cryptoUtilities::secureRandom(unsigned char * buffer, size_t length) {
     BCRYPT_ALG_HANDLE hProvider;
     BCryptOpenAlgorithmProvider(&hProvider, BCRYPT_RNG_ALGORITHM, NULL, 0);
@@ -49,5 +50,16 @@ bignum cryptoUtilities::nextBignum(bignum &min, bignum &max) {
     while( result > range);
     result += min;
     delete[] r_bytes;
+    return result;
+}
+
+std::vector <bignum> cryptoUtilities::uniqueBignumVector(int length, bignum &min, bignum &max) {
+    std::vector<bignum> result;
+    while(result.size() < length) {
+        bignum next = cryptoUtilities::nextBignum(min, max);
+        if(std::find(result.begin(), result.end(), next) == result.end()){
+            result.push_back(next);
+        }
+    }
     return result;
 }

@@ -88,21 +88,35 @@ struct nodePayloadDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 nodePayloadDefaultTypeInternal _nodePayload_default_instance_;
-PROTOBUF_CONSTEXPR share::share(
+PROTOBUF_CONSTEXPR dealerShare::dealerShare(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.x_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.y_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct shareDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR shareDefaultTypeInternal()
+struct dealerShareDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR dealerShareDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~shareDefaultTypeInternal() {}
+  ~dealerShareDefaultTypeInternal() {}
   union {
-    share _instance;
+    dealerShare _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 shareDefaultTypeInternal _share_default_instance_;
-static ::_pb::Metadata file_level_metadata_networkMessage_2eproto[6];
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 dealerShareDefaultTypeInternal _dealerShare_default_instance_;
+PROTOBUF_CONSTEXPR broadcastShare::broadcastShare(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.x_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.y_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct broadcastShareDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR broadcastShareDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~broadcastShareDefaultTypeInternal() {}
+  union {
+    broadcastShare _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 broadcastShareDefaultTypeInternal _broadcastShare_default_instance_;
+static ::_pb::Metadata file_level_metadata_networkMessage_2eproto[7];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_networkMessage_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_networkMessage_2eproto = nullptr;
 
@@ -113,6 +127,7 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
   PROTOBUF_FIELD_OFFSET(::protobufMessage, _impl_._oneof_case_[0]),
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
@@ -151,21 +166,30 @@ const uint32_t TableStruct_networkMessage_2eproto::offsets[] PROTOBUF_SECTION_VA
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::nodePayload, _impl_.payload_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::share, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::dealerShare, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::share, _impl_.x_),
-  PROTOBUF_FIELD_OFFSET(::share, _impl_.y_),
+  PROTOBUF_FIELD_OFFSET(::dealerShare, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::dealerShare, _impl_.y_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::broadcastShare, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::broadcastShare, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::broadcastShare, _impl_.y_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::protobufMessage)},
-  { 12, -1, -1, sizeof(::nodeInfo)},
-  { 21, -1, -1, sizeof(::nodeInfoReply)},
-  { 30, -1, -1, sizeof(::nodeInfoAck)},
-  { 36, -1, -1, sizeof(::nodePayload)},
-  { 43, -1, -1, sizeof(::share)},
+  { 13, -1, -1, sizeof(::nodeInfo)},
+  { 22, -1, -1, sizeof(::nodeInfoReply)},
+  { 31, -1, -1, sizeof(::nodeInfoAck)},
+  { 37, -1, -1, sizeof(::nodePayload)},
+  { 44, -1, -1, sizeof(::dealerShare)},
+  { 52, -1, -1, sizeof(::broadcastShare)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -174,30 +198,34 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::_nodeInfoReply_default_instance_._instance,
   &::_nodeInfoAck_default_instance_._instance,
   &::_nodePayload_default_instance_._instance,
-  &::_share_default_instance_._instance,
+  &::_dealerShare_default_instance_._instance,
+  &::_broadcastShare_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_networkMessage_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024networkMessage.proto\"\307\001\n\017protobufMessa"
+  "\n\024networkMessage.proto\"\376\001\n\017protobufMessa"
   "ge\022\035\n\010nodeInfo\030\001 \001(\0132\t.nodeInfoH\000\022\'\n\rnod"
   "eInfoReply\030\002 \001(\0132\016.nodeInfoReplyH\000\022#\n\013no"
   "deInfoAck\030\003 \001(\0132\014.nodeInfoAckH\000\022#\n\013nodeP"
-  "ayload\030e \001(\0132\014.nodePayloadH\000\022\027\n\005share\030f "
-  "\001(\0132\006.shareH\000B\t\n\007command\"=\n\010nodeInfo\022\n\n\002"
-  "Id\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162\t.n"
-  "odeType\"B\n\rnodeInfoReply\022\n\n\002Id\030\001 \001(\t\022\014\n\004"
-  "Name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162\t.nodeType\"\r\n\013n"
-  "odeInfoAck\"\036\n\013nodePayload\022\017\n\007Payload\030\001 \001"
-  "(\t\"\035\n\005share\022\t\n\001X\030\001 \001(\t\022\t\n\001Y\030\002 \001(\t*L\n\010nod"
-  "eType\022\r\n\tundefined\020\000\022\020\n\014secretSharer\020\001\022\n"
-  "\n\006dealer\020\002\022\023\n\017secretRecoverer\020\003B\026\252\002\023Netw"
-  "orking.Messagesb\006proto3"
+  "ayload\030e \001(\0132\014.nodePayloadH\000\022#\n\013dealerSh"
+  "are\030f \001(\0132\014.dealerShareH\000\022)\n\016broadcastSh"
+  "are\030g \001(\0132\017.broadcastShareH\000B\t\n\007command\""
+  "=\n\010nodeInfo\022\n\n\002Id\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\022\027\n"
+  "\004type\030\003 \001(\0162\t.nodeType\"B\n\rnodeInfoReply\022"
+  "\n\n\002Id\030\001 \001(\t\022\014\n\004Name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162"
+  "\t.nodeType\"\r\n\013nodeInfoAck\"\036\n\013nodePayload"
+  "\022\017\n\007Payload\030\001 \001(\t\"#\n\013dealerShare\022\t\n\001X\030\001 "
+  "\001(\t\022\t\n\001Y\030\002 \001(\t\"&\n\016broadcastShare\022\t\n\001X\030\001 "
+  "\001(\t\022\t\n\001Y\030\002 \001(\t*L\n\010nodeType\022\r\n\tundefined\020"
+  "\000\022\020\n\014secretSharer\020\001\022\n\n\006dealer\020\002\022\023\n\017secre"
+  "tRecoverer\020\003B\026\252\002\023Networking.Messagesb\006pr"
+  "oto3"
   ;
 static ::_pbi::once_flag descriptor_table_networkMessage_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_networkMessage_2eproto = {
-    false, false, 543, descriptor_table_protodef_networkMessage_2eproto,
+    false, false, 644, descriptor_table_protodef_networkMessage_2eproto,
     "networkMessage.proto",
-    &descriptor_table_networkMessage_2eproto_once, nullptr, 0, 6,
+    &descriptor_table_networkMessage_2eproto_once, nullptr, 0, 7,
     schemas, file_default_instances, TableStruct_networkMessage_2eproto::offsets,
     file_level_metadata_networkMessage_2eproto, file_level_enum_descriptors_networkMessage_2eproto,
     file_level_service_descriptors_networkMessage_2eproto,
@@ -233,7 +261,8 @@ class protobufMessage::_Internal {
   static const ::nodeInfoReply& nodeinforeply(const protobufMessage* msg);
   static const ::nodeInfoAck& nodeinfoack(const protobufMessage* msg);
   static const ::nodePayload& nodepayload(const protobufMessage* msg);
-  static const ::share& share(const protobufMessage* msg);
+  static const ::dealerShare& dealershare(const protobufMessage* msg);
+  static const ::broadcastShare& broadcastshare(const protobufMessage* msg);
 };
 
 const ::nodeInfo&
@@ -252,9 +281,13 @@ const ::nodePayload&
 protobufMessage::_Internal::nodepayload(const protobufMessage* msg) {
   return *msg->_impl_.command_.nodepayload_;
 }
-const ::share&
-protobufMessage::_Internal::share(const protobufMessage* msg) {
-  return *msg->_impl_.command_.share_;
+const ::dealerShare&
+protobufMessage::_Internal::dealershare(const protobufMessage* msg) {
+  return *msg->_impl_.command_.dealershare_;
+}
+const ::broadcastShare&
+protobufMessage::_Internal::broadcastshare(const protobufMessage* msg) {
+  return *msg->_impl_.command_.broadcastshare_;
 }
 void protobufMessage::set_allocated_nodeinfo(::nodeInfo* nodeinfo) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
@@ -316,20 +349,35 @@ void protobufMessage::set_allocated_nodepayload(::nodePayload* nodepayload) {
   }
   // @@protoc_insertion_point(field_set_allocated:protobufMessage.nodePayload)
 }
-void protobufMessage::set_allocated_share(::share* share) {
+void protobufMessage::set_allocated_dealershare(::dealerShare* dealershare) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_command();
-  if (share) {
+  if (dealershare) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(share);
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(dealershare);
     if (message_arena != submessage_arena) {
-      share = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, share, submessage_arena);
+      dealershare = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, dealershare, submessage_arena);
     }
-    set_has_share();
-    _impl_.command_.share_ = share;
+    set_has_dealershare();
+    _impl_.command_.dealershare_ = dealershare;
   }
-  // @@protoc_insertion_point(field_set_allocated:protobufMessage.share)
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.dealerShare)
+}
+void protobufMessage::set_allocated_broadcastshare(::broadcastShare* broadcastshare) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_command();
+  if (broadcastshare) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(broadcastshare);
+    if (message_arena != submessage_arena) {
+      broadcastshare = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, broadcastshare, submessage_arena);
+    }
+    set_has_broadcastshare();
+    _impl_.command_.broadcastshare_ = broadcastshare;
+  }
+  // @@protoc_insertion_point(field_set_allocated:protobufMessage.broadcastShare)
 }
 protobufMessage::protobufMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -368,9 +416,14 @@ protobufMessage::protobufMessage(const protobufMessage& from)
           from._internal_nodepayload());
       break;
     }
-    case kShare: {
-      _this->_internal_mutable_share()->::share::MergeFrom(
-          from._internal_share());
+    case kDealerShare: {
+      _this->_internal_mutable_dealershare()->::dealerShare::MergeFrom(
+          from._internal_dealershare());
+      break;
+    }
+    case kBroadcastShare: {
+      _this->_internal_mutable_broadcastshare()->::broadcastShare::MergeFrom(
+          from._internal_broadcastshare());
       break;
     }
     case COMMAND_NOT_SET: {
@@ -439,9 +492,15 @@ void protobufMessage::clear_command() {
       }
       break;
     }
-    case kShare: {
+    case kDealerShare: {
       if (GetArenaForAllocation() == nullptr) {
-        delete _impl_.command_.share_;
+        delete _impl_.command_.dealershare_;
+      }
+      break;
+    }
+    case kBroadcastShare: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.command_.broadcastshare_;
       }
       break;
     }
@@ -501,10 +560,18 @@ const char* protobufMessage::_InternalParse(const char* ptr, ::_pbi::ParseContex
         } else
           goto handle_unusual;
         continue;
-      // .share share = 102;
+      // .dealerShare dealerShare = 102;
       case 102:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
-          ptr = ctx->ParseMessage(_internal_mutable_share(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_dealershare(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .broadcastShare broadcastShare = 103;
+      case 103:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          ptr = ctx->ParseMessage(_internal_mutable_broadcastshare(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -566,11 +633,18 @@ uint8_t* protobufMessage::_InternalSerialize(
         _Internal::nodepayload(this).GetCachedSize(), target, stream);
   }
 
-  // .share share = 102;
-  if (_internal_has_share()) {
+  // .dealerShare dealerShare = 102;
+  if (_internal_has_dealershare()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(102, _Internal::share(this),
-        _Internal::share(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(102, _Internal::dealershare(this),
+        _Internal::dealershare(this).GetCachedSize(), target, stream);
+  }
+
+  // .broadcastShare broadcastShare = 103;
+  if (_internal_has_broadcastshare()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(103, _Internal::broadcastshare(this),
+        _Internal::broadcastshare(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -618,11 +692,18 @@ size_t protobufMessage::ByteSizeLong() const {
           *_impl_.command_.nodepayload_);
       break;
     }
-    // .share share = 102;
-    case kShare: {
+    // .dealerShare dealerShare = 102;
+    case kDealerShare: {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.command_.share_);
+          *_impl_.command_.dealershare_);
+      break;
+    }
+    // .broadcastShare broadcastShare = 103;
+    case kBroadcastShare: {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.command_.broadcastshare_);
       break;
     }
     case COMMAND_NOT_SET: {
@@ -668,9 +749,14 @@ void protobufMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
           from._internal_nodepayload());
       break;
     }
-    case kShare: {
-      _this->_internal_mutable_share()->::share::MergeFrom(
-          from._internal_share());
+    case kDealerShare: {
+      _this->_internal_mutable_dealershare()->::dealerShare::MergeFrom(
+          from._internal_dealershare());
+      break;
+    }
+    case kBroadcastShare: {
+      _this->_internal_mutable_broadcastshare()->::broadcastShare::MergeFrom(
+          from._internal_broadcastshare());
       break;
     }
     case COMMAND_NOT_SET: {
@@ -1515,19 +1601,19 @@ void nodePayload::InternalSwap(nodePayload* other) {
 
 // ===================================================================
 
-class share::_Internal {
+class dealerShare::_Internal {
  public:
 };
 
-share::share(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+dealerShare::dealerShare(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:share)
+  // @@protoc_insertion_point(arena_constructor:dealerShare)
 }
-share::share(const share& from)
+dealerShare::dealerShare(const dealerShare& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  share* const _this = this; (void)_this;
+  dealerShare* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.x_){}
     , decltype(_impl_.y_){}
@@ -1550,10 +1636,10 @@ share::share(const share& from)
     _this->_impl_.y_.Set(from._internal_y(), 
       _this->GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:share)
+  // @@protoc_insertion_point(copy_constructor:dealerShare)
 }
 
-inline void share::SharedCtor(
+inline void dealerShare::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -1572,8 +1658,8 @@ inline void share::SharedCtor(
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-share::~share() {
-  // @@protoc_insertion_point(destructor:share)
+dealerShare::~dealerShare() {
+  // @@protoc_insertion_point(destructor:dealerShare)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -1581,18 +1667,18 @@ share::~share() {
   SharedDtor();
 }
 
-inline void share::SharedDtor() {
+inline void dealerShare::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.x_.Destroy();
   _impl_.y_.Destroy();
 }
 
-void share::SetCachedSize(int size) const {
+void dealerShare::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void share::Clear() {
-// @@protoc_insertion_point(message_clear_start:share)
+void dealerShare::Clear() {
+// @@protoc_insertion_point(message_clear_start:dealerShare)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1602,7 +1688,7 @@ void share::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* share::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* dealerShare::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -1614,7 +1700,7 @@ const char* share::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_x();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "share.X"));
+          CHK_(::_pbi::VerifyUTF8(str, "dealerShare.X"));
         } else
           goto handle_unusual;
         continue;
@@ -1624,7 +1710,7 @@ const char* share::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_y();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "share.Y"));
+          CHK_(::_pbi::VerifyUTF8(str, "dealerShare.Y"));
         } else
           goto handle_unusual;
         continue;
@@ -1651,9 +1737,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* share::_InternalSerialize(
+uint8_t* dealerShare::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:share)
+  // @@protoc_insertion_point(serialize_to_array_start:dealerShare)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1662,7 +1748,7 @@ uint8_t* share::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_x().data(), static_cast<int>(this->_internal_x().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "share.X");
+      "dealerShare.X");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_x(), target);
   }
@@ -1672,7 +1758,7 @@ uint8_t* share::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_y().data(), static_cast<int>(this->_internal_y().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "share.Y");
+      "dealerShare.Y");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_y(), target);
   }
@@ -1681,12 +1767,12 @@ uint8_t* share::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:share)
+  // @@protoc_insertion_point(serialize_to_array_end:dealerShare)
   return target;
 }
 
-size_t share::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:share)
+size_t dealerShare::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dealerShare)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1710,17 +1796,17 @@ size_t share::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData share::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData dealerShare::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    share::MergeImpl
+    dealerShare::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*share::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*dealerShare::GetClassData() const { return &_class_data_; }
 
 
-void share::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<share*>(&to_msg);
-  auto& from = static_cast<const share&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:share)
+void dealerShare::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<dealerShare*>(&to_msg);
+  auto& from = static_cast<const dealerShare&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dealerShare)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1734,18 +1820,18 @@ void share::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void share::CopyFrom(const share& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:share)
+void dealerShare::CopyFrom(const dealerShare& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dealerShare)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool share::IsInitialized() const {
+bool dealerShare::IsInitialized() const {
   return true;
 }
 
-void share::InternalSwap(share* other) {
+void dealerShare::InternalSwap(dealerShare* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -1760,10 +1846,263 @@ void share::InternalSwap(share* other) {
   );
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata share::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata dealerShare::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
       file_level_metadata_networkMessage_2eproto[5]);
+}
+
+// ===================================================================
+
+class broadcastShare::_Internal {
+ public:
+};
+
+broadcastShare::broadcastShare(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:broadcastShare)
+}
+broadcastShare::broadcastShare(const broadcastShare& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  broadcastShare* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.x_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.x_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_x().empty()) {
+    _this->_impl_.x_.Set(from._internal_x(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.y_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.y_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_y().empty()) {
+    _this->_impl_.y_.Set(from._internal_y(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:broadcastShare)
+}
+
+inline void broadcastShare::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.x_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.x_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.y_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.y_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+broadcastShare::~broadcastShare() {
+  // @@protoc_insertion_point(destructor:broadcastShare)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void broadcastShare::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.x_.Destroy();
+  _impl_.y_.Destroy();
+}
+
+void broadcastShare::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void broadcastShare::Clear() {
+// @@protoc_insertion_point(message_clear_start:broadcastShare)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.x_.ClearToEmpty();
+  _impl_.y_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* broadcastShare::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string X = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_x();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "broadcastShare.X"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string Y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_y();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "broadcastShare.Y"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* broadcastShare::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:broadcastShare)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string X = 1;
+  if (!this->_internal_x().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_x().data(), static_cast<int>(this->_internal_x().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "broadcastShare.X");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_x(), target);
+  }
+
+  // string Y = 2;
+  if (!this->_internal_y().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_y().data(), static_cast<int>(this->_internal_y().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "broadcastShare.Y");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_y(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:broadcastShare)
+  return target;
+}
+
+size_t broadcastShare::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:broadcastShare)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string X = 1;
+  if (!this->_internal_x().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_x());
+  }
+
+  // string Y = 2;
+  if (!this->_internal_y().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_y());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData broadcastShare::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    broadcastShare::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*broadcastShare::GetClassData() const { return &_class_data_; }
+
+
+void broadcastShare::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<broadcastShare*>(&to_msg);
+  auto& from = static_cast<const broadcastShare&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:broadcastShare)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_x().empty()) {
+    _this->_internal_set_x(from._internal_x());
+  }
+  if (!from._internal_y().empty()) {
+    _this->_internal_set_y(from._internal_y());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void broadcastShare::CopyFrom(const broadcastShare& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:broadcastShare)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool broadcastShare::IsInitialized() const {
+  return true;
+}
+
+void broadcastShare::InternalSwap(broadcastShare* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.x_, lhs_arena,
+      &other->_impl_.x_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.y_, lhs_arena,
+      &other->_impl_.y_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata broadcastShare::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_networkMessage_2eproto_getter, &descriptor_table_networkMessage_2eproto_once,
+      file_level_metadata_networkMessage_2eproto[6]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1788,9 +2127,13 @@ template<> PROTOBUF_NOINLINE ::nodePayload*
 Arena::CreateMaybeMessage< ::nodePayload >(Arena* arena) {
   return Arena::CreateMessageInternal< ::nodePayload >(arena);
 }
-template<> PROTOBUF_NOINLINE ::share*
-Arena::CreateMaybeMessage< ::share >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::share >(arena);
+template<> PROTOBUF_NOINLINE ::dealerShare*
+Arena::CreateMaybeMessage< ::dealerShare >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::dealerShare >(arena);
+}
+template<> PROTOBUF_NOINLINE ::broadcastShare*
+Arena::CreateMaybeMessage< ::broadcastShare >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::broadcastShare >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -73,24 +73,36 @@ void parameters::loadConfig(string filePath){
                 config["PRIME"] = bignum::parseHex(value.c_str());
                 continue;
             }
-            if(key == "PRIME") {
+            if(key == "PRIME_BIGNUM") {
                 config["PRIME"] = bignum::parseStr(value.c_str());
                 continue;
             }
+            if(key == "PLAYER_SECRET_STR") {
+
+                continue;
+            }
             if(key == "PLAYER_SECRET_HEX") {
-                config["PLAYER_SECRET_HEX"] = bignum::parseHex(value.c_str());
+                config["PLAYER_SECRET"] = bignum::parseHex(value.c_str());
                 continue;
             }
             if(key == "PLAYER_SECRET_BIGNUM") {
-                config["PLAYER_SECRET_BIGNUM"] = bignum::parseStr(value.c_str());
+                config["PLAYER_SECRET"] = bignum::parseStr(value.c_str());
                 continue;
             }
             if(key == "DEALER_SECRET_HEX") {
-                config["DEALER_SECRET_HEX"] = bignum::parseHex(value.c_str());
+                config["DEALER_SECRET"] = bignum::parseHex(value.c_str());
                 continue;
             }
             if(key == "DEALER_SECRET_BIGNUM"){
-                config["DEALER_SECRET_BIGNUM"] = bignum::parseStr(value.c_str());
+                config["DEALER_SECRET"] = bignum::parseStr(value.c_str());
+                continue;
+            }
+            if(key == "NUM_PRE_DEFINED_SHARES"){
+                config["NUM_PRE_DEFINED_SHARES"] = stoi(value);
+                continue;
+            }
+            if(key == "THRESHOLD") {
+                config["THRESHOLD"] = stoi(value);
                 continue;
             }
         }

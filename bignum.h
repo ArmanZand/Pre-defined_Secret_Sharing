@@ -19,12 +19,12 @@ public:
     int toInt();
     int bitLength();
     bignum copy();
+    std::string toText();
 
     static bignum parseHex(const char * hex);
     static bignum parseBytes(unsigned char * bytes, size_t count);
     static bignum parseStr(const char * str);
-
-
+    static bignum parseText(const char * str);
     bignum operator-();
     bignum operator+(bignum &other);
     bignum operator+=(bignum &other);

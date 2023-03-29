@@ -206,6 +206,19 @@ bool bignum::operator==(const bignum &other) {
     return (result == 0);
 }
 
+std::string bignum::toText() {
+    size_t sz = (mpz_sizeinbase(value, 2) + 7) / 8;
+    std::string res(sz, '\0');
+    mpz_export(&res[0], NULL, 0, sizeof(char), 0,0, value);
+    return res;
+}
+
+bignum bignum::parseText(const char *str) {
+    bignum result;
+    mpz_import(result.value, std::strlen(str), 0, sizeof(char), 0, 0, str);
+    return result;
+}
+
 
 
 

@@ -9,7 +9,8 @@ message protobufMessage {
     nodeInfoReply nodeInfoReply = 2;
     nodeInfoAck nodeInfoAck = 3;
     nodePayload nodePayload = 101;
-    share share = 102;
+    dealerShare dealerShare = 102;
+    broadcastShare broadcastShare = 103;
   }
 }
 
@@ -40,7 +41,11 @@ message nodePayload {
   string Payload = 1;
 }
 
-message share {
+message dealerShare {
+  string X = 1;
+  string Y = 2;
+}
+message broadcastShare {
   string X = 1;
   string Y = 2;
 }

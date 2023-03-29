@@ -14,14 +14,15 @@
 #include "cryptography/cryptoUtilities.h"
 #include "cryptography/polynomial.h"
 #include "bignum.h"
+#include "consoleLog.h"
 
 void OnConnect(socketHandle * handlePtr){
     handleTracker::add(handlePtr);
-    cout << "Connection accepted from " << handlePtr->ip << endl;
+    consoleLog::print("Connection accepted from " + handlePtr->ip + ".");
 }
 void OnDisconnect(socketHandle * handlePtr){
     handleTracker::remove(handlePtr);
-    cout << "Disconnection detected from " << handlePtr->ip << endl;
+    consoleLog::print("Disconnection detected from " + handlePtr->ip + ".");
 }
 void OnReady(socketHandle * handlePtr, bool initiator){
     if(initiator){
@@ -31,7 +32,6 @@ void OnReady(socketHandle * handlePtr, bool initiator){
         pm.mutable_nodeinfo()->set_type(static_cast<nodeType>(get<int>(config["NODE_TYPE"])));
         handlePtr->send(pm);
     }
-
 }
 void OnReceive(socketHandle * handlePtr, protobufMessage & message){
     resolver::execute(handlePtr, message);
@@ -39,6 +39,13 @@ void OnReceive(socketHandle * handlePtr, protobufMessage & message){
 
 
 int main(int argc, char *argv[]) {
+    bignum test = bignum::parseText("Hello");
+    cout << test.toStr() << endl;
+    string res = test.toText();
+    cout << res << endl;
+
+
+    vector<unique_ptr<thread>> activeThreads;
     vector<string> args(argv, argv + argc);
     string configPath;
     for(int i = 0; i < argc; i++){
@@ -57,14 +64,16 @@ int main(int argc, char *argv[]) {
         if(!empty(configPath)){
             parameters::loadConfig(configPath);
         }
-        unique_ptr<thread> waitingFor;
+
         if(parameters::keyExists("LISTENER_START")){
+
             string address = get<string>(config["LISTENER_START"]);
             int delimiter = address.find(":");
             string ip = address.substr(0, delimiter);
             string port = address.substr(delimiter+1);
             listener listener;
-            waitingFor = listener.start(ip, port);
+            unique_ptr<thread> socketJob = listener.start(ip, port);
+            activeThreads.push_back(move(socketJob));
         }
         if(parameters::keyExists("AUTO_CONNECT")){
             stringstream ss(get<string>(config["AUTO_CONNECT"]));
@@ -74,18 +83,21 @@ int main(int argc, char *argv[]) {
                 string ip = address.substr(0, delimiter);
                 string port = address.substr(delimiter+1);
                 socketHandle * handlePtr = new socketHandle();
-                waitingFor = handlePtr->connect(ip, port);
-
+                unique_ptr<thread> socketJob = handlePtr->connect(ip, port);
+                activeThreads.push_back(move(socketJob));
             }
         }
-        if(waitingFor->joinable()){
-        waitingFor->join();}
+
     }
     catch(const exception &ex){
-        cerr << "Exception: " << ex.what() << endl;
+        consoleLog::print(ex.what(), LogLevel::ERR);
     }
-    cout << "End of main thread, press enter to continue...";
-    cin.ignore();
+
+    for(auto & socketJob : activeThreads){
+        socketJob->join();
+    }
+    //cout << "End of main thread, press enter to continue..." << endl;
+    //cin.ignore();
     return 0;
 }
 

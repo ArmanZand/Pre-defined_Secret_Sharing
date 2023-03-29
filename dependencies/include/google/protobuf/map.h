@@ -437,7 +437,7 @@ class Map {
   //    (empty-base-class optimization).
   // 2. The number of buckets is a power of two.
   // 3. Buckets are converted to trees in pairs: if we convert bucket b then
-  //    buckets b and b^1 will share a tree.  Invariant: buckets b and b^1 have
+  //    buckets b and b^1 will dealerShare a tree.  Invariant: buckets b and b^1 have
   //    the same non-null value iff they are sharing a tree.  (An alternative
   //    implementation strategy would be to have a tag bit per bucket.)
   // 4. As is typical for hash_map and such, the Keys and Values are always
@@ -864,7 +864,7 @@ class Map {
     }
 
     // Insert the given Node in bucket b.  If that would make bucket b too big,
-    // and bucket b is not a tree, create a tree for buckets b and b^1 to share.
+    // and bucket b is not a tree, create a tree for buckets b and b^1 to dealerShare.
     // Requires count(*KeyPtrFromNodePtr(node)) == 0 and that b is the correct
     // bucket.  num_elements_ is not modified.
     iterator InsertUnique(size_type b, Node* node) {

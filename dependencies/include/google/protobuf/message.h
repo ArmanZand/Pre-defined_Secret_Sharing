@@ -426,10 +426,10 @@ class MutableRepeatedFieldRef;
 // To get the Reflection for a given Message, call Message::GetReflection().
 //
 // This interface is separate from Message only for efficiency reasons;
-// the vast majority of implementations of Message will share the same
+// the vast majority of implementations of Message will dealerShare the same
 // implementation of Reflection (GeneratedMessageReflection,
 // defined in generated_message.h), and all Messages of a particular class
-// should share the same Reflection object (though you should not rely on
+// should dealerShare the same Reflection object (though you should not rely on
 // the latter fact).
 //
 // There are several ways that these methods can be used incorrectly.  For
@@ -1276,7 +1276,7 @@ class PROTOBUF_EXPORT MessageFactory {
   //
   // Calling this method twice with the same Descriptor returns the same
   // object.  The returned object remains property of the factory.  Also, any
-  // objects created by calling the prototype's New() method share some data
+  // objects created by calling the prototype's New() method dealerShare some data
   // with the prototype, so these must be destroyed before the MessageFactory
   // is destroyed.
   //

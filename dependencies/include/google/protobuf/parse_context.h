@@ -633,7 +633,7 @@ const char* ReadTagInlined(const char* ptr, uint32_t* out) {
           *out = static_cast<uint32_t>(RotateLeft(res, 28));
 #if defined(__GNUC__)
           // Note: this asm statement prevents the compiler from
-          // trying to share the "return ptr + constant" among all
+          // trying to dealerShare the "return ptr + constant" among all
           // branches.
           asm("" : "+r"(ptr));
 #endif
