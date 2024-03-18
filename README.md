@@ -5,3 +5,5 @@ Pre-defined secret sharing is derived from [Shamir Secret Sharing](https://en.wi
 This application can run as a server or client to create a network of players that participate in the pre-defined secret sharing. The project uses the following dependencies:
 - Protobuf
 - GNU MP
+
+The configs folder includes files that set the program's parameters, including automatically setting up connections and secret sharing parameters.
