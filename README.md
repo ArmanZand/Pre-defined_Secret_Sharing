@@ -6,4 +6,13 @@ This application can run as a server or client to create a network of players th
 - Protobuf
 - GNU MP
 
+There are 3 types of nodes:
+- Secret Sharer
+- Dealer
+- Secret Recoverer
+
+The secret sharers choose the pre-defined shares for the dealer.
+The dealer interpolates random shares and pre-defined shares together to create a Shamir polynomial.
+The secret recoverers obtain new random shares from the dealer and can collaborate to recover the dealer's Shamir polynomial. The resultant polynomial can be further evaluated to reveal the value of pre-defined shares.
+
 The configs folder includes files that set the program's parameters, including automatically setting up connections and secret sharing parameters.
